@@ -1,0 +1,35 @@
+.login-container {
+    background: #000000; /* Old Browsers */
+    background: -webkit-linear-gradient(bottom,#000000,#030383); /*Safari 5.1-6*/
+    background: -o-linear-gradient(bottom,#000000,#030383); /*Opera 11.1-12*/
+    background: -moz-linear-gradient(bottom,#000000,#030383); /*Fx 3.6-15*/
+    background: linear-gradient(to top, #000000, #030383); /*Standard*/
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+.login-button {
+    margin-top: 50px;
+    color:white;
+    font-size: 3vw;
+    padding: 25px;
+    background-color: transparent;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: .84s;
+    border: 1px solid white;
+}
+
+.login-button:hover {
+    background-color: white;
+    color: #030383;
+}
+
+
