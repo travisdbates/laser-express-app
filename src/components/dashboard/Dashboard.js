@@ -24,7 +24,6 @@ export default class Dashboard extends Component {
     render(){
         return (
             <div className="dash-container">
-                <img src={LELogoWhite} className="logo"/>
                 <h1 className="tempTitle">DASHBOARD</h1>
                 <h2 className="tempInfo">{this.state.userInfo.email}</h2>
                 <a href='http://localhost:3005/auth/logout'><button>Log out</button></a>

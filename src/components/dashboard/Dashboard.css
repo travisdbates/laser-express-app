@@ -1,5 +1,5 @@
 .dash-container {
-    background-color: black;
+    background-color: white;
     display: flex;
     flex-direction: column;
     width: 100vw;
@@ -15,10 +15,10 @@
 
 .tempTitle {
     margin-top: 150px;
-    color: white;
+    color: black;
 }
 
 .tempInfo {
     margin-top: 30px;
-    color: white;
+    color: black;
 }

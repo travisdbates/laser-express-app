@@ -100,5 +100,20 @@ passport.deserializeUser(function (id, done) {
     
 })
 
+app.get('/api/customers/get',(req, res) => {
+    app.get('db').customers_return_all()
+    .then(customers => {
+        res.status(200).send(customers)
+    })
+})
+
+app.get('/api/customers/getone/:id',(req,res) => {
+    const custID = req.params.id;
+    app.get('db').customers_return_one([custID])
+    .then(customer => {
+        res.status(200).send(customer)
+    })
+})
+
 const PORT = 3005
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))

@@ -10,14 +10,17 @@ import NavBar from "./components/navbar/NavBar"
 class App extends Component {
   render() {
     return (
-
+      <div>
+        
       <HashRouter>
         <div>
+          <NavBar />
           <Route component={Login} exact path='/' />
           <Route component={Dashboard} path='/dashboard' />
           <Route component={NavBar} path='/nav' />
-        </div>
+          </div>
       </HashRouter>
+      </div>
 
     );
   }

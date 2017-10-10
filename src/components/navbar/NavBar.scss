@@ -1,0 +1,87 @@
+$darkblue: #030383;
+$lighblue: #000061;
+$white: white;
+
+.NavBarContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    background-color: $darkblue;
+    align-items: center;
+}
+
+.header-container {
+    
+}
+
+.logoNav {
+    height: 6vh;
+    padding: 10px;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    align-items: center;
+    background-color: white;
+}
+
+.tabbedLinks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    height: 3vh;
+    width: 12.5vw;
+    transition: .35s;
+    align-items: center;
+    text-align: center;
+    -webkit-clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+    clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);    
+
+
+}
+
+.tabbedLinks:focus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    height: 3vh;
+    width: 12.5vw;
+    transition: .35s;
+    align-items: center;
+    text-align: center;
+    -webkit-clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+    clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);    
+
+
+}
+
+.tabbedLinks:hover {
+    background-color: $lighblue;
+    color: white;
+    -webkit-clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+    clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%); 
+     /* Old Browsers */
+  background: -webkit-linear-gradient(bottom, $white, $darkblue);
+  /*Safari 5.1-6*/
+  background: -o-linear-gradient(bottom, $white, $darkblue);
+  /*Opera 11.1-12*/
+  background: -moz-linear-gradient(bottom, $white, $darkblue);
+  /*Fx 3.6-15*/
+  background: linear-gradient(to top, $white, $darkblue);
+  /*Standard*/   
+
+}
+
+
+
+.tabbedLinksActive{
+    background-color: $darkblue;
+    color: white;
+    -webkit-clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+    clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+}
+
