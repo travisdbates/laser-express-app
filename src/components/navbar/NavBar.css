@@ -21,44 +21,23 @@
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  height: 3vh;
+  height: 4vh;
   width: 12.5vw;
   transition: .35s;
   align-items: center;
   text-align: center;
-  -webkit-clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
-  clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%); }
-
-.tabbedLinks:focus {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  height: 3vh;
-  width: 12.5vw;
-  transition: .35s;
-  align-items: center;
-  text-align: center;
-  -webkit-clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
-  clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%); }
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-left: 1px darkslategrey solid;
+  font-family: acumin-pro-extra-condensed, sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  color: darkslategray; }
 
 .tabbedLinks:hover {
-  background-color: #000061;
-  color: white;
-  -webkit-clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
-  clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
-  /* Old Browsers */
-  background: -webkit-linear-gradient(bottom, white, #030383);
-  /*Safari 5.1-6*/
-  background: -o-linear-gradient(bottom, white, #030383);
-  /*Opera 11.1-12*/
-  background: -moz-linear-gradient(bottom, white, #030383);
-  /*Fx 3.6-15*/
-  background: linear-gradient(to top, white, #030383);
-  /*Standard*/ }
+  background-color: #030383;
+  /* Old Browsers */ }
 
 .tabbedLinksActive {
   background-color: #030383;
-  color: white;
-  -webkit-clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
-  clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%); }
+  color: white; }

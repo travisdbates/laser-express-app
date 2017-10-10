@@ -115,5 +115,12 @@ app.get('/api/customers/getone/:id',(req,res) => {
     })
 })
 
+app.get('/api/repairs/get', (req, res) => {
+    app.get('db').repairs_return_all()
+    .then(repairs => {
+        res.status(200).send(repairs)
+    })
+})
+
 const PORT = 3005
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))

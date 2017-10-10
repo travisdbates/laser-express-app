@@ -7,6 +7,7 @@ import Login from './components/login/Login'
 import Dashboard from "./components/dashboard/Dashboard"
 import NavBar from "./components/navbar/NavBar"
 import Customers from "./components/customers/Customers"
+import Repairs from "./components/repairs/Repairs"
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
           <Route component={Dashboard} path='/dashboard' />
           <Route component={NavBar} path='/nav' />
           <Route component={Customers} path="/customers" />
+          <Route component={Repairs} path="/repairs" />
           </div>
       </HashRouter>
       </div>
