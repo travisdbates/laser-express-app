@@ -1,30 +1,41 @@
-$darkblue: #030383;
-$lighblue: #000061;
-$white: white;
+@import '../../_colors.scss';
 
 .NavBarContainer {
     display: flex;
     flex-direction: column;
-    width: 100vw;
+    width: &;
     background-color: $darkblue;
     align-items: center;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;   
+    justify-content: center;
+    height: 10vh;
+    padding: 5px;
 }
 
-.header-container {
-    
+.divider {
+    background-color: darkslategray;
+    height: 5vh;
+    transform: skew(-20deg) rotate(2deg);
+    -webkit-transform: skew(-20deg) rotate(2deg);
+    -moz-transform: skew(-20deg) rotate(2deg);
+    width: 1px;
 }
 
 .logoNav {
-    height: 6vh;
-    padding: 10px;
+    width: 15vw;
+    background-color: $darkblue;
 }
 
 .tabs {
     display: flex;
     justify-content: space-between;
-    width: 100vw;
+    width: 100%;
     align-items: center;
-    background-color: white;
+    background-color: $darkblue;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;  
+    border: 1px darkslategrey solid;
 }
 
 .tabbedLinks {
@@ -34,22 +45,9 @@ $white: white;
     text-decoration: none;
     height: 4vh;
     width: 12.5vw;
-    transition: .35s;
+    transition: .65s;
     align-items: center;
     text-align: center;
-    // -webkit-clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
-    // clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
-
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-
-    border-left: 1px darkslategrey solid;
-    // border-bottom: 1px darkslategrey solid;
-    
-    font-family: acumin-pro-extra-condensed, sans-serif;
-    font-style: normal;
-    font-weight: 200;
-
     color: darkslategray;
 }
 
@@ -57,30 +55,13 @@ $white: white;
 
 .tabbedLinks:hover {
     background-color: $darkblue;
-    //color: white;
-    // -webkit-clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
-    // clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%); 
-     /* Old Browsers */
-//   background: -webkit-linear-gradient(bottom, $white, $darkblue);
-//   /*Safari 5.1-6*/
-//   background: -o-linear-gradient(bottom, $white, $darkblue);
-//   /*Opera 11.1-12*/
-//   background: -moz-linear-gradient(bottom, $white, $darkblue);
-//   /*Fx 3.6-15*/
-//   background: linear-gradient(to top, $white, $darkblue);
-//   /*Standard*/   
-
-
-
-
 }
 
 
 
 .tabbedLinksActive{
     background-color: $darkblue;
-    color: white;
-    // -webkit-clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
-    // clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+    color: $yellow;
+    font-weight: 700;
 }
 

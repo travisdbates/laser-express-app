@@ -55,11 +55,17 @@ export default class Dashboard extends Component {
                 {/* <h2 className="tempInfo">{this.state.userInfo.email}</h2> */}
 
                 <div className="rdCircles">
-                    <h1>REPAIRS: {this.state.totalRepairs === 0 ? <Spinner name='double-bounce' /> : this.state.totalRepairs}</h1>
-                    <h1>DELIVERIES: {this.state.totalDeliveries === 0 ? <Spinner name='double-bounce' /> : this.state.totalDeliveries}</h1>
+                    <div className="aboveBelow">
+                        <span className="circle">{this.state.totalRepairs === 0 ? <Spinner name='double-bounce' /> : this.state.totalRepairs}</span>
+                        <span className="descriptions">REPAIRS</span>
+                    </div>
+                    <div className="aboveBelow">
+                        <span className="circle">{this.state.totalDeliveries === 0 ? <Spinner name='double-bounce' /> : this.state.totalDeliveries}</span>
+                        <span className="descriptions">DELIVERIES</span>
+                    </div>
                 </div>
 
-                <button onClick={this.showModal} onClose={this.showModal}>NEW CALL</button>
+                <button onClick={this.showModal} onClose={this.showModal} className="newCall">NEW CALL</button>
 
                 <RepairModal show={this.state.hideModal} onClose={this.showModal} />
 

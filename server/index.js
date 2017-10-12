@@ -125,6 +125,21 @@ app.get('/api/customers/getselect',(req,res) => {
     })
 })
 
+app.post('/api/customers/insert',(req,res) => {
+    var customer = [
+        req.body.name,
+        req.body.phone,
+        req.body.streetaddress,
+        req.body.city,
+        req.body.state
+    ]
+    
+    app.get('db').customers_insert(customer)
+    .then(customers => {
+        res.status(200).send(customers)
+    })
+})
+
 //REPAIRS ************************************************
 
 app.get('/api/repairs/get', (req, res) => {
@@ -138,6 +153,31 @@ app.get('/api/repairs/count', (req, res) => {
     app.get('db').repairs_count()
     .then(repairs => {
         res.status(200).send(repairs)
+    })
+})
+
+app.post('/api/repairs/insert',(req,res) => {
+    var repair = [
+        req.body.customerID,
+        req.body.date,
+        req.body.time,
+        req.body.status,
+        req.body.contactName,
+        req.body.streetAddress,
+        req.body.city,
+        req.body.state,
+        req.body.phone,
+        req.body.printer,
+        req.body.tech,
+        req.body.symptoms,
+        req.body.orderStatus,
+        req.body.invoiceStatus,
+        req.body.notes
+    ]
+    
+    app.get('db').repairs_insert(repair)
+    .then(repair => {
+        res.status(200).send(repair)
     })
 })
 

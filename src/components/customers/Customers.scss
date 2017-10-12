@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700');
+@import "../../_colors.scss";
 
 .customersHeader {
     display: flex;
     justify-content: space-between;
-    border-bottom: 3px darkblue solid;
+    border-bottom: 3px $darkblue solid;
 }
 
 .headerTitleName {
@@ -24,7 +25,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-bottom: 1px darkblue solid;
+    border-bottom: 1px $darkblue solid;
 }
 
 .name {
@@ -43,13 +44,45 @@
 
 
 .addCustomer {
-    background-color: darkblue;
+    background-color: $darkblue;
     position: fixed;
     bottom: 30px;
     right: 30px;
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
     color: white;
     border-radius: 100%;
     border: none;
+    outline: none;
+    transition: .84s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addCustomer:hover {
+    background-color: white;
+    color: $darkblue;
+    border: 1px $darkblue solid;
+    cursor: pointer;
+   
+}
+
+.vert {
+    width: 10px;
+    height: 75px;
+    background-color: white;
+    position: absolute;
+
+}
+
+.horiz {
+    width: 75px;
+    height: 10px;
+    background-color: white;
+    position: absolute;
+}
+
+.vert:hover, .horiz:hover {
+    background-color: $darkblue;
 }

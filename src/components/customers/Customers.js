@@ -1,4 +1,5 @@
 import "./Customers.css"
+import CustomerModal from "../customerModal/CustomerModal"
 
 import React, {Component} from "react"
 import axios from "axios"
@@ -13,21 +14,25 @@ export default class Customers extends Component {
         super(props);
         this.state = {
             customers: [],
-            customersTest: [
-                {
-                    "customerid": 1,
-                    "name": "Customer Name",
-                    "phone": "8012338495",
-                    "streetaddress": "33 W Center",
-                    "city": "Provo",
-                    "state": "UT"
-                }]
+            hideModal: false,
         }
         this.mapOverUsers = this.mapOverUsers.bind(this)
+        this.showModal = this.showModal.bind(this)
     }
     componentDidMount(){
         axios.get("/api/customers/get")
         .then(response => {
+            //console.log(response.data)
+            response.data.sort((a,b) => {
+                var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+                if(nameA < nameB){
+                    return -1;
+                }
+                if(nameA > nameB){
+                    return 1;
+                }
+                return 0;
+            })
             this.setState({ customers: response.data})
         })
     }
@@ -39,6 +44,10 @@ export default class Customers extends Component {
             ) 
             
         })
+    }
+    showModal(){
+        this.setState({hideModal: !this.state.hideModal})
+        console.log(this.state.hideModal)
     }
     render () {
         return (
@@ -69,7 +78,12 @@ export default class Customers extends Component {
                     </div>
                     )
                 })}
-            <button className="addCustomer">+</button>
+            <button className="addCustomer" onClick={this.showModal} onClose={this.showModal}>
+                <div className="vert"></div>
+                <div className="horiz"></div>
+            </button>
+                
+                <CustomerModal show={this.state.hideModal} onClose={this.showModal}/>
             </div>
             
         )

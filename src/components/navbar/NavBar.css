@@ -1,20 +1,36 @@
 .NavBarContainer {
   display: flex;
   flex-direction: column;
-  width: 100vw;
-  background-color: #030383;
-  align-items: center; }
+  width: .NavBarContainer;
+  background-color: #5DA494;
+  align-items: center;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 200;
+  justify-content: center;
+  height: 10vh;
+  padding: 5px; }
+
+.divider {
+  background-color: darkslategray;
+  height: 5vh;
+  transform: skew(-20deg) rotate(2deg);
+  -webkit-transform: skew(-20deg) rotate(2deg);
+  -moz-transform: skew(-20deg) rotate(2deg);
+  width: 1px; }
 
 .logoNav {
-  height: 6vh;
-  padding: 10px; }
+  width: 15vw;
+  background-color: #5DA494; }
 
 .tabs {
   display: flex;
   justify-content: space-between;
-  width: 100vw;
+  width: 100%;
   align-items: center;
-  background-color: white; }
+  background-color: #5DA494;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 200;
+  border: 1px darkslategrey solid; }
 
 .tabbedLinks {
   display: flex;
@@ -23,21 +39,15 @@
   text-decoration: none;
   height: 4vh;
   width: 12.5vw;
-  transition: .35s;
+  transition: .65s;
   align-items: center;
   text-align: center;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-left: 1px darkslategrey solid;
-  font-family: acumin-pro-extra-condensed, sans-serif;
-  font-style: normal;
-  font-weight: 200;
   color: darkslategray; }
 
 .tabbedLinks:hover {
-  background-color: #030383;
-  /* Old Browsers */ }
+  background-color: #5DA494; }
 
 .tabbedLinksActive {
-  background-color: #030383;
-  color: white; }
+  background-color: #5DA494;
+  color: #E5B52F;
+  font-weight: 700; }

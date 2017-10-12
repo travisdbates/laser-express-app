@@ -5,10 +5,6 @@ import axios from "axios"
 
 var Spinner = require('react-spinkit');
 
-
-
-
-
 export default class Orders extends Component {
     constructor(props){
         super(props);
@@ -68,10 +64,9 @@ export default class Orders extends Component {
                       });
 
                     let costOfProduct = parseFloat(order.cost.replace('$',''))
-                    console.log(costOfProduct)
                     return (
                         
-                    <div className="customer-container" key={order.orderid}>
+                    <div className="customer-container" key={index}>
                         <span className="detailsOrders">{order.date}</span>
                         <span className="detailsOrders">{order.time}</span>
                         <span className="detailsOrders">{order.quantity}</span>

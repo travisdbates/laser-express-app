@@ -122,79 +122,32 @@
   margin-top: 6px;
   margin-right: 9px; }
 
-.buttons {
-  display: flex;
-  justify-content: space-around;
-  width: 40%;
-  margin-top: 50px; }
-
-.repairButton, .deliveryButton {
-  width: 100px;
-  height: 100px;
-  border: none;
-  border: 1px #030383 solid;
-  border-radius: 3px;
-  background-color: white;
-  transition: .34s;
-  margin-bottom: 50px; }
-
-.repairButton:hover, .deliveryButton:hover {
-  cursor: pointer; }
-
-.repairButton:focus, .deliveryButton:focus {
-  border: 3px lime solid;
-  border-radius: 3px;
-  outline: none; }
-
-.repairButton:visited, .deliveryButton:visited {
-  border: 3px lime solid;
-  border-radius: 3px;
-  outline: none; }
-
-.inputNames.ContactName {
+.inputNames.Name {
   width: 20vw; }
 
-.inputBox.ContactName {
+.inputBox.Name {
   width: 20vw; }
 
-.inputNames.Qty {
-  width: 6vw; }
-
-.inputBox.Qty {
-  width: 6vw; }
-
-.inputNames.Loc {
+.inputNames.Phone {
   width: 11vw; }
 
-.inputBox.Loc {
+.inputBox.Phone {
   width: 11vw; }
 
-.inputNames.Tech {
-  width: 11vw; }
-
-.inputBox.Tech {
-  width: 11vw; }
-
-.inputNames.Notes {
+.inputNames.street {
   width: 12vw; }
 
-.inputBox.Notes {
+.inputBox.street {
   width: 12vw; }
 
-.inputNames.ContactNameRep {
-  width: 12vw; }
-
-.inputBox.ContactNameRep {
-  width: 12vw; }
-
-.inputNames.Printer {
+.inputNames.city {
   width: 11vw; }
 
-.inputBox.Printer {
+.inputBox.city {
   width: 11vw; }
 
-.inputNames.IDNum {
+.inputNames.state {
   width: 11vw; }
 
-.inputBox.IDNum {
+.inputBox.state {
   width: 11vw; }
