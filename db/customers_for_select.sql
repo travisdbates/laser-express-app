@@ -1,0 +1,1 @@
+SELECT customerid as value, name as label FROM Customers

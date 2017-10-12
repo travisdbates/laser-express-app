@@ -1,0 +1,161 @@
+$darkblue: #030383;
+body {
+    
+    
+}
+
+.screendarken {
+    position: fixed;
+    background-color: rgba(0,0,0,0.3);
+    opacity: 24%;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .84s;
+}
+
+
+
+.modal-window {
+    background-color: white;
+    height: 70vh;
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid $darkblue;
+    border-radius: 2px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.rightAlign {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.topContent {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.customerInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    width: 100%;
+}
+
+.aboveBelow {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.rowOne {
+    display: flex;
+
+}
+
+.rowTwo {
+    display: flex;
+
+}
+
+.inputNames {
+    font-size: 1em;
+   
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: lightgray;
+}
+
+.inputNames.Name {
+    width: 3vw;
+}
+
+.inputNames.ID {
+    width: 5vw;
+}
+
+.inputNames.Phone {
+    width: 8vw;
+}
+
+.inputNames.Address {
+    width: 8vw;
+}
+
+.inputNames.City {
+    width: 8vw;
+}
+
+.inputNames.State {
+    width: 5vw;
+}
+
+.inputBox {
+    border: none;
+    border-bottom: 1.5px solid lightgray;
+    width: 200px;
+    transition: .64s;
+}
+
+.inputBox.Name {
+    width:20vw;
+}
+
+.inputBox.ID {
+    width:5vw;
+}
+
+.inputBox.Phone {
+    width: 8vw;
+}
+
+.inputBox.Address {
+    width: 14vw;
+}
+
+.inputBox.City {
+    width: 14vw;
+}
+
+.inputBox.State {
+    width: 5vw;
+}
+
+.inputBox:focus {
+    border-bottom: 1.5px solid $darkblue;
+    outline: none;
+    
+}
+
+.Select-input {
+    color: black;
+    width: 20vw;
+}
+
+.close-button {
+    color: $darkblue;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2em;
+    font-weight: 200;
+    margin-top: 6px;
+    margin-right: 9px;
+}
+

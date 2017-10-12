@@ -7,7 +7,7 @@ export default class Login extends Component {
     render(){
         return (
             <div className="login-container">
-                <img src={LELogoWhite} className="logo"/>
+                <img src={LELogoWhite} className="logo" alt='logo'/>
                 <a href={ process.env.REACT_APP_LOGIN }><button className="login-button">LOGIN</button></a>
                 <Link to="/nav"><button className="login-button">NavBar</button></Link>
             </div>

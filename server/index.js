@@ -6,6 +6,8 @@ const massive = require('massive');
 const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 
+const customers_controller = require('./controllers/customers_controller')
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -100,7 +102,8 @@ passport.deserializeUser(function (id, done) {
     
 })
 
-app.get('/api/customers/get',(req, res) => {
+//CUSTOMERS ************************************************
+app.get('/api/customers/get',(req, res, next) => {
     app.get('db').customers_return_all()
     .then(customers => {
         res.status(200).send(customers)
@@ -115,10 +118,50 @@ app.get('/api/customers/getone/:id',(req,res) => {
     })
 })
 
+app.get('/api/customers/getselect',(req,res) => {
+    app.get('db').customers_for_select()
+    .then(customer => {
+        res.status(200).send(customer)
+    })
+})
+
+//REPAIRS ************************************************
+
 app.get('/api/repairs/get', (req, res) => {
     app.get('db').repairs_return_all()
     .then(repairs => {
         res.status(200).send(repairs)
+    })
+})
+
+app.get('/api/repairs/count', (req, res) => {
+    app.get('db').repairs_count()
+    .then(repairs => {
+        res.status(200).send(repairs)
+    })
+})
+
+//DELIVERIES ************************************************
+app.get('/api/deliveries/getall', (req,res) => {
+    app.get('db').deliveries_return_all()
+    .then(deliveries => {
+        res.status(200).send(deliveries)
+    })
+})
+
+app.get('/api/deliveries/count', (req, res) => {
+    app.get('db').deliveries_count()
+    .then(deliveries => {
+        res.status(200).send(deliveries)
+    })
+})
+
+//ORDERS ************************************************
+
+app.get('/api/orders/getall', (req,res) => {
+    app.get('db').orders_return_all()
+    .then(orders => {
+        res.status(200).send(orders)
     })
 })
 
