@@ -1,16 +1,23 @@
 @import '../../_colors.scss';
 
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
 .NavBarContainer {
     display: flex;
     flex-direction: column;
-    width: &;
+    width: 100%;
     background-color: $darkblue;
     align-items: center;
     font-family: 'Oswald', sans-serif;
     font-weight: 200;   
     justify-content: center;
     height: 10vh;
-    padding: 5px;
+    width: 100%;
+    position: sticky;
 }
 
 .divider {
@@ -22,9 +29,17 @@
     width: 1px;
 }
 
-.logoNav {
-    width: 15vw;
-    background-color: $darkblue;
+.aboveBelowNav {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logoForNav {
+    width: 12vw;
+    height: 9vh;
+    background-color: transparent;
+    z-index: 1;
 }
 
 .tabs {
@@ -33,9 +48,10 @@
     width: 100%;
     align-items: center;
     background-color: $darkblue;
+    font-size: 1em;
     font-family: 'Oswald', sans-serif;
     font-weight: 200;  
-    border: 1px darkslategrey solid;
+    //border: 1px darkslategrey solid;
 }
 
 .tabbedLinks {
@@ -45,10 +61,11 @@
     text-decoration: none;
     height: 4vh;
     width: 12.5vw;
-    transition: .65s;
+    transition: .34s;
     align-items: center;
     text-align: center;
     color: darkslategray;
+    font-size: 1vw;
 }
 
 
@@ -63,5 +80,6 @@
     background-color: $darkblue;
     color: $yellow;
     font-weight: 700;
+    font-size: 1.3vw;
 }
 

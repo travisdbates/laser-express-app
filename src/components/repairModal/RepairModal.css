@@ -12,7 +12,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: .84s; }
+  transition: .84s;
+  outline: none;
+  border: none;
+  z-index: 0; }
 
 .modal-window {
   background-color: white;
@@ -24,7 +27,8 @@
   justify-content: flex-start;
   border: 1px solid #030383;
   border-radius: 2px;
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Roboto', sans-serif;
+  z-index: 1; }
 
 .rightAlign {
   display: flex;

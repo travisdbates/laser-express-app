@@ -1,12 +1,16 @@
+@import "../../_colors.scss";
+
+
 .dash-container {
     background-color: white;
     display: flex;
     flex-direction: column;
     width: 100vw;
-    height: 100vh;
+    height: 90vh;
     align-content: center;
     align-items: center;
     justify-content: flex-start;
+    background-color: $darkblue;
 }
 
 .logo {
@@ -14,8 +18,26 @@
 }
 
 .tempTitle {
+    top: 10vh;
+    color: $lightblue;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 200;
+    font-size: 3em;
+    margin-bottom: 10px;
+    letter-spacing: 1em;
+    margin-left: 2vw;
     margin-top: 50px;
-    color: black;
+}
+
+.greeting {
+    top: 10vh;
+    color: $lightblue;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 200;
+    font-size: 3em;
+    margin-bottom: 10px;
+    margin-left: 2vw;
+    margin-top: 50px;
 }
 
 .tempInfo {
@@ -28,48 +50,67 @@
 .rdCircles {
     display: flex;
     justify-content: space-around;
-    width: 50vw;
+    width: 70vw;
+    margin-bottom: 20px;
 }
 
 .aboveBelow {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    text-align: left;
 }
 
 .circle {
-    border: 10px darkblue solid;
-    border-radius: 100px;
+    font-family: 'Oswald', sans-serif;
+    //border: 10px $yellow solid;
+    background-color: $yellow;
+    border-radius: 50%;
     font-size: 10em;
-    font-weight: 700;
-    padding: 20px;
+    font-weight: 400;
+    width: 15vw;;
+    height: auto;
     margin-bottom: 25px;
+    color: $darkblue;
+    text-decoration: none;
+
 }
 
 .descriptions {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 200;
     font-size: 2em;
-    font-weight: 700;
+    color: $lightblue;
+    letter-spacing: .5em;
+
 }
 
 .newCall {
+
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 200;
+    font-size: 2vw;
+    color: $lightblue;
+    letter-spacing: .5em;
+
     border: none;
     width: 25vw;
     height: 10vh;
-    margin-top: 50px;
+    margin-top: 10px;
     margin-bottom: 50px;
-    background-color: darkblue;
-    border: darkblue 2px solid;
+    background-color: $darkblue;
+    border: $yellow 5px solid;
     border-radius: 6px;
     font-size: 3em;
     font-weight: 900;
-    color: white;
+    color: whitesmoke;
     transition: .84s;
     outline: none;
 }
 
 .newCall:hover {
-    background-color: white;
-    color: darkblue;
+    background-color: $lightblue;
+    color: $darkblue;
     cursor: pointer;
 }

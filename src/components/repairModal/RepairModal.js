@@ -34,7 +34,10 @@ class RepairModal extends Component {
         this.setRepair = this.setRepair.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.submitRepair = this.submitRepair.bind(this)
+        this.submitDelivery = this.submitDelivery.bind(this)
     }
+
+    
     componentDidMount() {
         axios.get('/api/customers/getselect')
             .then(response => {
@@ -101,8 +104,8 @@ class RepairModal extends Component {
             printer: this.state.printer,
             tech: this.state.tech,
             symptoms: this.state.symptoms,
-            orderStatus: "No",
-            invoiceStatus: "No",
+            orderStatus: false,
+            invoiceStatus: false,
             notes: this.state.notes
 
         }
@@ -110,6 +113,53 @@ class RepairModal extends Component {
         .then(response => {
             console.log(response)
         })
+
+        window.location.replace('http://localhost:3000/#/repairs')
+    }
+
+    submitDelivery(){
+        var date = new Date();
+        var dd = date.getDate();
+        var mm = date.getMonth()+1; //January is 0!
+        var yyyy = date.getFullYear();
+        if(dd<10) {
+            dd = '0'+dd
+        }
+        if(mm<10) {
+            mm = '0'+mm
+        }
+        date = mm + '/' + dd + '/' + yyyy;
+
+        var time = new Date().toLocaleTimeString();
+
+        var delivery = {
+            customerId: this.state.currentCustomer[0].customerid,
+            date: date,
+            time: time,
+            status: "In Process",
+            contactName: this.state.contactName,
+            streetAddress: this.state.currentCustomer[0].streetaddress,
+            city: this.state.currentCustomer[0].city,
+            state: this.state.currentCustomer[0].state,
+            phone: this.state.currentCustomer[0].phone,
+            cartridge: this.state.cartridge,
+            tech: this.state.tech,
+            orderStatus: false,
+            invoiceStatus: false,
+            notes: this.state.notes
+        }
+
+        axios.post('/api/deliveries/insert', delivery)
+        .then(response => {
+            console.log(response)
+        })
+        axios.get('/api/customers/getselect')
+            .then(response => {
+                console.log(response.data)
+                this.setState({ customers: response.data })
+            })
+        window.location.replace('http://localhost:3000/#/deliveries')
+            
     }
 
     render() {
@@ -117,7 +167,7 @@ class RepairModal extends Component {
             return null;
         }
         return (
-            <div className="screendarken">
+            <button className="screendarken" onClick={this.props.onClose}>
                 {this.props.children}
                 <div className="modal-window">
                     <div className="rightAlign">
@@ -196,7 +246,14 @@ class RepairModal extends Component {
                                 </div>
                                 <div className="aboveBelow">
                                     <span className="inputNames Tech">Tech:  </span>
-                                    <input className="inputBox Tech" onChange={(e) => { this.handleChange(e.target.value, "tech") }}></input>
+                                    {/* <input className="inputBox Tech" onChange={(e) => { this.handleChange(e.target.value, "tech") }}></input> */}
+
+                                    <select>
+                                        <option value="BB">BB</option>
+                                        <option value="LE">LE</option>
+                                        <option value="RD">RD</option>
+
+                                    </select>
                                 </div>
                                 <div className="aboveBelow">
                                     <span className="inputNames Notes">Notes:  </span>
@@ -204,7 +261,7 @@ class RepairModal extends Component {
                                 </div>
 
                             </div>
-                            <button>Submit</button>
+                            <button onClick={this.submitDelivery}>Submit</button>
 
                         </div>
 
@@ -246,7 +303,7 @@ class RepairModal extends Component {
 
                         </div>}
                 </div>
-            </div>
+            </button>
 
         )
     }
@@ -259,3 +316,4 @@ RepairModal.propTypes = {
 };
 
 export default RepairModal
+

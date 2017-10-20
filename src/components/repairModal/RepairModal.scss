@@ -19,6 +19,9 @@ body {
     align-items: center;
     justify-content: center;
     transition: .84s;
+    outline: none;
+    border: none;
+    z-index: 0;
 }
 
 
@@ -34,6 +37,7 @@ body {
     border: 1px solid $darkblue;
     border-radius: 2px;
     font-family: 'Roboto', sans-serif;
+    z-index: 1;
 }
 
 

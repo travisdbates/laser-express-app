@@ -31,26 +31,39 @@ export default class Orders extends Component {
     }
     render () {
         return (
-            <div>
-                <h1 className="temp">Orders</h1>
-
-                {console.log(this.state.orders)}
-            
-                <div className="customersHeader">
+            <div className="outermostDiv">
+            <div className="fixedHeader">
+                <h1 className="ordersWord">ORDERS</h1>
+                <div className="ordersHeader">
                     <span className="headerTitleOrders">DATE</span>
+                    <div className="ordersDivider"></div>
+
                     <span className="headerTitleOrders">TIME</span>
+                    <div className="ordersDivider"></div>
                     <span className="headerTitleOrders">QUANTITY</span>
+                    <div className="ordersDivider"></div>
+
                     <span className="headerTitleOrders">ITEM</span>
+                    <div className="ordersDivider"></div>
+
                     <span className="headerTitleOrders">CUSTOMER</span>
+                    <div className="ordersDivider"></div>
+
                     <span className="headerTitleOrders">COST</span>
-                    <span className="headerTitleOrders">ORDER #</span>
+                    <div className="ordersDivider"></div>
+
+                    <span className="headerTitleOrders">ORDER NUMBER</span>
+                    <div className="ordersDivider"></div>
+
                     <span className="headerTitleOrders">VENDOR</span>
-                    <span className="headerTitleOrders">TOTAL</span>
+                    <div className="ordersDivider"></div>
+
+                    <span className="headerTitleOrders">COST</span>
+                    <div className="ordersDivider"></div>
+
                     <span className="headerTitleOrders">NOTES</span>
-
-
-
                 </div>
+            </div>
                 {this.state.orders.length === 0 ? <Spinner name='double-bounce' /> : this.state.orders.map((order, index) => {
                     
                     //Extends the NumberFormat for use below in order to properly display the total amounts after converting the MONEY type from
@@ -66,7 +79,7 @@ export default class Orders extends Component {
                     let costOfProduct = parseFloat(order.cost.replace('$',''))
                     return (
                         
-                    <div className="customer-container" key={index}>
+                    <div className="ordersContainer" key={index}>
                         <span className="detailsOrders">{order.date}</span>
                         <span className="detailsOrders">{order.time}</span>
                         <span className="detailsOrders">{order.quantity}</span>
@@ -82,9 +95,7 @@ export default class Orders extends Component {
                     </div>
                     )
                 })}
-            <button className="addDelivery" onClick={this.showModal} onClose={this.showModal}>+</button>
-                
-                <RepairModal show={this.state.hideModal} onClose={this.showModal}/>
+            
             </div>
             
         )

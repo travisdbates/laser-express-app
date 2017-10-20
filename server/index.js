@@ -177,7 +177,7 @@ app.post('/api/repairs/insert',(req,res) => {
     
     app.get('db').repairs_insert(repair)
     .then(repair => {
-        res.status(200).send(repair)
+        res.status(200).redirect('/#/repairs')
     })
 })
 
@@ -194,6 +194,49 @@ app.get('/api/deliveries/count', (req, res) => {
     .then(deliveries => {
         res.status(200).send(deliveries)
     })
+})
+
+app.post('/api/deliveries/insert',(req,res) => {
+    var delivery = [
+        req.body.customerID,
+        req.body.date,
+        req.body.time,
+        req.body.status,
+        req.body.contactName,
+        req.body.streetAddress,
+        req.body.city,
+        req.body.state,
+        req.body.phone,
+        req.body.cartridge,
+        req.body.tech,
+        req.body.orderStatus,
+        req.body.invoiceStatus,
+        req.body.notes
+    ]
+    
+    app.get('db').deliveries_insert(delivery)
+    .then(delivery => {
+        res.status(200).send(delivery)
+    })
+})
+
+app.put('/api/deliveries/updateorder/:id', (req,res) => {
+    const deliveryID = req.params.id;
+    app.get('db').deliveries_updateorder([deliveryID])
+    .then (response => {
+        res.status(200).send(response)
+    })
+
+})
+
+app.put('/api/deliveries/updateinvoice/:id', (req,res) => {
+    const deliveryID = req.params.id;
+    console.log(deliveryID)
+    app.get('db').deliveries_updateinvoice([deliveryID])
+    .then (response => {
+        res.status(200).send(response)
+    })
+
 })
 
 //ORDERS ************************************************

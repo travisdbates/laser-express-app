@@ -1,45 +1,146 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700');
 @import "../../_colors.scss";
 
-.customersHeader {
+// .custFixedHeader {
+//     top: 0;
+//     position: sticky;
+//     background-color: $darkblue;
+//     margin-bottom: 0px;
+//     border-bottom: 3px $yellow solid;
+    
+// }
+
+// .customersHeaderC {
+//     display: flex;
+//     justify-content: space-between;
+//     border-bottom: 3px $darkblue solid;
+//     color: $lightblue;
+// }
+
+// .customersWord {
+//     top: 10vh;
+//     color: $lightblue;
+//     font-family: 'Open Sans Condensed', sans-serif;
+//     font-weight: 200;
+//     font-size: 3em;
+//     margin-bottom: 10px;
+//     letter-spacing: 1em;
+//     margin-left: 2vw;
+//     margin-top: 0px;
+//     }
+
+// .customersDivider {
+//     background-color: darkslategray;
+//     height: 15px;
+//     transform: skew(-20deg) rotate(2deg);
+//     -webkit-transform: skew(-20deg) rotate(2deg);
+//     -moz-transform: skew(-20deg) rotate(2deg);
+//     width: 1px;
+//     background-color: $yellow;
+// }
+
+
+
+// .headerTitle {
+//     width: 20vw;
+
+// }
+
+.outermostDiv {
+    //background-color: $darkblue;
+}
+.fixedHeader {
+    top: 0;
+    position: sticky;
+    background-color: $darkblue;
+    margin-bottom: 0px;
+    border-bottom: 3px $yellow solid;
+}
+
+.customersWord {
+    top: 10vh;
+    color: $lightblue;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 200;
+    font-size: 3em;
+    margin-bottom: 10px;
+    letter-spacing: 1em;
+    margin-left: 2vw;
+    margin-top: 0px;
+    
+}
+
+.customerToggle {
+    display: flex;
+    width: 100%
+}
+
+.customerHeader {
     display: flex;
     justify-content: space-between;
     border-bottom: 3px $darkblue solid;
+    color: $lightblue;
+}
+
+.customersDivider {
+    background-color: darkslategray;
+    height: 15px;
+    transform: skew(-20deg) rotate(2deg);
+    -webkit-transform: skew(-20deg) rotate(2deg);
+    -moz-transform: skew(-20deg) rotate(2deg);
+    width: 1px;
+    background-color: $yellow;
+}
+
+.aboveBelowNav {
+    display: flex;
+    flex-direction: column;
+    font-size: .8em;
 }
 
 .headerTitleName {
     width: 33vw;
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 900;   
     font-size: 2em; 
 }
 
-.headerTitle {
-    width: 16.5vw;
-    font-family: 'Roboto Condensed', sans-serif;
-    font-weight: 900;   
-    font-size: 2em; 
+.headerTitleCustomers {
+    width: 10vw;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;    font-size: 1em; 
+    display: flex;
+    justify-content: space-around;
 }
 
-.customer-container {
+.headerTitleCustomersName {
+    width: 10vw;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;    font-size: 1em; 
+    display: flex;
+    justify-content: space-around;
+}
+
+.customerContainerC {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     border-bottom: 1px $darkblue solid;
 }
 
-.name {
-    font-family: 'Roboto Condensed', sans-serif;
+.custName {
+    font-family: 'Oswald', sans-serif;
     font-weight: 700;   
     font-size: 1em; 
-    width: 33vw;
+    width: 10vw;
 }
 
 .details {
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 200; 
     font-size: 1em; 
-    width: 16.5vw;
+    width: 10vw;
+    text-align: left;
 }
 
 
@@ -58,12 +159,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 2px $darkblue solid;
+    
 }
 
 .addCustomer:hover {
     background-color: white;
     color: $darkblue;
-    border: 1px $darkblue solid;
+    border: 2px $darkblue solid;
     cursor: pointer;
    
 }
@@ -71,7 +174,7 @@
 .vert {
     width: 10px;
     height: 75px;
-    background-color: white;
+    background-color: $yellow;
     position: absolute;
 
 }
@@ -79,10 +182,7 @@
 .horiz {
     width: 75px;
     height: 10px;
-    background-color: white;
+    background-color: $yellow;
     position: absolute;
 }
 
-.vert:hover, .horiz:hover {
-    background-color: $darkblue;
-}

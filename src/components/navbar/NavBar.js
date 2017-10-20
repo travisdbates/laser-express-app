@@ -13,10 +13,10 @@ export default class NavBar extends Component {
                 <div className="tabs">
                     <NavLink className="tabbedLinks" activeClassName="tabbedLinksActive" exact to="/deliveries">DELIVERIES</NavLink>
                     <div className="divider"></div>
-                    <NavLink className="tabbedLinks" activeClassName="tabbedLinksActive" exact to="/repairs">REPAIRS</NavLink>
-                    <div className="divider"></div>
                     <NavLink className="tabbedLinks" activeClassName="tabbedLinksActive" exact to="/orders">ORDERS</NavLink>
-                    <NavLink className="tabbedLinks" activeClassName="tabbedLinksActive" to="/dashboard"><img src={LELogoWhite} className="logoNav" alt="logo" /></NavLink>
+                    <div className="divider"></div>
+                    <NavLink className="tabbedLinks" activeClassName="tabbedLinksActive" exact to="/repairs">REPAIRS</NavLink>
+                    <NavLink className="tabbedLinks" activeClassName="tabbedLinksActive" to="/dashboard"><div className="aboveBelowNav"><img src={LELogoWhite} className="logoForNav" alt="logo" /><span>DASHBOARD</span></div></NavLink>
                     <NavLink className="tabbedLinks" activeClassName="tabbedLinksActive" exact to="/customers">CUSTOMERS</NavLink>
                     <div className="divider"></div>
                     <NavLink className="tabbedLinks" activeClassName="tabbedLinksActive" exact to="/toners">TONERS</NavLink>

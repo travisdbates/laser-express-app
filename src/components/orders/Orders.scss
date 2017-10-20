@@ -1,9 +1,45 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700');
+@import "../../_colors.scss";
 
-.customersHeader {
+.outermostDiv {
+    //background-color: $darkblue;
+}
+.fixedHeader {
+    top: 0;
+    position: sticky;
+    background-color: $darkblue;
+    margin-bottom: 0px;
+    border-bottom: 3px $yellow solid;
+}
+
+.ordersWord {
+    top: 10vh;
+    color: $lightblue;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 200;
+    font-size: 3em;
+    margin-bottom: 10px;
+    letter-spacing: 1em;
+    margin-left: 2vw;
+    margin-top: 0px;
+    
+}
+
+.ordersHeader {
     display: flex;
     justify-content: space-between;
-    border-bottom: 3px darkblue solid;
+    border-bottom: 3px $darkblue solid;
+    color: $lightblue;
+}
+
+.ordersDivider {
+    background-color: darkslategray;
+    height: 15px;
+    transform: skew(-20deg) rotate(2deg);
+    -webkit-transform: skew(-20deg) rotate(2deg);
+    -moz-transform: skew(-20deg) rotate(2deg);
+    width: 1px;
+    background-color: $yellow;
 }
 
 .headerTitleName {
@@ -14,17 +50,18 @@
 }
 
 .headerTitleOrders {
-    width: 6.66vw;
-    font-family: 'Roboto Condensed', sans-serif;
-    font-weight: 900;   
-    font-size: 1em; 
+    width: 10vw;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;    font-size: 1em; 
+    display: flex;
+    justify-content: space-around;
 }
 
-.customer-container {
+.ordersContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-bottom: 1px darkblue solid;
+    border-bottom: 1px $darkblue solid;
 }
 
 .name {
