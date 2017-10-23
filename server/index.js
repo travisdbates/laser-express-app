@@ -149,6 +149,13 @@ app.get('/api/repairs/get', (req, res) => {
     })
 })
 
+app.get('/api/repairs/getcomplete', (req,res) => {
+    app.get('db').repairs_get_complete()
+    .then(repairs => {
+        res.status(200).send(repairs)
+    })
+})
+
 app.get('/api/repairs/count', (req, res) => {
     app.get('db').repairs_count()
     .then(repairs => {
@@ -181,9 +188,43 @@ app.post('/api/repairs/insert',(req,res) => {
     })
 })
 
+app.put('/api/repairs/updateorder/:id', (req,res) => {
+    const deliveryID = req.params.id;
+    app.get('db').repairs_updateorder([deliveryID])
+    .then (response => {
+        res.status(200).send(response)
+    })
+
+})
+
+app.put('/api/repairs/updateinvoice/:id', (req,res) => {
+    const deliveryID = req.params.id;
+    console.log(deliveryID)
+    app.get('db').repairs_updateinvoice([deliveryID])
+    .then (response => {
+        res.status(200).send(response)
+    })
+
+})
+
+app.put('/api/repairs/completerepair/:id', (req,res) => {
+    const repairID = req.params.id;
+    app.get('db').repairs_complete([repairID])
+    .then(response => {
+        res.status(200).send(response)
+    })
+})
+
 //DELIVERIES ************************************************
 app.get('/api/deliveries/getall', (req,res) => {
     app.get('db').deliveries_return_all()
+    .then(deliveries => {
+        res.status(200).send(deliveries)
+    })
+})
+
+app.get('/api/deliveries/getcomplete', (req,res) => {
+    app.get('db').deliveries_getcomplete()
     .then(deliveries => {
         res.status(200).send(deliveries)
     })
@@ -211,7 +252,8 @@ app.post('/api/deliveries/insert',(req,res) => {
         req.body.tech,
         req.body.orderStatus,
         req.body.invoiceStatus,
-        req.body.notes
+        req.body.notes,
+        req.body.quantity
     ]
     
     app.get('db').deliveries_insert(delivery)
@@ -237,6 +279,14 @@ app.put('/api/deliveries/updateinvoice/:id', (req,res) => {
         res.status(200).send(response)
     })
 
+})
+
+app.put('/api/deliveries/completedelivery/:id', (req,res) => {
+    const deliveryID = req.params.id;
+    app.get('db').deliveries_complete([deliveryID])
+    .then(response => {
+        res.status(200).send(response)
+    })
 })
 
 //ORDERS ************************************************

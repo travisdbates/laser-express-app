@@ -6,6 +6,11 @@
   margin-bottom: 0px;
   border-bottom: 3px #E5B52F solid; }
 
+.switchButtonOverlay {
+  background-color: transparent;
+  border: none;
+  outline: none; }
+
 .customersWord {
   top: 10vh;
   color: #8EC5BF;
@@ -80,7 +85,7 @@
   font-weight: 200;
   font-size: 1em;
   width: 10vw;
-  text-align: left; }
+  text-align: center; }
 
 .addCustomer {
   background-color: #5DA494;

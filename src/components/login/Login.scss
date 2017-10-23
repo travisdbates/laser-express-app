@@ -19,18 +19,25 @@
 
 .login-button {
     font-family: 'Open Sans Condensed', sans-serif;
-    font-weight: 200;
-    font-size: 8vw;
+    font-weight: 700;
+    font-size: 2em;
     color: $lightblue;
-    //letter-spacing: .5em;
+    letter-spacing: .5em;
+    //margin-right: -.5em;
     margin-top: 50px;
     color: white;
-    padding: 25px;
+    padding: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
     background-color: transparent;
     text-decoration: none;
     border-radius: 50px;
     transition: .84s;
     border: 2px solid $yellow;
+}
+
+.login-button::first-letter {
+    letter-spacing: .5;
 }
 
 .login-button:hover {

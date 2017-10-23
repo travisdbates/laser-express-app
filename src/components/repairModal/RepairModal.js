@@ -28,6 +28,11 @@ class RepairModal extends Component {
             cartridge: "",
             quantity: "",
 
+            city: "",
+            name: "",
+            phone: "",
+            state: "",
+            streetaddress: "",
         }
         this.logChange = this.logChange.bind(this)
         this.setDelivery = this.setDelivery.bind(this)
@@ -37,7 +42,7 @@ class RepairModal extends Component {
         this.submitDelivery = this.submitDelivery.bind(this)
     }
 
-    
+
     componentDidMount() {
         axios.get('/api/customers/getselect')
             .then(response => {
@@ -74,18 +79,19 @@ class RepairModal extends Component {
             [formField]: e
         })
         console.log(this.state[formField])
+        console.log(this.state)
     }
-    
-    submitRepair(){
+
+    submitRepair() {
         var today = new Date();
         var dd = today.getDate();
-        var mm = today.getMonth()+1; //January is 0!
+        var mm = today.getMonth() + 1; //January is 0!
         var yyyy = today.getFullYear();
-        if(dd<10) {
-            dd = '0'+dd
+        if (dd < 10) {
+            dd = '0' + dd
         }
-        if(mm<10) {
-            mm = '0'+mm
+        if (mm < 10) {
+            mm = '0' + mm
         }
         today = mm + '/' + dd + '/' + yyyy;
 
@@ -110,23 +116,24 @@ class RepairModal extends Component {
 
         }
         axios.post('/api/repairs/insert', repair)
-        .then(response => {
-            console.log(response)
-        })
+            .then(response => {
+                console.log(response)
+            })
 
         window.location.replace('http://localhost:3000/#/repairs')
+
     }
 
-    submitDelivery(){
+    submitDelivery() {
         var date = new Date();
         var dd = date.getDate();
-        var mm = date.getMonth()+1; //January is 0!
+        var mm = date.getMonth() + 1; //January is 0!
         var yyyy = date.getFullYear();
-        if(dd<10) {
-            dd = '0'+dd
+        if (dd < 10) {
+            dd = '0' + dd
         }
-        if(mm<10) {
-            mm = '0'+mm
+        if (mm < 10) {
+            mm = '0' + mm
         }
         date = mm + '/' + dd + '/' + yyyy;
 
@@ -142,24 +149,25 @@ class RepairModal extends Component {
             city: this.state.currentCustomer[0].city,
             state: this.state.currentCustomer[0].state,
             phone: this.state.currentCustomer[0].phone,
-            cartridge: this.state.cartridge,
+            cartridge: '{'+this.state.cartridge+'}',
             tech: this.state.tech,
             orderStatus: false,
             invoiceStatus: false,
-            notes: this.state.notes
+            notes: this.state.notes,
+            quantity: '{' + this.state.quantity + '}',
         }
 
         axios.post('/api/deliveries/insert', delivery)
-        .then(response => {
-            console.log(response)
-        })
+            .then(response => {
+                console.log(response)
+            })
         axios.get('/api/customers/getselect')
             .then(response => {
                 console.log(response.data)
                 this.setState({ customers: response.data })
             })
         window.location.replace('http://localhost:3000/#/deliveries')
-            
+
     }
 
     render() {
@@ -167,11 +175,11 @@ class RepairModal extends Component {
             return null;
         }
         return (
-            <button className="screendarken" onClick={this.props.onClose}>
+            <div className="screendarken">
                 {this.props.children}
-                <div className="modal-window">
+                <div className="modalWindow">
                     <div className="rightAlign">
-                        <button className="close-button" onClick={this.props.onClose}>&#10006;</button>
+                        <button className="closeButton" onClick={this.props.onClose}>&#10006;</button>
                     </div>
                     <div className="topContent">
                         <Select
@@ -182,44 +190,82 @@ class RepairModal extends Component {
                             options={this.state.customers}
                             onChange={this.logChange} />
                     </div>
+                    { this.state.currentCustomer.length !== 0 ? 
                     <div className="customerInfo">
                         <div className="rowOne">
                             <div className="aboveBelow">
                                 <span className="inputNames Name">Name:  </span>
-                                <input className="inputBox Name" value={this.state.currentCustomer.length === 0 ? '' : this.state.currentCustomer[0].name}></input>
+                                <input className="inputBox Name" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].name}></input>
                             </div>
                             <div className="aboveBelow">
                                 <span className="inputNames Phone">Phone:  </span>
-                                <input className="inputBox Phone" value={this.state.currentCustomer.length === 0 ? '' : this.state.currentCustomer[0].phone}></input>
+                                <input className="inputBox Phone" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].phone}></input>
                             </div>
                             <div className="aboveBelow">
 
                                 <span className="inputNames ID">ID: </span>
-                                <input className="inputBox ID" value={this.state.currentCustomer.length === 0 ? '' : this.state.currentCustomer[0].customerid}></input>
+                                <input className="inputBox ID" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].customerid}></input>
                             </div>
                         </div>
                         <div className="rowTwo">
 
                             <div className="aboveBelow">
                                 <span className="inputNames Address">Address:  </span>
-                                <input className="inputBox Address" value={this.state.currentCustomer.length === 0 ? '' : this.state.currentCustomer[0].streetaddress}></input>
+                                <input className="inputBox Address" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].streetaddress}></input>
                             </div>
                             <div className="aboveBelow">
                                 <span className="inputNames City">City:  </span>
-                                <input className="inputBox City" value={this.state.currentCustomer.length === 0 ? '' : this.state.currentCustomer[0].city}></input>
+                                <input className="inputBox City" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].city}></input>
                             </div>
                             <div className="aboveBelow">
                                 <span className="inputNames State">State:  </span>
-                                <input className="inputBox State" value={this.state.currentCustomer.length === 0 ? '' : this.state.currentCustomer[0].state}></input>
+                                <input className="inputBox State" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].state}></input>
                             </div>
                         </div>
 
                     </div>
+                    :
+                    <div className="customerInfo">
+                    <div className="rowOne">
+                        <div className="aboveBelow">
+                            <span className="inputNames Name">Name:  </span>
+                            <input className="inputBox Name" placeholder="Name"  onChange={(e) => { this.handleChange(e.target.value, "name") }}></input>
+                        </div>
+                        <div className="aboveBelow">
+                            <span className="inputNames Phone">Phone:  </span>
+                            <input className="inputBox Phone" placeholder="phone"  onChange={(e) => { this.handleChange(e.target.value, "phone") }}></input>
+                        </div>
+                        {/* <div className="aboveBelow">
+
+                            <span className="inputNames ID">ID: </span>
+                            <input className="inputBox ID" placeholder="customerid"  onChange={(e) => { this.handleChange(e.target.value, "customerid") }}></input>
+                        </div> */}
+                    </div>
+                    <div className="rowTwo">
+
+                        <div className="aboveBelow">
+                            <span className="inputNames Address">Address:  </span>
+                            <input className="inputBox Address" placeholder="streetaddress"  onChange={(e) => { this.handleChange(e.target.value, "streetaddress") }}></input>
+                        </div>
+                        <div className="aboveBelow">
+                            <span className="inputNames City">City:  </span>
+                            <input className="inputBox City" placeholder="city"  onChange={(e) => { this.handleChange(e.target.value, "city") }}></input>
+                        </div>
+                        <div className="aboveBelow">
+                            <span className="inputNames State">State:  </span>
+                            <input className="inputBox State" placeholder="state"  onChange={(e) => { this.handleChange(e.target.value, "state") }}></input>
+                        </div>
+                    </div>
+
+                </div>
+                    }
+
                     <div className="buttons">
                         <button className="repairButton" onClick={this.setRepair}>Repair</button>
                         <button className="deliveryButton" onClick={this.setDelivery}>Delivery</button>
 
                     </div>
+                    
                     {this.state.rdSetting === null ? null : this.state.rdSetting === "d" ?
                         <div>
                             <div className="rowOne">
@@ -248,7 +294,7 @@ class RepairModal extends Component {
                                     <span className="inputNames Tech">Tech:  </span>
                                     {/* <input className="inputBox Tech" onChange={(e) => { this.handleChange(e.target.value, "tech") }}></input> */}
 
-                                    <select>
+                                    <select onChange={(e) => { this.handleChange(e.target.value, "tech") }}>
                                         <option value="BB">BB</option>
                                         <option value="LE">LE</option>
                                         <option value="RD">RD</option>
@@ -292,18 +338,23 @@ class RepairModal extends Component {
                                 </div>
                                 <div className="aboveBelow">
                                     <span className="inputNames Tech">Tech:  </span>
-                                    <input className="inputBox Tech" onChange={(e) => { this.handleChange(e.target.value, "tech") }}></input>
+                                    <select onChange={(e) => { this.handleChange(e.target.value, "tech") }}>
+                                        <option value="BB">BB</option>
+                                        <option value="LE">LE</option>
+                                        <option value="RD">RD</option>
+
+                                    </select>
                                 </div>
                                 <div className="aboveBelow">
                                     <span className="inputNames Notes">Notes:  </span>
                                     <input className="inputBox Notes" onChange={(e) => { this.handleChange(e.target.value, "notes") }}></input>
                                 </div>
                             </div>
-                            <button  onClick={this.submitRepair}>Submit</button>
+                            <button onClick={this.submitRepair}>Submit</button>
 
                         </div>}
                 </div>
-            </button>
+            </div>
 
         )
     }

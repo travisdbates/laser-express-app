@@ -25,6 +25,37 @@
     
 }
 
+.repairsSideBySide {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+   
+}
+
+.repairsWord {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    }
+
+.repairsShowCompleteTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-right: 10px;
+}
+
+.repairsShowComplete {
+        color: $lightblue;
+        font-family: 'Open Sans Condensed', sans-serif;
+        font-weight: 200;
+        font-size: 1.3em;
+        letter-spacing: .2em;        
+}
+
 .repairsHeader {
     display: flex;
     justify-content: space-between;
@@ -62,20 +93,20 @@
     flex-direction: row;
     justify-content: space-between;
     border-bottom: 1px $darkblue solid;
+    .name {
+        font-family: 'Oswald', sans-serif;
+        font-weight: 200;      
+        font-size: 1em; 
+        width: 33vw;
+    }
+    .detailsRepairs {
+        font-family: 'Oswald', sans-serif;
+        font-weight: 200;      
+        font-size: 1em; 
+        width: 6.66vw;
+        text-align: center;
+    }
 }
-
-.name {
-    font-family: 'Oswald', sans-serif;
-    font-weight: 200;      font-size: 1em; 
-    width: 33vw;
-}
-
-.detailsRepairs {
-    font-family: 'Oswald', sans-serif;
-    font-weight: 200;      font-size: 1em; 
-    width: 6.66vw;
-}
-
 
 .addRepair {
     background-color: darkblue;
@@ -87,4 +118,62 @@
     color: white;
     border-radius: 100%;
     border: none;
+}
+
+.notOrdered {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    .yes{
+        color: grey;
+    }
+    .slash{
+        color: grey;
+    }
+    .no{
+        color: red;
+    }
+}
+
+.Ordered {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+
+    .yes{
+        color: limegreen;
+    }
+    .slash{
+        color: grey;
+    }
+    .no{
+        color: grey;
+    }
+}
+
+
+.complete {
+    background: none;
+    cursor: pointer;
+    color: black;
+    border: none;
+    transition: .24s;
+    .complete:hover {
+        color: limegreen;
+        font-size: 1.5em;
+    }    
+}
+
+.completed {
+    background: none;
+    cursor: pointer;
+    color: black;
+    border: none;
+    transition: .24s;
+    
+        color: limegreen;
+        font-size: 1.5em;
+       
 }

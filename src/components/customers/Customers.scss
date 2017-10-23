@@ -57,6 +57,13 @@
     border-bottom: 3px $yellow solid;
 }
 
+
+.switchButtonOverlay {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
 .customersWord {
     top: 10vh;
     color: $lightblue;
@@ -140,7 +147,7 @@
     font-weight: 200; 
     font-size: 1em; 
     width: 10vw;
-    text-align: left;
+    text-align: center;
 }
 
 

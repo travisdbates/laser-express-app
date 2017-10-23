@@ -1,10 +1,6 @@
-$darkblue: #030383;
-body {
-    
-    
-}
+@import "../../_colors.scss";
 
-.screendarken {
+.screenDarken {
     position: fixed;
     background-color: rgba(0,0,0,0.3);
     opacity: 24%;
@@ -16,7 +12,6 @@ body {
     right: 0;
     padding: 50;
     display: flex;
-    align-items: center;
     justify-content: center;
     transition: .84s;
     outline: none;
@@ -26,7 +21,7 @@ body {
 
 
 
-.modal-window {
+.modalWindow {
     background-color: white;
     height: 70vh;
     width: 70vw;
@@ -153,7 +148,7 @@ body {
     width: 20vw;
 }
 
-.close-button {
+.closeButton {
     color: $darkblue;
     background: none;
     border: none;

@@ -37,7 +37,7 @@
     font-size: 3em;
     margin-bottom: 10px;
     margin-left: 2vw;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .tempInfo {
@@ -51,40 +51,42 @@
     display: flex;
     justify-content: space-around;
     width: 70vw;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    .aboveBelow {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: left;
+        .circle {
+            font-family: 'Oswald', sans-serif;
+            //border: 10px $yellow solid;
+            background-color: $yellow;
+            border-radius: 50%;
+            font-size: 15em;
+            font-weight: 400;
+            width: auto;
+            height: auto;
+            margin-bottom: 25px;
+            color: $darkblue;
+            text-decoration: none;
+        }
+        .descriptions {
+            font-family: 'Open Sans Condensed', sans-serif;
+            font-weight: 200;
+            font-size: 2em;
+            color: $lightblue;
+            letter-spacing: .5em;
+        
+        }
+    }
+    
 }
 
-.aboveBelow {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: left;
-}
 
-.circle {
-    font-family: 'Oswald', sans-serif;
-    //border: 10px $yellow solid;
-    background-color: $yellow;
-    border-radius: 50%;
-    font-size: 10em;
-    font-weight: 400;
-    width: 15vw;;
-    height: auto;
-    margin-bottom: 25px;
-    color: $darkblue;
-    text-decoration: none;
 
-}
 
-.descriptions {
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-weight: 200;
-    font-size: 2em;
-    color: $lightblue;
-    letter-spacing: .5em;
 
-}
 
 .newCall {
 
@@ -92,11 +94,9 @@
     font-weight: 200;
     font-size: 2vw;
     color: $lightblue;
-    letter-spacing: .5em;
 
     border: none;
-    width: 25vw;
-    height: 10vh;
+    padding: 25px;
     margin-top: 10px;
     margin-bottom: 50px;
     background-color: $darkblue;
@@ -107,10 +107,11 @@
     color: whitesmoke;
     transition: .84s;
     outline: none;
+
+    .newCall:hover {
+        background-color: $lightblue;
+        color: $darkblue;
+        cursor: pointer;
+    }
 }
 
-.newCall:hover {
-    background-color: $lightblue;
-    color: $darkblue;
-    cursor: pointer;
-}

@@ -1,7 +1,5 @@
 import "./Customers.css"
 import CustomerModal from "../customerModal/CustomerModal"
-import SwitchButton from 'react-switch-button';
-import '../../../node_modules/react-switch-button/dist/react-switch-button.css';
 
 
 import React, { Component } from "react"
@@ -58,8 +56,7 @@ export default class Customers extends Component {
                 <div className="fixedHeader">
                     <div className="customerToggle">
                         <h1 className="customersWord">CUSTOMERS</h1>
-                        <SwitchButton theme={this.state.theme}
-                            name="switch-1"/>
+                        
                     </div>
                     <div className="customerHeader">
                         <span className="headerTitleCustomers">NAME</span>

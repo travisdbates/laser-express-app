@@ -12,6 +12,28 @@
     border-bottom: 3px $yellow solid;
 }
 
+.sideBySide {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    .showCompleteTitle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        margin-right: 10px;
+        .showComplete {
+            color: $lightblue;
+            font-family: 'Open Sans Condensed', sans-serif;
+            font-weight: 200;
+            font-size: 1.3em;
+            letter-spacing: .2em;
+            
+        }
+    }
+}
+
 .deliveriesWord {
     top: 10vh;
     color: $lightblue;
@@ -155,4 +177,28 @@
     .no{
         color: grey;
     }
+}
+
+.complete {
+    background: none;
+    cursor: pointer;
+    color: black;
+    border: none;
+    transition: .24s;
+}
+
+.complete:hover {
+    color: limegreen;
+    font-size: 1.5em;
+}
+
+.completed {
+    background: none;
+    cursor: pointer;
+    color: black;
+    border: none;
+    transition: .24s;
+    color: limegreen;
+    font-size: 1.5em;
+    
 }

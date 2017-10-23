@@ -6,6 +6,24 @@
   margin-bottom: 0px;
   border-bottom: 3px #E5B52F solid; }
 
+.sideBySide {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center; }
+  .sideBySide .showCompleteTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-right: 10px; }
+    .sideBySide .showCompleteTitle .showComplete {
+      color: #8EC5BF;
+      font-family: 'Open Sans Condensed', sans-serif;
+      font-weight: 200;
+      font-size: 1.3em;
+      letter-spacing: .2em; }
+
 .deliveriesWord {
   top: 10vh;
   color: #8EC5BF;
@@ -124,3 +142,23 @@
     color: grey; }
   .Ordered .no {
     color: grey; }
+
+.complete {
+  background: none;
+  cursor: pointer;
+  color: black;
+  border: none;
+  transition: .24s; }
+
+.complete:hover {
+  color: limegreen;
+  font-size: 1.5em; }
+
+.completed {
+  background: none;
+  cursor: pointer;
+  color: black;
+  border: none;
+  transition: .24s;
+  color: limegreen;
+  font-size: 1.5em; }

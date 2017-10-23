@@ -1,4 +1,4 @@
-.screendarken {
+.screenDarken {
   position: fixed;
   background-color: rgba(0, 0, 0, 0.3);
   opacity: 24%;
@@ -10,14 +10,13 @@
   right: 0;
   padding: 50;
   display: flex;
-  align-items: center;
   justify-content: center;
   transition: .84s;
   outline: none;
   border: none;
   z-index: 0; }
 
-.modal-window {
+.modalWindow {
   background-color: white;
   height: 70vh;
   width: 70vw;
@@ -25,7 +24,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  border: 1px solid #030383;
+  border: 1px solid #5DA494;
   border-radius: 2px;
   font-family: 'Roboto', sans-serif;
   z-index: 1; }
@@ -109,15 +108,15 @@
   width: 5vw; }
 
 .inputBox:focus {
-  border-bottom: 1.5px solid #030383;
+  border-bottom: 1.5px solid #5DA494;
   outline: none; }
 
 .Select-input {
   color: black;
   width: 20vw; }
 
-.close-button {
-  color: #030383;
+.closeButton {
+  color: #5DA494;
   background: none;
   border: none;
   cursor: pointer;
@@ -136,7 +135,7 @@
   width: 100px;
   height: 100px;
   border: none;
-  border: 1px #030383 solid;
+  border: 1px #5DA494 solid;
   border-radius: 3px;
   background-color: white;
   transition: .34s;
