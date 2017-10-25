@@ -1,0 +1,261 @@
+@import "../../_colors.scss";
+
+.screenDarken {
+    position: fixed;
+    background-color: rgba(0,0,0,0.3);
+    opacity: 24%;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 50;
+    display: flex;
+    justify-content: center;
+    transition: .84s;
+    outline: none;
+    border: none;
+    z-index: 0;
+    font-family: 'Oswald', sans-serif;   
+}
+
+.modalWindow {
+    background-color: white;
+    height: 70vh;
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid $colorOne;
+    border-radius: 2px;
+    font-family: 'Oswald', sans-serif;
+    z-index: 1;
+}
+
+.rightAlign {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.topContent {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.customerInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    width: 100%;
+}
+
+.aboveBelow {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.rowForDeliveries, .rowOne, .rowTwo {
+    display: flex;
+}
+
+.colOne, .colTwo {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.inputNames {
+    font-size: 1em;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: lightgray;
+}
+
+.inputNames.Name {
+    width: 3vw;
+}
+
+.inputNames.ID {
+    width: 5vw;
+}
+
+.inputNames.Phone {
+    width: 8vw;
+}
+
+.inputNames.Address {
+    width: 8vw;
+}
+
+.inputNames.City {
+    width: 8vw;
+}
+
+.inputNames.State {
+    width: 5vw;
+}
+
+.inputBoxR {
+    border: none;
+    border-bottom: 1.5px solid lightgray;
+    width: 200px;
+    transition: .64s;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2vw;
+}
+
+.inputBoxR.Name {
+    width:25vw;
+}
+
+.inputBoxR.Phone {
+    width: 28vw;
+}
+
+.inputBoxR.Address {
+    width: 25vw;
+}
+
+.inputBoxR.City {
+    width: 25vw;
+}
+
+.inputBoxR.State {
+    width: 5vw;
+}
+
+.inputBoxR:focus {
+    border-bottom: 1.5px solid $colorOne;
+    outline: none;
+    
+}
+
+.Select-input {
+    color: black;
+    width: 20vw;
+}
+
+.closeButton {
+    color: $colorOne;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2em;
+    font-weight: 200;
+    margin-top: 6px;
+    margin-right: 9px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px;
+    font-family: 'Oswald', sans-serif;
+    
+}
+
+.repairButtond, .deliveryButtond {
+    width: 25vw;
+    height: 50px;
+    border: none;
+    border: 1px $colorOne solid;
+    border-radius: 3px;
+    background-color: white;
+    transition: .34s;
+    margin-bottom: 20px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2em;
+    color: $colorOne;
+    
+}
+
+// select {
+//  background-color: white;
+//  border: 1px $colorOne solid;
+//  height: 2em;
+//  font-family: 'Oswald', sans-serif;
+//  font-size: 2em;
+
+// }
+
+.repairButtond:hover, .deliveryButtond:hover {
+    cursor: pointer;
+    border: 3px lime solid;
+    border-radius: 3px;
+    outline: none;
+}
+
+.repairButtond:focus, .deliveryButtond:focus {
+    border: 3px lime solid;
+    border-radius: 3px;
+    outline: none;
+}
+
+.repairButtond:visited, .deliveryButtond:visited {
+    border: 3px lime solid;
+    border-radius: 3px;
+    outline: none;
+}
+
+
+
+.inputNames.ContactName {
+    width: 20vw;
+}
+.inputBox.ContactName {
+    width: 20vw;
+}
+.inputNames.Qty {
+    width: 6vw;
+}
+.inputBox.Qty {
+    width: 6vw;
+}
+
+.inputNames.Loc {
+    width: 11vw;
+}
+.inputBox.Loc {
+    width: 11vw;
+}
+.inputNames.Tech {
+    width: 11vw;
+}
+.inputBox.Tech {
+    width: 11vw;
+}
+.inputNames.Notes {
+    width: 12vw;
+}
+.inputBox.Notes {
+    width: 12vw;
+}
+
+
+.inputNames.ContactNameRep {
+    width: 12vw;
+}
+.inputBox.ContactNameRep {
+    width: 12vw;
+}
+.inputNames.Printer {
+    width: 11vw;
+}
+.inputBox.Printer {
+    width: 11vw;
+}
+.inputNames.IDNum {
+    width: 11vw;
+}
+.inputBox.IDNum {
+    width: 11vw;
+}

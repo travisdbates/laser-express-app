@@ -1,24 +1,137 @@
 .dash-container {
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    height: 100vh;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-}
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 90vh;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #7F7573; }
 
 .logo {
-    width: 50vw;
-}
+  width: 50vw; }
 
 .tempTitle {
-    margin-top: 150px;
-    color: black;
-}
+  top: 10vh;
+  color: #F9C757;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 200;
+  font-size: 3em;
+  margin-bottom: 10px;
+  letter-spacing: 1em;
+  margin-left: 2vw;
+  margin-top: 50px; }
+
+.greeting {
+  top: 10vh;
+  color: #F9C757;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 200;
+  font-size: 3em;
+  margin-bottom: 10px;
+  margin-left: 2vw;
+  margin-top: 20px; }
 
 .tempInfo {
-    margin-top: 30px;
-    color: black;
-}
+  margin-top: 30px;
+  color: black; }
+
+.rdCircles {
+  display: flex;
+  justify-content: space-around;
+  width: 70vw;
+  margin-bottom: 10px; }
+  .rdCircles .aboveBelow {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left; }
+    .rdCircles .aboveBelow .circle {
+      font-family: 'Oswald', sans-serif;
+      background-color: #1A3368;
+      border-radius: 50%;
+      font-size: 15em;
+      font-weight: 400;
+      width: auto;
+      height: auto;
+      margin-bottom: 25px;
+      color: #7F7573;
+      text-decoration: none; }
+    .rdCircles .aboveBelow .descriptions {
+      font-family: 'Open Sans Condensed', sans-serif;
+      font-weight: 200;
+      font-size: 2em;
+      color: #F9C757;
+      letter-spacing: .5em; }
+
+.newCall {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 200;
+  font-size: 2vw;
+  color: #F9C757;
+  border: none;
+  padding: 25px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  background-color: #7F7573;
+  border: #1A3368 5px solid;
+  border-radius: 6px;
+  font-size: 3em;
+  font-weight: 900;
+  color: whitesmoke;
+  transition: .84s;
+  outline: none; }
+  .newCall .newCall:hover {
+    background-color: #F9C757;
+    color: #7F7573;
+    cursor: pointer; }
+
+@media only screen and (max-width: 568px) {
+  .dash-container {
+    height: 100vh; }
+  .tempTitle {
+    top: 10vh;
+    color: #F9C757;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 200;
+    font-size: 2em;
+    margin-bottom: 10px;
+    letter-spacing: .5em;
+    margin-left: 2vw;
+    margin-top: 25px; }
+  .rdCircles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    width: 70vw;
+    margin-bottom: 10px; }
+    .rdCircles .aboveBelow {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: left; }
+      .rdCircles .aboveBelow .circle {
+        font-family: 'Oswald', sans-serif;
+        background-color: #1A3368;
+        border-radius: 50%;
+        font-size: 3.75em;
+        font-weight: 400;
+        width: auto;
+        height: auto;
+        margin-bottom: 7px;
+        color: #7F7573;
+        text-decoration: none; }
+      .rdCircles .aboveBelow .descriptions {
+        font-family: 'Open Sans Condensed', sans-serif;
+        font-weight: 200;
+        font-size: 2em;
+        color: #F9C757;
+        letter-spacing: .5em; }
+  .newCall {
+    display: none; }
+  .greeting {
+    margin-top: 5px; } }

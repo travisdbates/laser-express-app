@@ -1,1 +1,2 @@
-SELECT * FROM Repairs;
+SELECT * FROM Repairs
+WHERE status = 'In Process';

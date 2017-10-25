@@ -1,46 +1,123 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700");
-.customersHeader {
+.fixedHeader {
+  top: 0;
+  position: sticky;
+  background-color: #7F7573;
+  margin-bottom: 0px;
+  border-bottom: 3px #1A3368 solid; }
+
+.switchButtonOverlay {
+  background-color: transparent;
+  border: none;
+  outline: none; }
+
+.customersWord {
+  top: 10vh;
+  color: #F9C757;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 200;
+  font-size: 3em;
+  margin-bottom: 10px;
+  letter-spacing: 1em;
+  margin-left: 2vw;
+  margin-top: 0px; }
+
+.customerToggle {
+  display: flex;
+  width: 100%; }
+
+.customerHeader {
   display: flex;
   justify-content: space-between;
-  border-bottom: 3px darkblue solid; }
+  border-bottom: 3px #7F7573 solid;
+  color: #F9C757; }
+
+.customersDivider {
+  background-color: darkslategray;
+  height: 15px;
+  transform: skew(-20deg) rotate(2deg);
+  -webkit-transform: skew(-20deg) rotate(2deg);
+  -moz-transform: skew(-20deg) rotate(2deg);
+  width: 1px;
+  background-color: #1A3368; }
+
+.aboveBelowNav {
+  display: flex;
+  flex-direction: column;
+  font-size: .8em; }
 
 .headerTitleName {
   width: 33vw;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-weight: 900;
   font-size: 2em; }
 
-.headerTitle {
-  width: 16.5vw;
-  font-family: 'Roboto Condensed', sans-serif;
-  font-weight: 900;
-  font-size: 2em; }
+.headerTitleCustomers {
+  width: 10vw;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 200;
+  font-size: 1em;
+  display: flex;
+  justify-content: space-around; }
 
-.customer-container {
+.headerTitleCustomersName {
+  width: 10vw;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 200;
+  font-size: 1em;
+  display: flex;
+  justify-content: space-around; }
+
+.customerContainerC {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 1px darkblue solid; }
+  border-bottom: 1px #7F7573 solid; }
 
-.name {
-  font-family: 'Roboto Condensed', sans-serif;
+.custName {
+  font-family: 'Oswald', sans-serif;
   font-weight: 700;
   font-size: 1em;
-  width: 33vw; }
+  width: 10vw; }
 
 .details {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-weight: 200;
   font-size: 1em;
-  width: 16.5vw; }
+  width: 10vw;
+  text-align: center; }
 
 .addCustomer {
-  background-color: darkblue;
+  background-color: #7F7573;
   position: fixed;
   bottom: 30px;
   right: 30px;
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
   color: white;
   border-radius: 100%;
-  border: none; }
+  border: none;
+  outline: none;
+  transition: .84s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px #7F7573 solid; }
+
+.addCustomer:hover {
+  background-color: white;
+  color: #7F7573;
+  border: 2px #7F7573 solid;
+  cursor: pointer; }
+
+.vert {
+  width: 10px;
+  height: 75px;
+  background-color: #1A3368;
+  position: absolute; }
+
+.horiz {
+  width: 75px;
+  height: 10px;
+  background-color: #1A3368;
+  position: absolute; }

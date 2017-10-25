@@ -6,6 +6,8 @@ const massive = require('massive');
 const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 
+const customers_controller = require('./controllers/customers_controller')
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -100,7 +102,8 @@ passport.deserializeUser(function (id, done) {
     
 })
 
-app.get('/api/customers/get',(req, res) => {
+//CUSTOMERS ************************************************
+app.get('/api/customers/get',(req, res, next) => {
     app.get('db').customers_return_all()
     .then(customers => {
         res.status(200).send(customers)
@@ -115,12 +118,263 @@ app.get('/api/customers/getone/:id',(req,res) => {
     })
 })
 
+app.get('/api/customers/getselect',(req,res) => {
+    app.get('db').customers_for_select()
+    .then(customer => {
+        res.status(200).send(customer)
+    })
+})
+
+app.post('/api/customers/insert',(req,res) => {
+    var customer = [
+        req.body.name,
+        req.body.phone,
+        req.body.streetaddress,
+        req.body.city,
+        req.body.state
+    ]
+    
+    app.get('db').customers_insert(customer)
+    .then(customers => {
+        res.status(200).send(customers)
+    })
+})
+
+//REPAIRS ************************************************
+
 app.get('/api/repairs/get', (req, res) => {
     app.get('db').repairs_return_all()
     .then(repairs => {
         res.status(200).send(repairs)
     })
 })
+
+app.get('/api/repairs/getcomplete', (req,res) => {
+    app.get('db').repairs_get_complete()
+    .then(repairs => {
+        res.status(200).send(repairs)
+    })
+})
+
+app.get('/api/repairs/count', (req, res) => {
+    app.get('db').repairs_count()
+    .then(repairs => {
+        res.status(200).send(repairs)
+    })
+})
+
+app.post('/api/repairs/insert',(req,res) => {
+    var repair = [
+        req.body.customerID,
+        req.body.date,
+        req.body.time,
+        req.body.status,
+        req.body.contactName,
+        req.body.streetAddress,
+        req.body.city,
+        req.body.state,
+        req.body.phone,
+        req.body.printer,
+        req.body.tech,
+        req.body.symptoms,
+        req.body.orderStatus,
+        req.body.invoiceStatus,
+        req.body.notes
+    ]
+    
+    app.get('db').repairs_insert(repair)
+    .then(repair => {
+        res.status(200).redirect('/#/repairs')
+    })
+})
+
+app.put('/api/repairs/updateorder/:id', (req,res) => {
+    const deliveryID = req.params.id;
+    app.get('db').repairs_updateorder([deliveryID])
+    .then (response => {
+        res.status(200).send(response)
+    })
+
+})
+
+app.put('/api/repairs/updateinvoice/:id', (req,res) => {
+    const deliveryID = req.params.id;
+    console.log(deliveryID)
+    app.get('db').repairs_updateinvoice([deliveryID])
+    .then (response => {
+        res.status(200).send(response)
+    })
+
+})
+
+app.put('/api/repairs/completerepair/:id', (req,res) => {
+    const repairID = req.params.id;
+    app.get('db').repairs_complete([repairID])
+    .then(response => {
+        res.status(200).send(response)
+    })
+})
+
+app.get('/api/repairs/d3count', (req, res) => {
+    app.get('db').repairs_counts_for_d3()
+    .then(response => {
+        res.status(200).send(response)
+    })
+})
+
+//DELIVERIES ************************************************
+app.get('/api/deliveries/getall', (req,res) => {
+    app.get('db').deliveries_return_all()
+    .then(deliveries => {
+        res.status(200).send(deliveries)
+    })
+})
+
+app.get('/api/deliveries/getcomplete', (req,res) => {
+    app.get('db').deliveries_getcomplete()
+    .then(deliveries => {
+        res.status(200).send(deliveries)
+    })
+})
+
+app.get('/api/deliveries/count', (req, res) => {
+    app.get('db').deliveries_count()
+    .then(deliveries => {
+        res.status(200).send(deliveries)
+    })
+})
+
+app.post('/api/deliveries/insert',(req,res) => {
+    var delivery = [
+        req.body.customerID,
+        req.body.date,
+        req.body.time,
+        req.body.status,
+        req.body.contactName,
+        req.body.streetAddress,
+        req.body.city,
+        req.body.state,
+        req.body.phone,
+        req.body.cartridge,
+        req.body.tech,
+        req.body.orderStatus,
+        req.body.invoiceStatus,
+        req.body.notes,
+        req.body.quantity
+    ]
+    
+    app.get('db').deliveries_insert(delivery)
+    .then(delivery => {
+        res.status(200).send(delivery)
+    })
+})
+
+app.put('/api/deliveries/updateorder/:id', (req,res) => {
+    const deliveryID = req.params.id;
+    app.get('db').deliveries_updateorder([deliveryID])
+    .then (response => {
+        res.status(200).send(response)
+    })
+
+})
+
+app.put('/api/deliveries/updateinvoice/:id', (req,res) => {
+    const deliveryID = req.params.id;
+    console.log(deliveryID)
+    app.get('db').deliveries_updateinvoice([deliveryID])
+    .then (response => {
+        res.status(200).send(response)
+    })
+
+})
+
+app.put('/api/deliveries/completedelivery/:id', (req,res) => {
+    const deliveryID = req.params.id;
+    app.get('db').deliveries_complete([deliveryID])
+    .then(response => {
+        res.status(200).send(response)
+    })
+})
+
+app.get('/api/deliveries/d3count', (req, res) => {
+    app.get('db').deliveries_counts_for_d3()
+    .then(response => {
+        res.status(200).send(response)
+    })
+})
+
+//ORDERS ************************************************
+
+app.get('/api/orders/getall', (req,res) => {
+    app.get('db').orders_return_all()
+    .then(orders => {
+        res.status(200).send(orders)
+    })
+})
+
+app.get('/api/orders/getcomplete', (req,res) => {
+    app.get('db').orders_getcomplete()
+    .then(orders => {
+        res.status(200).send(orders)
+    })
+})
+
+app.post('/api/orders/insert',(req,res) => {
+    var order = [
+        req.body.date,
+        req.body.time,
+        req.body.quantity,
+        req.body.item,
+        req.body.customer
+    ]
+    
+    app.get('db').orders_insert(order)
+    .then(order => {
+        res.status(200).send(order)
+    })
+})
+
+app.get('/api/orders/count', (req, res) => {
+    app.get('db').orders_count()
+    .then(orders => {
+        res.status(200).send(orders)
+    })
+})
+
+app.put('/api/orders/completeorder/:id', (req,res) => {
+    const orderID = req.params.id;
+    app.get('db').orders_complete([orderID])
+    .then(response => {
+        res.status(200).send(response)
+    })
+})
+
+//TONERS ************************************************
+
+app.get('/api/toners/getall', (req,res) => {
+    app.get('db').toners_select()
+    .then(toners => {
+        res.status(200).send(toners)
+    })
+})
+
+app.put('/api/toners/add/:id', (req,res) => {
+    const id = req.params.id;
+    app.get('db').toners_add([id])
+    .then(toners => {
+        res.status(200).send(toners)
+    })
+})
+
+app.put('/api/toners/subtract/:id', (req,res) => {
+    const id = req.params.id;
+    app.get('db').toners_subtract([id])
+    .then(toners => {
+        res.status(200).send(toners)
+    })
+})
+
+
 
 const PORT = 3005
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))

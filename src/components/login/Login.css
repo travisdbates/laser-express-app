@@ -1,36 +1,40 @@
 .login-container {
-  background: #000000;
-  /* Old Browsers */
-  background: -webkit-linear-gradient(bottom, #000000, #030383);
-  /*Safari 5.1-6*/
-  background: -o-linear-gradient(bottom, #000000, #030383);
-  /*Opera 11.1-12*/
-  background: -moz-linear-gradient(bottom, #000000, #030383);
-  /*Fx 3.6-15*/
-  background: linear-gradient(to top, #000000, #030383);
-  /*Standard*/
+  background-color: #7F7573;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh; }
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0; }
 
 .login-button {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 2em;
+  color: #F9C757;
+  letter-spacing: .5em;
   margin-top: 50px;
   color: white;
-  font-size: 3vw;
-  padding: 25px;
+  padding: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
   background-color: transparent;
   text-decoration: none;
   border-radius: 50px;
   transition: .84s;
-  border: 1px solid white; }
+  border: 2px solid #1A3368; }
+
+.login-button::first-letter {
+  letter-spacing: .5; }
 
 .login-button:hover {
   background-color: white;
-  color: #030383; }
+  color: #1A3368;
+  outline: none; }
 
 .logo {
   height: 20vh; }

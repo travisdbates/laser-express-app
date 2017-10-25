@@ -1,32 +1,88 @@
-import React, {Component} from "react"
+import React, { Component } from "react"
 import "./Dashboard.css"
-import LELogoWhite from "./LE White.svg"
 import axios from "axios"
+import { Link } from "react-router-dom"
+
+import CountUp from "react-countup"
+
+import RepairModal from "../repairModal/RepairModal"
+
+var Spinner = require('react-spinkit');
+
 
 export default class Dashboard extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
-            userInfo: {}
+            userInfo: {},
+            totalRepairs: 0,
+            totalDeliveries: 0,
+            totalOrders: 0,
+            hideModal: false,
+
         }
+        this.showModal = this.showModal.bind(this)
+    }
+    componentDidMount() {
+        const userData = axios.get('/auth/me')
+            .then(res => {
+                console.log(res.data)
+                this.setState({
+
+                    userInfo: res.data
+                })
+            })
+
+        axios.get('/api/repairs/count')
+            .then(response => {
+                console.log(response.data)
+                this.setState({ totalRepairs: response.data[0].count })
+            })
+
+        axios.get('/api/deliveries/count')
+            .then(response => {
+                console.log(response.data)
+                this.setState({ totalDeliveries: response.data[0].count })
+            })
+        axios.get('/api/orders/count')
+            .then(response => {
+                this.setState({ totalOrders: response.data[0].count })
+            })
+
 
     }
-    componentDidMount(){
-        const userData = axios.get('/auth/me')
-        .then(res => {
-            console.log(res.data)
-            this.setState({
-                
-                userInfo: res.data
-            })
-        })
+
+    showModal() {
+        this.setState({ hideModal: !this.state.hideModal })
+        console.log(this.state.hideModal)
     }
-    render(){
+    render() {
         return (
             <div className="dash-container">
                 <h1 className="tempTitle">DASHBOARD</h1>
-                <h2 className="tempInfo">{this.state.userInfo.email}</h2>
-                <a href='http://localhost:3005/auth/logout'><button>Log out</button></a>
+                {Object.keys(this.state.userInfo).length !== 0 ? <h1 className="greeting">Welcome, {this.state.userInfo.user_name}.</h1> : <h1 className="greeting"> Welcome.</h1>}
+
+                <div className="rdCircles">
+                    <div className="aboveBelow">
+                        <Link className="circle" to="/repairs">{this.state.totalRepairs === 0 ? <Spinner name='double-bounce' /> : <CountUp duration={1.84} start={0} end={this.state.totalRepairs} />}&nbsp;</Link>
+                        <span className="descriptions">REPAIRS</span>
+                    </div>
+                    <div className="aboveBelow">
+                        <Link className="circle" to="/deliveries">{this.state.totalDeliveries === 0 ? <Spinner name='double-bounce' /> : <CountUp duration={1.84} start={0} end={this.state.totalDeliveries} />}&nbsp;</Link>
+                        <span className="descriptions">DELIVERIES</span>
+                    </div>
+                    <div className="aboveBelow">
+                        <Link className="circle" to="/orders">{this.state.totalOrders === 0 ? <Spinner name='double-bounce' /> : <CountUp duration={1.84} start={0} end={this.state.totalOrders} />}&nbsp;</Link>
+                        <span className="descriptions">ORDERS</span>
+                    </div>
+                </div>
+
+                <button onClick={this.showModal} onClose={this.showModal} className="newCall">N&nbsp;&nbsp;E&nbsp;&nbsp;W&nbsp;&nbsp;&nbsp;&nbsp; C&nbsp;&nbsp;A&nbsp;&nbsp;L&nbsp;&nbsp;L</button>
+
+                <RepairModal show={this.state.hideModal} onClose={this.showModal} />
+
+                <a href='http://localhost:3005/auth/logout'><button className="newCall">L&nbsp;&nbsp;O&nbsp;&nbsp;G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; O&nbsp;&nbsp;U&nbsp;&nbsp;T</button></a>
+
             </div>
         )
     }

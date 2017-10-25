@@ -1,0 +1,181 @@
+@import "../../_colors.scss";
+
+
+
+.dash-container {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 90vh;
+    align-content: center;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: $colorOne;
+}
+
+.logo {
+    width: 50vw;
+}
+
+.tempTitle {
+    top: 10vh;
+    color: $colorTwo;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 200;
+    font-size: 3em;
+    margin-bottom: 10px;
+    letter-spacing: 1em;
+    margin-left: 2vw;
+    margin-top: 50px;
+}
+
+.greeting {
+    top: 10vh;
+    color: $colorTwo;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 200;
+    font-size: 3em;
+    margin-bottom: 10px;
+    margin-left: 2vw;
+    margin-top: 20px;
+}
+
+.tempInfo {
+    margin-top: 30px;
+    color: black;
+}
+
+
+
+.rdCircles {
+    display: flex;
+    justify-content: space-around;
+    width: 70vw;
+    margin-bottom: 10px;
+    .aboveBelow {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: left;
+        .circle {
+            font-family: 'Oswald', sans-serif;
+            //border: 10px $accentColor solid;
+            background-color: $accentColor;
+            border-radius: 50%;
+            font-size: 15em;
+            font-weight: 400;
+            width: auto;
+            height: auto;
+            margin-bottom: 25px;
+            color: $colorOne;
+            text-decoration: none;
+        }
+        .descriptions {
+            font-family: 'Open Sans Condensed', sans-serif;
+            font-weight: 200;
+            font-size: 2em;
+            color: $colorTwo;
+            letter-spacing: .5em;
+        
+        }
+    }
+    
+}
+
+
+
+
+
+
+.newCall {
+
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 200;
+    font-size: 2vw;
+    color: $colorTwo;
+
+    border: none;
+    padding: 25px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    background-color: $colorOne;
+    border: $accentColor 5px solid;
+    border-radius: 6px;
+    font-size: 3em;
+    font-weight: 900;
+    color: whitesmoke;
+    transition: .84s;
+    outline: none;
+
+    .newCall:hover {
+        background-color: $colorTwo;
+        color: $colorOne;
+        cursor: pointer;
+    }
+}
+
+@media only screen and (max-width: 568px) {
+    .dash-container {
+        height: 100vh;
+    }
+
+    .tempTitle {
+        top: 10vh;
+        color: $colorTwo;
+        font-family: 'Open Sans Condensed', sans-serif;
+        font-weight: 200;
+        font-size: 2em;
+        margin-bottom: 10px;
+        letter-spacing: .5em;
+        margin-left: 2vw;
+        margin-top: 25px;
+    }
+
+    .rdCircles {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        width: 70vw;
+        margin-bottom: 10px;
+        .aboveBelow {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: left;
+            .circle {
+                font-family: 'Oswald', sans-serif;
+                //border: 10px $accentColor solid;
+                background-color: $accentColor;
+                border-radius: 50%;
+                font-size: 3.75em;
+                font-weight: 400;
+                width: auto;
+                height: auto;
+                margin-bottom: 7px;
+                color: $colorOne;
+                text-decoration: none;
+            }
+            .descriptions {
+                font-family: 'Open Sans Condensed', sans-serif;
+                font-weight: 200;
+                font-size: 2em;
+                color: $colorTwo;
+                letter-spacing: .5em;
+            
+            }
+        }
+        
+    }
+    
+    .newCall {
+        display: none;
+    }
+    .greeting {
+        margin-top: 5px;
+    }
+}
+

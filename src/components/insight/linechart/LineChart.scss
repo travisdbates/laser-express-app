@@ -1,0 +1,26 @@
+@import "../../../_colors.scss";
+
+.container > .contentContainer > .contentContainerBackgroundRect {
+    fill: $colorOne;
+  }
+  
+  .container > .contentContainer .xAxis text {
+    font-size: .75em;
+  }
+  
+  .container > .contentContainer .line path {
+    fill: transparent;
+    stroke: $accentColor;
+    stroke-width: 2;
+  }
+  
+  .container > .contentContainer .scatter circle {
+    fill: $accentColor;
+    stroke: $colorOne;
+    stroke-width: 2;
+  }
+  
+  .yAxis, .xAxis {
+      font-family: "Oswald", sans-serif;
+      font-size: 1.5em;
+  }

@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700");
+.fixedHeader {
+  top: 0;
+  position: sticky;
+  background-color: #7F7573;
+  margin-bottom: 0px;
+  border-bottom: 3px #1A3368 solid; }
+
+.ordersWord {
+  top: 10vh;
+  color: #F9C757;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 200;
+  font-size: 3em;
+  margin-bottom: 10px;
+  letter-spacing: 1em;
+  margin-left: 2vw;
+  margin-top: 0px; }
+
+.ordersHeader {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 3px #7F7573 solid;
+  color: #F9C757; }
+
+.ordersDivider {
+  background-color: darkslategray;
+  height: 15px;
+  transform: skew(-20deg) rotate(2deg);
+  -webkit-transform: skew(-20deg) rotate(2deg);
+  -moz-transform: skew(-20deg) rotate(2deg);
+  width: 1px;
+  background-color: #1A3368; }
+
+.headerTitleName {
+  width: 33vw;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 2em; }
+
+.headerTitleOrders {
+  width: 10vw;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 200;
+  font-size: 1em;
+  display: flex;
+  justify-content: space-around; }
+
+.ordersContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px #7F7573 solid; }
+
+.name {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1em;
+  width: 33vw; }
+
+.detailsOrders {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 200;
+  font-size: 1em;
+  width: 9.09vw;
+  text-align: center; }
+
+.addDelivery {
+  background-color: darkblue;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  color: white;
+  border-radius: 100%;
+  border: none;
+  cursor: pointer; }
+
+.completedOrder {
+  background: none;
+  cursor: pointer;
+  color: black;
+  border: none;
+  transition: .24s; }
+
+.completedOrder:hover {
+  color: limegreen;
+  font-size: 1.5em; }
+
+.completedOrdercomplete {
+  background: none;
+  cursor: pointer;
+  color: limegreen;
+  border: none;
+  font-size: 1.5em; }
