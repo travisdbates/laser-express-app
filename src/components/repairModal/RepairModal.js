@@ -3,6 +3,10 @@ import PropTypes from "prop-types"
 import Select from "react-select"
 import axios from "axios"
 
+import { ToastContainer, toast } from 'react-toastify';
+import "../../../node_modules/react-toastify/dist/ReactToastify.min.css"
+
+
 import '../../../node_modules/react-select/dist/react-select.css'
 
 import "./RepairModal.css"
@@ -15,13 +19,14 @@ class RepairModal extends Component {
             value: '',
             currentCustomer: [],
             rdSetting: null,
+            customerAdded: false,
 
             contactName: "",
             printer: "",
             printerID: "",
             symptoms: "",
 
-            tech: "",
+            tech: "BB",
             notes: "",
             location: "",
 
@@ -33,6 +38,13 @@ class RepairModal extends Component {
             phone: "",
             state: "",
             streetaddress: "",
+            customerID: "",
+
+
+            cartridgeForOrder: [{ name: '', quant: '' }],
+
+
+
         }
         this.logChange = this.logChange.bind(this)
         this.setDelivery = this.setDelivery.bind(this)
@@ -40,8 +52,15 @@ class RepairModal extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.submitRepair = this.submitRepair.bind(this)
         this.submitDelivery = this.submitDelivery.bind(this)
+        this.addCartridge = this.addCartridge.bind(this)
+        this.removeCartridge = this.removeCartridge.bind(this)
+        this.addToArrayName = this.addToArrayName.bind(this)
+        this.addToArrayQuant = this.addToArrayQuant.bind(this)
+        this.submitCustomer = this.submitCustomer.bind(this)
     }
 
+    notify = () => toast.success("Added Customer!");
+    
 
     componentDidMount() {
         axios.get('/api/customers/getselect')
@@ -78,8 +97,8 @@ class RepairModal extends Component {
         this.setState({
             [formField]: e
         })
-        console.log(this.state[formField])
-        console.log(this.state)
+        // console.log(this.state[formField])
+        // console.log(this.state)
     }
 
     submitRepair() {
@@ -94,10 +113,10 @@ class RepairModal extends Component {
             mm = '0' + mm
         }
         today = mm + '/' + dd + '/' + yyyy;
-
+        console.log(today)
         var time = new Date().toLocaleTimeString();
 
-        var repair = {
+        var repair = this.state.currentCustomer.length !== 0 ? {
             customerId: this.state.currentCustomer[0].customerid,
             date: today,
             time: time,
@@ -115,11 +134,30 @@ class RepairModal extends Component {
             notes: this.state.notes
 
         }
+        :
+        {
+            customerId: this.state.customerID,
+            date: today,
+            time: time,
+            status: "In Process",
+            contactName: this.state.contactName,
+            streetAddress: this.state.streetaddress,
+            city: this.state.city,
+            state: this.state.state,
+            phone: this.state.phone,
+            printer: this.state.printer,
+            tech: this.state.tech,
+            symptoms: this.state.symptoms,
+            orderStatus: false,
+            invoiceStatus: false,
+            notes: this.state.notes
+        }
+
         axios.post('/api/repairs/insert', repair)
             .then(response => {
                 console.log(response)
             })
-
+        this.props.onClose;
         window.location.replace('http://localhost:3000/#/repairs')
 
     }
@@ -139,7 +177,26 @@ class RepairModal extends Component {
 
         var time = new Date().toLocaleTimeString();
 
-        var delivery = {
+        /*Somehow the name/quant got switched when being sent to state... Not sure how, but 
+        *for now this works and send the correct info to the correct places*/
+
+        var names = []
+        var quantitiesMap = this.state.cartridgeForOrder.map((cartridge) => {
+            console.log(cartridge.quant)
+            names.push(cartridge.quant)
+        })
+        names.join()
+        console.log(names)
+
+        var quantities = []
+        var namesMap = this.state.cartridgeForOrder.map((cartridge) => {
+            console.log(cartridge.name)
+            quantities.push(cartridge.name)
+        })
+        quantities.join()
+        console.log(quantities)
+
+        var delivery = this.state.currentCustomer.length !== 0 ? {
             customerId: this.state.currentCustomer[0].customerid,
             date: date,
             time: time,
@@ -149,14 +206,33 @@ class RepairModal extends Component {
             city: this.state.currentCustomer[0].city,
             state: this.state.currentCustomer[0].state,
             phone: this.state.currentCustomer[0].phone,
-            cartridge: '{'+this.state.cartridge+'}',
+            cartridge: '{' + names + '}',
             tech: this.state.tech,
             orderStatus: false,
             invoiceStatus: false,
             notes: this.state.notes,
-            quantity: '{' + this.state.quantity + '}',
+            quantity: '{' + quantities + '}',
+        }
+        :
+        {
+            customerId: this.state.customerID,
+            date: date,
+            time: time,
+            status: "In Process",
+            contactName: this.state.contactName,
+            streetAddress: this.state.streetaddress,
+            city: this.state.city,
+            state: this.state.state,
+            phone: this.state.phone,
+            cartridge: '{' + names + '}',
+            tech: this.state.tech,
+            orderStatus: false,
+            invoiceStatus: false,
+            notes: this.state.notes,
+            quantity: '{' + quantities + '}',
         }
 
+        console.log(delivery)
         axios.post('/api/deliveries/insert', delivery)
             .then(response => {
                 console.log(response)
@@ -166,9 +242,103 @@ class RepairModal extends Component {
                 console.log(response.data)
                 this.setState({ customers: response.data })
             })
+        this.props.OnClose;
         window.location.replace('http://localhost:3000/#/deliveries')
 
     }
+
+    addCartridge() {
+
+        this.setState({ inputs: this.state.inputs.concat({ quant: '', name: '' }) });
+        console.log(this.state.inputs)
+    }
+
+    removeCartridge() {
+        var newInputs = this.state.inputs
+        newInputs.splice(this.state.inputs.length - 1, 1)
+        this.setState({
+            inputs: newInputs
+        })
+    }
+
+    addToArrayQuant(e, index) {
+        const newArray = this.state.inputs.map((quant, qindex) => {
+            if (index !== qindex) return quant
+            return { ...this.state.inputs, quant: e }
+        })
+        this.setState({ inputs: newArray })
+        // this.setState(prevState => ({
+        //     cartQuantities: [...prevState.cartQuantities, e]
+        // }))
+        console.log(this.state.inputs)
+    }
+
+    addToArrayName(e, formField) {
+        this.setState(prevState => ({
+            cartNames: [...prevState.cartNames, e]
+        }))
+        console.log(this.state.cartNames)
+
+    }
+
+
+
+
+
+    handleCartridgeOrderChangeName = (idx) => (evt) => {
+        const newCart = this.state.cartridgeForOrder.map((cartridge, sidx) => {
+            if (idx !== sidx) return cartridge;
+            return { ...newCart, name: evt.target.value, quant: this.state.cartridgeForOrder[idx].quant };
+        });
+
+        this.setState({ cartridgeForOrder: newCart });
+    }
+
+    handleCartridgeOrderChangeQuantity = (idx) => (evt) => {
+        const newCart = this.state.cartridgeForOrder.map((cartridge, sidx) => {
+            if (idx !== sidx) return cartridge;
+            return { ...newCart, quant: evt.target.value, name: this.state.cartridgeForOrder[idx].name };
+        });
+
+        this.setState({ cartridgeForOrder: newCart });
+    }
+
+    handleSubmit = (evt) => {
+        const { name, shareholders } = this.state;
+        alert(`Incorporated: ${name} with ${shareholders.length} shareholders`);
+    }
+
+    handleAddCartridgeOrder = () => {
+        this.setState({
+            cartridgeForOrder: this.state.cartridgeForOrder.concat([{ name: '', quant: '' }])
+        });
+    }
+
+    handleRemoveCartridgeOrder = (idx) => () => {
+        this.setState({
+            cartridgeForOrder: this.state.cartridgeForOrder.filter((s, sidx) => idx !== sidx)
+        });
+    }
+
+
+    submitCustomer(){
+        var data = {
+            name: this.state.name,
+            phone: this.state.phone,
+            streetaddress: this.state.streetaddress,
+            city: this.state.city,
+            state: this.state.state,
+        }
+        axios.post('/api/customers/insert', data)
+        .then(response => {
+            this.setState({customerId: response.data[0].customerid}) 
+            console.log(response.data)
+        })
+        this.setState({customerAdded: !this.state.customerAdded})
+        this.notify();
+        
+    }
+
 
     render() {
         if (!this.props.show) {
@@ -190,120 +360,129 @@ class RepairModal extends Component {
                             options={this.state.customers}
                             onChange={this.logChange} />
                     </div>
-                    { this.state.currentCustomer.length !== 0 ? 
-                    <div className="customerInfo">
-                        <div className="rowOne">
-                            <div className="aboveBelow">
-                                <span className="inputNames Name">Name:  </span>
-                                <input className="inputBox Name" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].name}></input>
-                            </div>
-                            <div className="aboveBelow">
-                                <span className="inputNames Phone">Phone:  </span>
-                                <input className="inputBox Phone" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].phone}></input>
-                            </div>
-                            <div className="aboveBelow">
-
-                                <span className="inputNames ID">ID: </span>
-                                <input className="inputBox ID" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].customerid}></input>
-                            </div>
-                        </div>
-                        <div className="rowTwo">
-
-                            <div className="aboveBelow">
-                                <span className="inputNames Address">Address:  </span>
-                                <input className="inputBox Address" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].streetaddress}></input>
-                            </div>
-                            <div className="aboveBelow">
-                                <span className="inputNames City">City:  </span>
-                                <input className="inputBox City" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].city}></input>
-                            </div>
-                            <div className="aboveBelow">
-                                <span className="inputNames State">State:  </span>
-                                <input className="inputBox State" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].state}></input>
-                            </div>
-                        </div>
-
-                    </div>
-                    :
-                    <div className="customerInfo">
-                    <div className="rowOne">
-                        <div className="aboveBelow">
-                            <span className="inputNames Name">Name:  </span>
-                            <input className="inputBox Name" placeholder="Name"  onChange={(e) => { this.handleChange(e.target.value, "name") }}></input>
-                        </div>
-                        <div className="aboveBelow">
-                            <span className="inputNames Phone">Phone:  </span>
-                            <input className="inputBox Phone" placeholder="phone"  onChange={(e) => { this.handleChange(e.target.value, "phone") }}></input>
-                        </div>
-                        {/* <div className="aboveBelow">
-
-                            <span className="inputNames ID">ID: </span>
-                            <input className="inputBox ID" placeholder="customerid"  onChange={(e) => { this.handleChange(e.target.value, "customerid") }}></input>
-                        </div> */}
-                    </div>
-                    <div className="rowTwo">
-
-                        <div className="aboveBelow">
-                            <span className="inputNames Address">Address:  </span>
-                            <input className="inputBox Address" placeholder="streetaddress"  onChange={(e) => { this.handleChange(e.target.value, "streetaddress") }}></input>
-                        </div>
-                        <div className="aboveBelow">
-                            <span className="inputNames City">City:  </span>
-                            <input className="inputBox City" placeholder="city"  onChange={(e) => { this.handleChange(e.target.value, "city") }}></input>
-                        </div>
-                        <div className="aboveBelow">
-                            <span className="inputNames State">State:  </span>
-                            <input className="inputBox State" placeholder="state"  onChange={(e) => { this.handleChange(e.target.value, "state") }}></input>
-                        </div>
-                    </div>
-
-                </div>
-                    }
-
-                    <div className="buttons">
-                        <button className="repairButton" onClick={this.setRepair}>Repair</button>
-                        <button className="deliveryButton" onClick={this.setDelivery}>Delivery</button>
-
-                    </div>
-                    
-                    {this.state.rdSetting === null ? null : this.state.rdSetting === "d" ?
-                        <div>
+                    {this.state.currentCustomer.length !== 0 ?
+                        <div className="customerInfo">
                             <div className="rowOne">
                                 <div className="aboveBelow">
-                                    <span className="inputNames ContactName" >Contact Name:  </span>
-                                    <input className="inputBox Name" onChange={(e) => { this.handleChange(e.target.value, "contactName") }}></input>
+                                    <span className="inputNames Name">Name:  </span>
+                                    <input className="inputBoxR Name" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].name}></input>
                                 </div>
                                 <div className="aboveBelow">
-                                    <span className="inputNames Phone">Cartridge:  </span>
-                                    <input className="inputBox Phone" onChange={(e) => { this.handleChange(e.target.value, "cartridge") }}></input>
+                                    <span className="inputNames Phone">Phone:  </span>
+                                    <input className="inputBoxR Phone" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].phone}></input>
                                 </div>
-                                <div className="aboveBelow">
+                            </div>
+                            <div className="rowTwo">
 
-                                    <span className="inputNames Qty">Quantity: </span>
-                                    <input className="inputBox Qty" onChange={(e) => { this.handleChange(e.target.value, "quantity") }}></input>
+                                <div className="aboveBelow">
+                                    <span className="inputNames Address">Address:  </span>
+                                    <input className="inputBoxR Address" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].streetaddress}></input>
+                                </div>
+                                <div className="aboveBelow">
+                                    <span className="inputNames City">City:  </span>
+                                    <input className="inputBoxR City" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].city}></input>
+                                </div>
+                                <div className="aboveBelow">
+                                    <span className="inputNames State">State:  </span>
+                                    <input className="inputBoxR State" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].state}></input>
+                                </div>
+                            </div>
+
+                        </div>
+                        :
+                        <div className="customerInfo">
+                            <div className="rowOne">
+                                <div className="aboveBelow">
+                                    <input className="inputBoxR Name" placeholder="NAME" onChange={(e) => { this.handleChange(e.target.value, "name") }}></input>
+                                </div>
+                                <div className="aboveBelow">
+                                    <input className="inputBoxR Phone" placeholder="PHONE" onChange={(e) => { this.handleChange(e.target.value, "phone") }}></input>
                                 </div>
 
                             </div>
                             <div className="rowTwo">
 
                                 <div className="aboveBelow">
-                                    <span className="inputNames Loc">Location:  </span>
-                                    <input className="inputBox Loc" onChange={(e) => { this.handleChange(e.target.value, "location") }}></input>
+                                    <input className="inputBoxR Address" placeholder="STREET ADDRESS" onChange={(e) => { this.handleChange(e.target.value, "streetaddress") }}></input>
                                 </div>
                                 <div className="aboveBelow">
-                                    <span className="inputNames Tech">Tech:  </span>
-                                    {/* <input className="inputBox Tech" onChange={(e) => { this.handleChange(e.target.value, "tech") }}></input> */}
-
-                                    <select onChange={(e) => { this.handleChange(e.target.value, "tech") }}>
-                                        <option value="BB">BB</option>
-                                        <option value="LE">LE</option>
-                                        <option value="RD">RD</option>
-
-                                    </select>
+                                    <input className="inputBoxR City" placeholder="CITY" onChange={(e) => { this.handleChange(e.target.value, "city") }}></input>
                                 </div>
                                 <div className="aboveBelow">
-                                    <span className="inputNames Notes">Notes:  </span>
-                                    <input className="inputBox Notes" onChange={(e) => { this.handleChange(e.target.value, "notes") }}></input>
+                                    <input className="inputBoxR State" placeholder="ST" onChange={(e) => { this.handleChange(e.target.value, "state") }}></input>
+                                </div>
+                            </div>
+                            {this.state.customerAdded ? null : <button onClick={this.submitCustomer}>Submit New Customer</button>}
+                        </div>
+                    }
+
+                    <div className="buttons">
+                        <button className="repairButtond" onClick={this.setRepair}>REPAIR</button>
+                        <button className="deliveryButtond" onClick={this.setDelivery}>DELIVERY</button>
+
+                    </div>
+
+                    {this.state.rdSetting === null ? null : this.state.rdSetting === "d" ?
+                        //DELIVERY ***********************************************************************************************
+                        <div>
+                            <div className="rowForDeliveries">
+                                <div className="colOne">
+                                    <div className="aboveBelow">
+                                        <input className="inputBoxR Name" onChange={(e) => { this.handleChange(e.target.value, "contactName") }} placeholder="CONTACT NAME"></input>
+                                    </div>
+                                    <div className="aboveBelow">
+                                        <input className="inputBoxR Notes" onChange={(e) => { this.handleChange(e.target.value, "notes") }} placeholder="NOTES"></input>
+                                    </div>
+                                    <div className="aboveBelow">
+                                        <span className="inputNames Tech">Tech:  </span>
+                                        {/* <input className="inputBoxR Tech" onChange={(e) => { this.handleChange(e.target.value, "tech") }}></input> */}
+                                        <div className="selectFormat">
+                                            <select onChange={(e) => { this.handleChange(e.target.value, "tech") }} value={this.state.tech}>
+                                                <option value="BB">BB</option>
+                                                <option value="LE">LE</option>
+                                                <option value="RD">RD</option>
+
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div className="colTwo">
+                                    <span>Quantity - Cartridge</span>
+                                    <div>
+                                        {this.state.cartridgeForOrder.map((cartridge, idx) => (
+                                            <div className="shareholder">
+                                                <input
+                                                    type="text"
+                                                    placeholder={`Cartridge #${idx + 1} name`}
+                                                    value={cartridge.quant}
+                                                    onChange={this.handleCartridgeOrderChangeQuantity(idx)}
+                                                />
+
+                                                <select onChange={this.handleCartridgeOrderChangeName(idx)}>
+                                                    <option selected disabled>Select Quantity</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+
+                                                </select>
+                                                <button type="button" onClick={this.handleRemoveCartridgeOrder(idx)} className="small">-</button>
+                                            </div>
+                                        ))}
+
+
+                                    </div>
+                                    <button type="button" onClick={this.handleAddCartridgeOrder} className="small">Add Cartridge</button>
+
                                 </div>
 
                             </div>
@@ -312,21 +491,21 @@ class RepairModal extends Component {
                         </div>
 
                         :
-
+                        //REPAIR ***********************************************************************************************
                         <div>
                             <div className="rowOne">
                                 <div className="aboveBelow">
                                     <span className="inputNames ContactNameRep">Contact Name:  </span>
-                                    <input className="inputBox ContactNameRep" onChange={(e) => { this.handleChange(e.target.value, "contactName") }}></input>
+                                    <input className="inputBoxR ContactNameRep" onChange={(e) => { this.handleChange(e.target.value, "contactName") }}></input>
                                 </div>
                                 <div className="aboveBelow">
                                     <span className="inputNames Printer">Printer:  </span>
-                                    <input className="inputBox Printer" onChange={(e) => { this.handleChange(e.target.value, "printer") }}></input>
+                                    <input className="inputBoxR Printer" onChange={(e) => { this.handleChange(e.target.value, "printer") }}></input>
                                 </div>
                                 <div className="aboveBelow">
 
                                     <span className="inputNames IDNum">ID#: </span>
-                                    <input className="inputBox IDNum" onChange={(e) => { this.handleChange(e.target.value, "printerID") }}></input>
+                                    <input className="inputBoxR IDNum" onChange={(e) => { this.handleChange(e.target.value, "printerID") }}></input>
                                 </div>
 
                             </div>
@@ -334,7 +513,7 @@ class RepairModal extends Component {
 
                                 <div className="aboveBelow">
                                     <span className="inputNames Loc">Symptoms:  </span>
-                                    <input className="inputBox Loc" onChange={(e) => { this.handleChange(e.target.value, "location") }}></input>
+                                    <input className="inputBoxR Loc" onChange={(e) => { this.handleChange(e.target.value, "location") }}></input>
                                 </div>
                                 <div className="aboveBelow">
                                     <span className="inputNames Tech">Tech:  </span>
@@ -347,13 +526,22 @@ class RepairModal extends Component {
                                 </div>
                                 <div className="aboveBelow">
                                     <span className="inputNames Notes">Notes:  </span>
-                                    <input className="inputBox Notes" onChange={(e) => { this.handleChange(e.target.value, "notes") }}></input>
+                                    <input className="inputBoxR Notes" onChange={(e) => { this.handleChange(e.target.value, "notes") }}></input>
                                 </div>
                             </div>
                             <button onClick={this.submitRepair}>Submit</button>
 
                         </div>}
                 </div>
+                <ToastContainer
+                    position="top-right"
+                    type="default"
+                    autoClose={3500}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    pauseOnHover
+                />
             </div>
 
         )

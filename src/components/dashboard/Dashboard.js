@@ -1,9 +1,8 @@
 import React, { Component } from "react"
 import "./Dashboard.css"
 import axios from "axios"
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 
-import {render} from "react-dom"
 import CountUp from "react-countup"
 
 import RepairModal from "../repairModal/RepairModal"
@@ -18,20 +17,22 @@ export default class Dashboard extends Component {
             userInfo: {},
             totalRepairs: 0,
             totalDeliveries: 0,
+            totalOrders: 0,
             hideModal: false,
 
         }
         this.showModal = this.showModal.bind(this)
     }
     componentDidMount() {
+        // eslint-disable-next-line
         const userData = axios.get('/auth/me')
-        .then(res => {
-            console.log(res.data)
-            this.setState({
+            .then(res => {
+                console.log(res.data)
+                this.setState({
 
-                userInfo: res.data
+                    userInfo: res.data
+                })
             })
-        })
 
         axios.get('/api/repairs/count')
             .then(response => {
@@ -43,6 +44,10 @@ export default class Dashboard extends Component {
             .then(response => {
                 console.log(response.data)
                 this.setState({ totalDeliveries: response.data[0].count })
+            })
+        axios.get('/api/orders/count')
+            .then(response => {
+                this.setState({ totalOrders: response.data[0].count })
             })
 
 
@@ -56,16 +61,20 @@ export default class Dashboard extends Component {
         return (
             <div className="dash-container">
                 <h1 className="tempTitle">DASHBOARD</h1>
-              <h1 className="greeting">Welcome, {this.state.userInfo.user_name}.</h1>
+                {Object.keys(this.state.userInfo).length !== 0 ? <h1 className="greeting">Welcome, {this.state.userInfo.user_name}.</h1> : <h1 className="greeting"> Welcome.</h1>}
 
                 <div className="rdCircles">
                     <div className="aboveBelow">
-                        <Link className="circle" to="localhost:3000/repairs">{this.state.totalRepairs === 0 ? <Spinner name='double-bounce' /> : <CountUp duration={1.84} start={0} end={this.state.totalRepairs}/>}&nbsp;</Link>
+                        <Link className="circle" to="/repairs">{this.state.totalRepairs === 0 ? <Spinner name='double-bounce' /> : <CountUp duration={1.84} start={0} end={this.state.totalRepairs} />}&nbsp;</Link>
                         <span className="descriptions">REPAIRS</span>
                     </div>
                     <div className="aboveBelow">
-                        <Link className="circle" to="localhost:300/>deliveries">{this.state.totalDeliveries === 0 ? <Spinner name='double-bounce' /> : <CountUp duration={1.84} start={0} end={this.state.totalDeliveries}/>}&nbsp;</Link>
+                        <Link className="circle" to="/deliveries">{this.state.totalDeliveries === 0 ? <Spinner name='double-bounce' /> : <CountUp duration={1.84} start={0} end={this.state.totalDeliveries} />}&nbsp;</Link>
                         <span className="descriptions">DELIVERIES</span>
+                    </div>
+                    <div className="aboveBelow">
+                        <Link className="circle" to="/orders">{this.state.totalOrders === 0 ? <Spinner name='double-bounce' /> : <CountUp duration={1.84} start={0} end={this.state.totalOrders} />}&nbsp;</Link>
+                        <span className="descriptions">ORDERS</span>
                     </div>
                 </div>
 
@@ -73,7 +82,7 @@ export default class Dashboard extends Component {
 
                 <RepairModal show={this.state.hideModal} onClose={this.showModal} />
 
-                <a href='http://localhost:3005/auth/logout'><button  className="newCall">L&nbsp;&nbsp;O&nbsp;&nbsp;G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; O&nbsp;&nbsp;U&nbsp;&nbsp;T</button></a>
+                <a href='http://localhost:3005/auth/logout'><button className="newCall">L&nbsp;&nbsp;O&nbsp;&nbsp;G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; O&nbsp;&nbsp;U&nbsp;&nbsp;T</button></a>
 
             </div>
         )

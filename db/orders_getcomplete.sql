@@ -1,2 +1,2 @@
 SELECT * FROM Orders
-WHERE status = FALSE;
+WHERE status = TRUE;

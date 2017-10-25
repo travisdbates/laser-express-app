@@ -87,3 +87,46 @@
     background-color: #8EC5BF;
     color: #5DA494;
     cursor: pointer; }
+
+@media only screen and (max-width: 375px) {
+  .rdCircles {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 70vw;
+    margin-bottom: 10px; }
+  .aboveBelow {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left; }
+  .circle {
+    font-family: 'Oswald', sans-serif;
+    background-color: #E5B52F;
+    border-radius: 50%;
+    font-size: 1em;
+    font-weight: 400;
+    width: auto;
+    height: auto;
+    margin-bottom: 25px;
+    color: #5DA494;
+    text-decoration: none; }
+  .descriptions {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 200;
+    font-size: 2em;
+    color: #8EC5BF;
+    letter-spacing: .5em; }
+  .tempTitle {
+    top: 10vh;
+    color: #8EC5BF;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 200;
+    font-size: 1em;
+    margin-bottom: 10px;
+    letter-spacing: .5em;
+    margin-left: 2vw;
+    margin-top: 50px; }
+  .newCall {
+    display: none; } }

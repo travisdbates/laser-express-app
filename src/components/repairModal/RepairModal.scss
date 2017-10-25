@@ -17,9 +17,8 @@
     outline: none;
     border: none;
     z-index: 0;
+    font-family: 'Oswald', sans-serif;   
 }
-
-
 
 .modalWindow {
     background-color: white;
@@ -31,10 +30,9 @@
     justify-content: flex-start;
     border: 1px solid $darkblue;
     border-radius: 2px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Oswald', sans-serif;
     z-index: 1;
 }
-
 
 .rightAlign {
     display: flex;
@@ -63,19 +61,18 @@
     padding: 5px;
 }
 
-.rowOne {
+.rowForDeliveries, .rowOne, .rowTwo {
     display: flex;
-
 }
 
-.rowTwo {
+.colOne, .colTwo {
     display: flex;
+    flex-direction: column;
 
 }
 
 .inputNames {
     font-size: 1em;
-   
     margin-bottom: 5px;
     text-transform: uppercase;
     font-weight: 500;
@@ -106,38 +103,36 @@
     width: 5vw;
 }
 
-.inputBox {
+.inputBoxR {
     border: none;
     border-bottom: 1.5px solid lightgray;
     width: 200px;
     transition: .64s;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2vw;
 }
 
-.inputBox.Name {
-    width:20vw;
+.inputBoxR.Name {
+    width:25vw;
 }
 
-.inputBox.ID {
-    width:5vw;
+.inputBoxR.Phone {
+    width: 28vw;
 }
 
-.inputBox.Phone {
-    width: 8vw;
+.inputBoxR.Address {
+    width: 25vw;
 }
 
-.inputBox.Address {
-    width: 14vw;
+.inputBoxR.City {
+    width: 25vw;
 }
 
-.inputBox.City {
-    width: 14vw;
-}
-
-.inputBox.State {
+.inputBoxR.State {
     width: 5vw;
 }
 
-.inputBox:focus {
+.inputBoxR:focus {
     border-bottom: 1.5px solid $darkblue;
     outline: none;
     
@@ -162,32 +157,50 @@
 .buttons {
     display: flex;
     justify-content: space-around;
-    width: 40%;
-    margin-top: 50px;
+    width: 100%;
+    margin-top: 20px;
+    font-family: 'Oswald', sans-serif;
+    
 }
 
-.repairButton, .deliveryButton {
-    width: 100px;
-    height: 100px;
+.repairButtond, .deliveryButtond {
+    width: 25vw;
+    height: 50px;
     border: none;
     border: 1px $darkblue solid;
     border-radius: 3px;
     background-color: white;
     transition: .34s;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2em;
+    color: $darkblue;
+    
 }
 
-.repairButton:hover, .deliveryButton:hover {
+// select {
+//  background-color: white;
+//  border: 1px $darkblue solid;
+//  height: 2em;
+//  font-family: 'Oswald', sans-serif;
+//  font-size: 2em;
+
+// }
+
+.repairButtond:hover, .deliveryButtond:hover {
     cursor: pointer;
-}
-
-.repairButton:focus, .deliveryButton:focus {
     border: 3px lime solid;
     border-radius: 3px;
     outline: none;
 }
 
-.repairButton:visited, .deliveryButton:visited {
+.repairButtond:focus, .deliveryButtond:focus {
+    border: 3px lime solid;
+    border-radius: 3px;
+    outline: none;
+}
+
+.repairButtond:visited, .deliveryButtond:visited {
     border: 3px lime solid;
     border-radius: 3px;
     outline: none;

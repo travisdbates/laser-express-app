@@ -10,24 +10,28 @@ import Customers from "./components/customers/Customers"
 import Repairs from "./components/repairs/Repairs"
 import Deliveries from "./components/deliveries/Deliveries"
 import Orders from "./components/orders/Orders"
+import Insight from "./components/insight/Insight"
+import Toners from "./components/toners/Toners"
 
 
 class App extends Component {
   render() {
     return (
       <div>
-        
-      <HashRouter>
-        <div>
-          <NavBar />
-          <Route component={Login} exact path='/' />
-          <Route component={Dashboard} path='/dashboard' />
-          <Route component={Deliveries} path='/deliveries' />
-          <Route component={Customers} path="/customers" />
-          <Route component={Repairs} path="/repairs" />
-          <Route component={Orders} path="/orders" />
+
+        <HashRouter>
+          <div>
+            <NavBar />
+            <Route component={Login} exact path='/' />
+            <Route component={Dashboard} path='/dashboard' />
+            <Route component={Deliveries} path='/deliveries' />
+            <Route component={Customers} path="/customers" />
+            <Route component={Repairs} path="/repairs" />
+            <Route component={Orders} path="/orders" />
+            <Route component={Insight} path="/insight" />
+            <Route component={Toners} path="/toners" />
           </div>
-      </HashRouter>
+        </HashRouter>
       </div>
 
     );

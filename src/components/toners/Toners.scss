@@ -1,0 +1,74 @@
+@import "../../_colors.scss"; 
+
+.outerDivD {
+    background-color: $darkblue;
+    width: 100vw;
+    height: 90vh;
+    font-family: "Oswald", sans-serif;
+}
+
+.sideBySideSelect {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 50px;
+
+    .placeholder {
+        margin-top: 5px;
+        background-color: white;
+        width: 30vw;
+        height: 40vh;
+    }
+}
+
+.aboveBelowT {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+    margin-right: 35px;
+    .circleT {
+        font-family: 'Oswald', sans-serif;
+        //border: 10px $yellow solid;
+        background-color: $yellow;
+        border-radius: 50%;
+        font-size: 15em;
+        font-weight: 400;
+        width: 200px;
+        height: auto;
+        margin-bottom: 25px;
+        color: $darkblue;
+        text-decoration: none;
+    }
+   
+}
+
+.name {
+    font-size: 2em;
+}
+.horizontal {
+    display: flex;
+    width: auto;
+    overflow-x: scroll;
+    padding: 50px;
+}
+.plusMinus {
+    background-color: transparent;
+    border: none;
+    color: $yellow;
+    font-size: 2em;
+    outline: none;
+    cursor: pointer;
+    transition: .14s;
+}
+
+.plusMinus:active {
+    color: $lightblue;
+}
+
+.noSub {
+    color: $lightblue;
+    cursor: not-allowed;
+    font-size: 2em;
+}
+

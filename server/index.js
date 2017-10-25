@@ -215,6 +215,13 @@ app.put('/api/repairs/completerepair/:id', (req,res) => {
     })
 })
 
+app.get('/api/repairs/d3count', (req, res) => {
+    app.get('db').repairs_counts_for_d3()
+    .then(response => {
+        res.status(200).send(response)
+    })
+})
+
 //DELIVERIES ************************************************
 app.get('/api/deliveries/getall', (req,res) => {
     app.get('db').deliveries_return_all()
@@ -289,6 +296,13 @@ app.put('/api/deliveries/completedelivery/:id', (req,res) => {
     })
 })
 
+app.get('/api/deliveries/d3count', (req, res) => {
+    app.get('db').deliveries_counts_for_d3()
+    .then(response => {
+        res.status(200).send(response)
+    })
+})
+
 //ORDERS ************************************************
 
 app.get('/api/orders/getall', (req,res) => {
@@ -297,6 +311,70 @@ app.get('/api/orders/getall', (req,res) => {
         res.status(200).send(orders)
     })
 })
+
+app.get('/api/orders/getcomplete', (req,res) => {
+    app.get('db').orders_getcomplete()
+    .then(orders => {
+        res.status(200).send(orders)
+    })
+})
+
+app.post('/api/orders/insert',(req,res) => {
+    var order = [
+        req.body.date,
+        req.body.time,
+        req.body.quantity,
+        req.body.item,
+        req.body.customer
+    ]
+    
+    app.get('db').orders_insert(order)
+    .then(order => {
+        res.status(200).send(order)
+    })
+})
+
+app.get('/api/orders/count', (req, res) => {
+    app.get('db').orders_count()
+    .then(orders => {
+        res.status(200).send(orders)
+    })
+})
+
+app.put('/api/orders/completeorder/:id', (req,res) => {
+    const orderID = req.params.id;
+    app.get('db').orders_complete([orderID])
+    .then(response => {
+        res.status(200).send(response)
+    })
+})
+
+//TONERS ************************************************
+
+app.get('/api/toners/getall', (req,res) => {
+    app.get('db').toners_select()
+    .then(toners => {
+        res.status(200).send(toners)
+    })
+})
+
+app.put('/api/toners/add/:id', (req,res) => {
+    const id = req.params.id;
+    app.get('db').toners_add([id])
+    .then(toners => {
+        res.status(200).send(toners)
+    })
+})
+
+app.put('/api/toners/subtract/:id', (req,res) => {
+    const id = req.params.id;
+    app.get('db').toners_subtract([id])
+    .then(toners => {
+        res.status(200).send(toners)
+    })
+})
+
+
 
 const PORT = 3005
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))

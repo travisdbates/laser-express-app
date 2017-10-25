@@ -14,7 +14,8 @@
   transition: .84s;
   outline: none;
   border: none;
-  z-index: 0; }
+  z-index: 0;
+  font-family: 'Oswald', sans-serif; }
 
 .modalWindow {
   background-color: white;
@@ -26,7 +27,7 @@
   justify-content: flex-start;
   border: 1px solid #5DA494;
   border-radius: 2px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Oswald', sans-serif;
   z-index: 1; }
 
 .rightAlign {
@@ -52,11 +53,12 @@
   flex-direction: column;
   padding: 5px; }
 
-.rowOne {
+.rowForDeliveries, .rowOne, .rowTwo {
   display: flex; }
 
-.rowTwo {
-  display: flex; }
+.colOne, .colTwo {
+  display: flex;
+  flex-direction: column; }
 
 .inputNames {
   font-size: 1em;
@@ -83,31 +85,30 @@
 .inputNames.State {
   width: 5vw; }
 
-.inputBox {
+.inputBoxR {
   border: none;
   border-bottom: 1.5px solid lightgray;
   width: 200px;
-  transition: .64s; }
+  transition: .64s;
+  font-family: 'Oswald', sans-serif;
+  font-size: 2vw; }
 
-.inputBox.Name {
-  width: 20vw; }
+.inputBoxR.Name {
+  width: 25vw; }
 
-.inputBox.ID {
+.inputBoxR.Phone {
+  width: 28vw; }
+
+.inputBoxR.Address {
+  width: 25vw; }
+
+.inputBoxR.City {
+  width: 25vw; }
+
+.inputBoxR.State {
   width: 5vw; }
 
-.inputBox.Phone {
-  width: 8vw; }
-
-.inputBox.Address {
-  width: 14vw; }
-
-.inputBox.City {
-  width: 14vw; }
-
-.inputBox.State {
-  width: 5vw; }
-
-.inputBox:focus {
+.inputBoxR:focus {
   border-bottom: 1.5px solid #5DA494;
   outline: none; }
 
@@ -128,28 +129,35 @@
 .buttons {
   display: flex;
   justify-content: space-around;
-  width: 40%;
-  margin-top: 50px; }
+  width: 100%;
+  margin-top: 20px;
+  font-family: 'Oswald', sans-serif; }
 
-.repairButton, .deliveryButton {
-  width: 100px;
-  height: 100px;
+.repairButtond, .deliveryButtond {
+  width: 25vw;
+  height: 50px;
   border: none;
   border: 1px #5DA494 solid;
   border-radius: 3px;
   background-color: white;
   transition: .34s;
-  margin-bottom: 50px; }
+  margin-bottom: 20px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 2em;
+  color: #5DA494; }
 
-.repairButton:hover, .deliveryButton:hover {
-  cursor: pointer; }
-
-.repairButton:focus, .deliveryButton:focus {
+.repairButtond:hover, .deliveryButtond:hover {
+  cursor: pointer;
   border: 3px lime solid;
   border-radius: 3px;
   outline: none; }
 
-.repairButton:visited, .deliveryButton:visited {
+.repairButtond:focus, .deliveryButtond:focus {
+  border: 3px lime solid;
+  border-radius: 3px;
+  outline: none; }
+
+.repairButtond:visited, .deliveryButtond:visited {
   border: 3px lime solid;
   border-radius: 3px;
   outline: none; }

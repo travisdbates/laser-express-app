@@ -13,7 +13,7 @@ class CustomerModal extends Component {
         this.state = {
             name: '',
             phone: '',
-            streetAdress: '',
+            streetAddress: '',
             city: '',
             state: ''
 
@@ -66,7 +66,7 @@ class CustomerModal extends Component {
         var data = {
             name: this.state.name,
             phone: this.state.phone,
-            streetaddress: this.state.streetAdress,
+            streetaddress: this.state.streetAddress,
             city: this.state.city,
             state: this.state.state,
         }

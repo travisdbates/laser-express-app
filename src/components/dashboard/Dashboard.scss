@@ -1,6 +1,7 @@
 @import "../../_colors.scss";
 
 
+
 .dash-container {
     background-color: white;
     display: flex;
@@ -112,6 +113,58 @@
         background-color: $lightblue;
         color: $darkblue;
         cursor: pointer;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .rdCircles {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        width: 70vw;
+        margin-bottom: 10px;
+    }
+    .aboveBelow {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: left;
+    }
+    .circle {
+        font-family: 'Oswald', sans-serif;
+        //border: 10px $yellow solid;
+        background-color: $yellow;
+        border-radius: 50%;
+        font-size: 1em;
+        font-weight: 400;
+        width: auto;
+        height: auto;
+        margin-bottom: 25px;
+        color: $darkblue;
+        text-decoration: none;
+    }
+    .descriptions {
+        font-family: 'Open Sans Condensed', sans-serif;
+        font-weight: 200;
+        font-size: 2em;
+        color: $lightblue;
+        letter-spacing: .5em;
+    
+    }
+    .tempTitle {
+        top: 10vh;
+        color: $lightblue;
+        font-family: 'Open Sans Condensed', sans-serif;
+        font-weight: 200;
+        font-size: 1em;
+        margin-bottom: 10px;
+        letter-spacing: .5em;
+        margin-left: 2vw;
+        margin-top: 50px;
+    }
+    .newCall {
+        display: none;
     }
 }
 

@@ -164,9 +164,12 @@ export default class Customers extends Component {
                 {this.state.repairs.length === 0 ? <Spinner name='double-bounce' /> : this.state.hideComplete ?
                 
                 this.state.completeRepairs.map((repairs, index) => {
+                    let d = repairs.date.substring(0, repairs.date.indexOf('T'))
+                    
+
                     return (
                         <div className="repairContainer" key={repairs.repairsid}>
-                            <span className="detailsRepairs">{repairs.date}</span>
+                            <span className="detailsRepairs">{d}</span>
                             <span className="detailsRepairs">{repairs.time}</span>
                             <span className="detailsRepairs">{repairs.status}</span>
                             <span className="detailsRepairs">{repairs.contactname}</span>
@@ -188,9 +191,11 @@ export default class Customers extends Component {
                 })
                 :
                 this.state.repairs.map((repairs, index) => {
+                    let d = repairs.date.substring(0, repairs.date.indexOf('T'))
+                    
                     return (
                         <div className="repairContainer" key={repairs.repairsid}>
-                            <span className="detailsRepairs">{repairs.date}</span>
+                            <span className="detailsRepairs">{d}</span>
                             <span className="detailsRepairs">{repairs.time}</span>
                             <span className="detailsRepairs">{repairs.status}</span>
                             <span className="detailsRepairs">{repairs.contactname}</span>

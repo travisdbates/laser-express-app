@@ -75,7 +75,8 @@
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: 200; 
     font-size: 1em; 
-    width: 6.66vw;
+    width: 9.09vw;
+    text-align: center;
 }
 
 
@@ -90,4 +91,26 @@
     border-radius: 100%;
     border: none;
     cursor: pointer;
+}
+
+
+.completedOrder {
+    background: none;
+    cursor: pointer;
+    color: black;
+    border: none;
+    transition: .24s;
+}
+
+.completedOrder:hover {
+    color: limegreen;
+    font-size: 1.5em;
+}
+
+.completedOrdercomplete {
+    background: none;
+    cursor: pointer;
+    color: limegreen;
+    border: none;
+    font-size: 1.5em;
 }

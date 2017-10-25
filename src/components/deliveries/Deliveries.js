@@ -30,10 +30,12 @@ export default class Deliveries extends Component {
         this.updateOrder = this.updateOrder.bind(this)
         this.completeDelivery = this.completeDelivery.bind(this)
         this.toggleSwitch = this.toggleSwitch.bind(this)
+        this.sendToOrder = this.sendToOrder.bind(this)
     }
 
     notify = () => toast.success("Marked as complete!");
-
+    notifyOrder = () => toast.success("Sent to Order Log!");
+    
 
     componentDidMount() {
 
@@ -43,7 +45,6 @@ export default class Deliveries extends Component {
                     completeDeliveries: response.data
                 })
             })
-        console.log(this.state.completeDeliveries)
 
 
         axios.get("/api/deliveries/getall")
@@ -59,8 +60,6 @@ export default class Deliveries extends Component {
                     return 0;
                 })
                 this.setState({ deliveries: response.data })
-
-                console.log(this.state.deliveries)
             })
 
 
@@ -68,23 +67,19 @@ export default class Deliveries extends Component {
 
     showModal() {
         this.setState({ hideModal: !this.state.hideModal })
-        console.log(this.state.hideModal)
     }
 
     updateOrder(id, index) {
-        console.log(id)
         axios.put(`/api/deliveries/updateorder/${id}`)
-            .then(response => console.log(response))
-        console.log(this.state.deliveries[index])
         this.state.deliveries[index].orderstatus = !this.state.deliveries[index].orderstatus;
         this.setState({ deliveries: this.state.deliveries })
 
     }
 
     updateInvoice(id, index) {
-        console.log(id)
+   
         axios.put(`/api/deliveries/updateinvoice/${id}`)
-            .then(response => console.log(response))
+           
 
         this.state.deliveries[index].invoicestatus = !this.state.deliveries[index].invoicestatus;
         this.setState({ deliveries: this.state.deliveries })
@@ -92,7 +87,7 @@ export default class Deliveries extends Component {
 
     completeDelivery(id, index) {
         axios.put(`/api/deliveries/completedelivery/${id}`)
-            .then(response => console.log(response))
+            
         this.state.deliveries.splice(index, 1)
         this.setState({ deliveries: this.state.deliveries })
         this.notify();
@@ -102,7 +97,33 @@ export default class Deliveries extends Component {
         this.setState({
             hideComplete: !this.state.hideComplete
         })
-        console.log(this.state.hideComplete)
+    }
+
+    orderFormat(id, q, c) {
+        var arr = [];
+        for (var i = 0; i < q.length; i++) {
+            arr.push(q[i] + " - " + c[i])
+        }
+        return arr;
+
+    }
+
+    sendToOrder(index, indexOrder, order, delivCart, delivQuant){
+        
+
+        var order = {
+            date: this.state.deliveries[index].date,
+            time: this.state.deliveries[index].time,
+            quantity: delivQuant[indexOrder],
+            item: delivCart[indexOrder],
+            customer: this.state.deliveries[index].contactname
+        }
+
+        axios.post('/api/orders/insert', order)
+        .then((response) => {
+        })
+        
+        this.notifyOrder();
     }
 
     render() {
@@ -124,8 +145,8 @@ export default class Deliveries extends Component {
 
                         <span className="headerTitleDeliveries">TIME</span>
                         <div className="deliveriesDivider"></div>
-                        <span className="headerTitleDeliveries">STATUS</span>
-                        <div className="deliveriesDivider"></div>
+                        {/* <span className="headerTitleDeliveries">STATUS</span>
+                        <div className="deliveriesDivider"></div> */}
 
                         <span className="headerTitleDeliveries">CONTACT</span>
                         <div className="deliveriesDivider"></div>
@@ -163,7 +184,7 @@ export default class Deliveries extends Component {
                             <div className="customerContainer" key={deliveries.deliveriesid}>
                                 <span className="detailsDeliveries">{deliveries.date}</span>
                                 <span className="detailsDeliveries">{deliveries.time}</span>
-                                <span className="detailsDeliveries">{deliveries.status}</span>
+                                {/* <span className="detailsDeliveries">{deliveries.status}</span> */}
                                 <span className="detailsDeliveries">{deliveries.contactname}</span>
                                 <span className="detailsDeliveries">{deliveries.streetaddress}</span>
                                 <span className="detailsDeliveries">{deliveries.phone}</span>
@@ -183,17 +204,22 @@ export default class Deliveries extends Component {
                     })
                     :
                     this.state.deliveries.map((deliveries, index) => {
-                        
 
                         return (
                             <div className="customerContainer" key={deliveries.deliveriesid}>
                                 <span className="detailsDeliveries">{deliveries.date}</span>
                                 <span className="detailsDeliveries">{deliveries.time}</span>
-                                <span className="detailsDeliveries">{deliveries.status}</span>
+                                {/* <span className="detailsDeliveries">{deliveries.status}</span> */}
                                 <span className="detailsDeliveries">{deliveries.contactname}</span>
                                 <span className="detailsDeliveries">{deliveries.streetaddress}</span>
                                 <span className="detailsDeliveries">{deliveries.phone}</span>
-                                <span className="detailsDeliveries">{deliveries.quantity} - {deliveries.cartridge}</span>
+                                <span className="detailsDeliveries">{this.orderFormat(deliveries.deliveriesid, deliveries.quantity, deliveries.cartridge).map((order, indexOrder) => {
+                                    return(
+                                    <div>
+                                        <span className="detailsDeliveries">{order}</span>
+                                        <button className="sendToOrder" onClick={() => this.sendToOrder(index, indexOrder, order, deliveries.cartridge, deliveries.quantity)}>&rarr;</button>
+                                    </div>)
+                                })}</span>
                                 <span className="detailsDeliveries">{deliveries.tech}</span>
                                 <span className="detailsDeliveries">{deliveries.orderstatus === false ? <button onClick={() => this.updateOrder(deliveries.deliveriesid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :
                                     <button onClick={() => this.updateOrder(deliveries.deliveriesid, index)} className="Ordered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button>}</span>
