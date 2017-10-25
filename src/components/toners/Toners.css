@@ -1,5 +1,5 @@
 .outerDivD {
-  background-color: #5DA494;
+  background-color: #7F7573;
   width: 100vw;
   height: 90vh;
   font-family: "Oswald", sans-serif; }
@@ -23,14 +23,14 @@
   margin-right: 35px; }
   .aboveBelowT .circleT {
     font-family: 'Oswald', sans-serif;
-    background-color: #E5B52F;
+    background-color: #1A3368;
     border-radius: 50%;
     font-size: 15em;
     font-weight: 400;
     width: 200px;
     height: auto;
     margin-bottom: 25px;
-    color: #5DA494;
+    color: #7F7573;
     text-decoration: none; }
 
 .name {
@@ -45,16 +45,16 @@
 .plusMinus {
   background-color: transparent;
   border: none;
-  color: #E5B52F;
+  color: #1A3368;
   font-size: 2em;
   outline: none;
   cursor: pointer;
   transition: .14s; }
 
 .plusMinus:active {
-  color: #8EC5BF; }
+  color: #F9C757; }
 
 .noSub {
-  color: #8EC5BF;
+  color: #F9C757;
   cursor: not-allowed;
   font-size: 2em; }

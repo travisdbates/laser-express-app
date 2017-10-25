@@ -25,6 +25,15 @@ export default class NavBar extends Component {
                 </div>
 
 
+                <div className="footer">
+                    <NavLink className="tabbedLinksMobile" activeClassName="tabbedLinksMobileActive" exact to="/deliveries">DELIVERIES</NavLink>
+                    <NavLink className="headerMobile" to="/dashboard">
+                        <img src={LELogoWhite} className="logoForNavMobile" alt="logo" />
+                    </NavLink>
+                    <NavLink className="tabbedLinksMobile" activeClassName="tabbedLinksMobileActive" exact to="/orders">ORDERS</NavLink>
+                </div>
+
+
             </div>
 
         )

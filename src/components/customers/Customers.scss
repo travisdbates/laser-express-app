@@ -4,22 +4,22 @@
 // .custFixedHeader {
 //     top: 0;
 //     position: sticky;
-//     background-color: $darkblue;
+//     background-color: $colorOne;
 //     margin-bottom: 0px;
-//     border-bottom: 3px $yellow solid;
+//     border-bottom: 3px $accentColor solid;
     
 // }
 
 // .customersHeaderC {
 //     display: flex;
 //     justify-content: space-between;
-//     border-bottom: 3px $darkblue solid;
-//     color: $lightblue;
+//     border-bottom: 3px $colorOne solid;
+//     color: $colorTwo;
 // }
 
 // .customersWord {
 //     top: 10vh;
-//     color: $lightblue;
+//     color: $colorTwo;
 //     font-family: 'Open Sans Condensed', sans-serif;
 //     font-weight: 200;
 //     font-size: 3em;
@@ -36,7 +36,7 @@
 //     -webkit-transform: skew(-20deg) rotate(2deg);
 //     -moz-transform: skew(-20deg) rotate(2deg);
 //     width: 1px;
-//     background-color: $yellow;
+//     background-color: $accentColor;
 // }
 
 
@@ -47,14 +47,14 @@
 // }
 
 .outermostDiv {
-    //background-color: $darkblue;
+    //background-color: $colorOne;
 }
 .fixedHeader {
     top: 0;
     position: sticky;
-    background-color: $darkblue;
+    background-color: $colorOne;
     margin-bottom: 0px;
-    border-bottom: 3px $yellow solid;
+    border-bottom: 3px $accentColor solid;
 }
 
 
@@ -66,7 +66,7 @@
 
 .customersWord {
     top: 10vh;
-    color: $lightblue;
+    color: $colorTwo;
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: 200;
     font-size: 3em;
@@ -85,8 +85,8 @@
 .customerHeader {
     display: flex;
     justify-content: space-between;
-    border-bottom: 3px $darkblue solid;
-    color: $lightblue;
+    border-bottom: 3px $colorOne solid;
+    color: $colorTwo;
 }
 
 .customersDivider {
@@ -96,7 +96,7 @@
     -webkit-transform: skew(-20deg) rotate(2deg);
     -moz-transform: skew(-20deg) rotate(2deg);
     width: 1px;
-    background-color: $yellow;
+    background-color: $accentColor;
 }
 
 .aboveBelowNav {
@@ -132,7 +132,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-bottom: 1px $darkblue solid;
+    border-bottom: 1px $colorOne solid;
 }
 
 .custName {
@@ -152,7 +152,7 @@
 
 
 .addCustomer {
-    background-color: $darkblue;
+    background-color: $colorOne;
     position: fixed;
     bottom: 30px;
     right: 30px;
@@ -166,14 +166,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px $darkblue solid;
+    border: 2px $colorOne solid;
     
 }
 
 .addCustomer:hover {
     background-color: white;
-    color: $darkblue;
-    border: 2px $darkblue solid;
+    color: $colorOne;
+    border: 2px $colorOne solid;
     cursor: pointer;
    
 }
@@ -181,7 +181,7 @@
 .vert {
     width: 10px;
     height: 75px;
-    background-color: $yellow;
+    background-color: $accentColor;
     position: absolute;
 
 }
@@ -189,7 +189,7 @@
 .horiz {
     width: 75px;
     height: 10px;
-    background-color: $yellow;
+    background-color: $accentColor;
     position: absolute;
 }
 

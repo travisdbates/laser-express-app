@@ -7,14 +7,14 @@
   align-content: center;
   align-items: center;
   justify-content: flex-start;
-  background-color: #5DA494; }
+  background-color: #7F7573; }
 
 .logo {
   width: 50vw; }
 
 .tempTitle {
   top: 10vh;
-  color: #8EC5BF;
+  color: #F9C757;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 200;
   font-size: 3em;
@@ -25,7 +25,7 @@
 
 .greeting {
   top: 10vh;
-  color: #8EC5BF;
+  color: #F9C757;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 200;
   font-size: 3em;
@@ -50,33 +50,33 @@
     text-align: left; }
     .rdCircles .aboveBelow .circle {
       font-family: 'Oswald', sans-serif;
-      background-color: #E5B52F;
+      background-color: #1A3368;
       border-radius: 50%;
       font-size: 15em;
       font-weight: 400;
       width: auto;
       height: auto;
       margin-bottom: 25px;
-      color: #5DA494;
+      color: #7F7573;
       text-decoration: none; }
     .rdCircles .aboveBelow .descriptions {
       font-family: 'Open Sans Condensed', sans-serif;
       font-weight: 200;
       font-size: 2em;
-      color: #8EC5BF;
+      color: #F9C757;
       letter-spacing: .5em; }
 
 .newCall {
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 200;
   font-size: 2vw;
-  color: #8EC5BF;
+  color: #F9C757;
   border: none;
   padding: 25px;
   margin-top: 10px;
   margin-bottom: 50px;
-  background-color: #5DA494;
-  border: #E5B52F 5px solid;
+  background-color: #7F7573;
+  border: #1A3368 5px solid;
   border-radius: 6px;
   font-size: 3em;
   font-weight: 900;
@@ -84,49 +84,54 @@
   transition: .84s;
   outline: none; }
   .newCall .newCall:hover {
-    background-color: #8EC5BF;
-    color: #5DA494;
+    background-color: #F9C757;
+    color: #7F7573;
     cursor: pointer; }
 
-@media only screen and (max-width: 375px) {
-  .rdCircles {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    width: 70vw;
-    margin-bottom: 10px; }
-  .aboveBelow {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: left; }
-  .circle {
-    font-family: 'Oswald', sans-serif;
-    background-color: #E5B52F;
-    border-radius: 50%;
-    font-size: 1em;
-    font-weight: 400;
-    width: auto;
-    height: auto;
-    margin-bottom: 25px;
-    color: #5DA494;
-    text-decoration: none; }
-  .descriptions {
+@media only screen and (max-width: 568px) {
+  .dash-container {
+    height: 100vh; }
+  .tempTitle {
+    top: 10vh;
+    color: #F9C757;
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: 200;
     font-size: 2em;
-    color: #8EC5BF;
-    letter-spacing: .5em; }
-  .tempTitle {
-    top: 10vh;
-    color: #8EC5BF;
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-weight: 200;
-    font-size: 1em;
     margin-bottom: 10px;
     letter-spacing: .5em;
     margin-left: 2vw;
-    margin-top: 50px; }
+    margin-top: 25px; }
+  .rdCircles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    width: 70vw;
+    margin-bottom: 10px; }
+    .rdCircles .aboveBelow {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: left; }
+      .rdCircles .aboveBelow .circle {
+        font-family: 'Oswald', sans-serif;
+        background-color: #1A3368;
+        border-radius: 50%;
+        font-size: 3.75em;
+        font-weight: 400;
+        width: auto;
+        height: auto;
+        margin-bottom: 7px;
+        color: #7F7573;
+        text-decoration: none; }
+      .rdCircles .aboveBelow .descriptions {
+        font-family: 'Open Sans Condensed', sans-serif;
+        font-weight: 200;
+        font-size: 2em;
+        color: #F9C757;
+        letter-spacing: .5em; }
   .newCall {
-    display: none; } }
+    display: none; }
+  .greeting {
+    margin-top: 5px; } }

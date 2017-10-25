@@ -2,14 +2,14 @@
 @import "../../_colors.scss";
 
 .outermostDiv {
-    //background-color: $darkblue;
+    //background-color: $colorOne;
 }
 .fixedHeader {
     top: 0;
     position: sticky;
-    background-color: $darkblue;
+    background-color: $colorOne;
     margin-bottom: 0px;
-    border-bottom: 3px $yellow solid;
+    border-bottom: 3px $accentColor solid;
 }
 
 .sideBySide {
@@ -24,7 +24,7 @@
         align-content: center;
         margin-right: 10px;
         .showComplete {
-            color: $lightblue;
+            color: $colorTwo;
             font-family: 'Open Sans Condensed', sans-serif;
             font-weight: 200;
             font-size: 1.3em;
@@ -36,7 +36,7 @@
 
 .deliveriesWord {
     top: 10vh;
-    color: $lightblue;
+    color: $colorTwo;
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: 200;
     font-size: 3em;
@@ -50,8 +50,8 @@
 .deliveriesHeader {
     display: flex;
     justify-content: space-between;
-    border-bottom: 3px $darkblue solid;
-    color: $lightblue;
+    border-bottom: 3px $colorOne solid;
+    color: $colorTwo;
 }
 
 .deliveriesDivider {
@@ -61,7 +61,7 @@
     -webkit-transform: skew(-20deg) rotate(2deg);
     -moz-transform: skew(-20deg) rotate(2deg);
     width: 1px;
-    background-color: $yellow;
+    background-color: $accentColor;
 }
 
 .headerTitleName {
@@ -83,7 +83,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    border-bottom: 1px $darkblue solid;
+    border-bottom: 1px $colorOne solid;
     background-color: white;
        
 }
@@ -112,12 +112,12 @@
 }
 
 .sendToOrder:hover {
-    color: $yellow;
+    color: $accentColor;
     font-size: 1.1em;
 }
 
 .addDeliveryButton {
-    background-color: $darkblue;
+    background-color: $colorOne;
     position: fixed;
     bottom: 30px;
     right: 30px;
@@ -131,14 +131,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px $darkblue solid;
+    border: 2px $colorOne solid;
     
 }
 
 .addDeliveryButton:hover {
     background-color: white;
-    color: $darkblue;
-    border: 2px $darkblue solid;
+    color: $colorOne;
+    border: 2px $colorOne solid;
     cursor: pointer;
    
 }
@@ -146,7 +146,7 @@
 .vert {
     width: 10px;
     height: 65px;
-    background-color: $lightblue;
+    background-color: $colorTwo;
     position: absolute;
 
 }
@@ -154,7 +154,7 @@
 .horiz {
     width: 65px;
     height: 10px;
-    background-color: $lightblue;
+    background-color: $colorTwo;
     position: absolute;
 }
 

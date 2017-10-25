@@ -1,5 +1,5 @@
 .login-container {
-  background-color: #5DA494;
+  background-color: #7F7573;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,7 +15,7 @@
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 700;
   font-size: 2em;
-  color: #8EC5BF;
+  color: #F9C757;
   letter-spacing: .5em;
   margin-top: 50px;
   color: white;
@@ -26,14 +26,14 @@
   text-decoration: none;
   border-radius: 50px;
   transition: .84s;
-  border: 2px solid #E5B52F; }
+  border: 2px solid #1A3368; }
 
 .login-button::first-letter {
   letter-spacing: .5; }
 
 .login-button:hover {
   background-color: white;
-  color: #E5B52F;
+  color: #1A3368;
   outline: none; }
 
 .logo {

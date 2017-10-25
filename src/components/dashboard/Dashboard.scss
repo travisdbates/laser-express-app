@@ -11,7 +11,7 @@
     align-content: center;
     align-items: center;
     justify-content: flex-start;
-    background-color: $darkblue;
+    background-color: $colorOne;
 }
 
 .logo {
@@ -20,7 +20,7 @@
 
 .tempTitle {
     top: 10vh;
-    color: $lightblue;
+    color: $colorTwo;
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: 200;
     font-size: 3em;
@@ -32,7 +32,7 @@
 
 .greeting {
     top: 10vh;
-    color: $lightblue;
+    color: $colorTwo;
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: 200;
     font-size: 3em;
@@ -61,22 +61,22 @@
         text-align: left;
         .circle {
             font-family: 'Oswald', sans-serif;
-            //border: 10px $yellow solid;
-            background-color: $yellow;
+            //border: 10px $accentColor solid;
+            background-color: $accentColor;
             border-radius: 50%;
             font-size: 15em;
             font-weight: 400;
             width: auto;
             height: auto;
             margin-bottom: 25px;
-            color: $darkblue;
+            color: $colorOne;
             text-decoration: none;
         }
         .descriptions {
             font-family: 'Open Sans Condensed', sans-serif;
             font-weight: 200;
             font-size: 2em;
-            color: $lightblue;
+            color: $colorTwo;
             letter-spacing: .5em;
         
         }
@@ -94,14 +94,14 @@
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: 200;
     font-size: 2vw;
-    color: $lightblue;
+    color: $colorTwo;
 
     border: none;
     padding: 25px;
     margin-top: 10px;
     margin-bottom: 50px;
-    background-color: $darkblue;
-    border: $yellow 5px solid;
+    background-color: $colorOne;
+    border: $accentColor 5px solid;
     border-radius: 6px;
     font-size: 3em;
     font-weight: 900;
@@ -110,61 +110,72 @@
     outline: none;
 
     .newCall:hover {
-        background-color: $lightblue;
-        color: $darkblue;
+        background-color: $colorTwo;
+        color: $colorOne;
         cursor: pointer;
     }
 }
 
-@media only screen and (max-width: 375px) {
-    .rdCircles {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-        width: 70vw;
-        margin-bottom: 10px;
+@media only screen and (max-width: 568px) {
+    .dash-container {
+        height: 100vh;
     }
-    .aboveBelow {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        text-align: left;
-    }
-    .circle {
-        font-family: 'Oswald', sans-serif;
-        //border: 10px $yellow solid;
-        background-color: $yellow;
-        border-radius: 50%;
-        font-size: 1em;
-        font-weight: 400;
-        width: auto;
-        height: auto;
-        margin-bottom: 25px;
-        color: $darkblue;
-        text-decoration: none;
-    }
-    .descriptions {
+
+    .tempTitle {
+        top: 10vh;
+        color: $colorTwo;
         font-family: 'Open Sans Condensed', sans-serif;
         font-weight: 200;
         font-size: 2em;
-        color: $lightblue;
-        letter-spacing: .5em;
-    
-    }
-    .tempTitle {
-        top: 10vh;
-        color: $lightblue;
-        font-family: 'Open Sans Condensed', sans-serif;
-        font-weight: 200;
-        font-size: 1em;
         margin-bottom: 10px;
         letter-spacing: .5em;
         margin-left: 2vw;
-        margin-top: 50px;
+        margin-top: 25px;
     }
+
+    .rdCircles {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        width: 70vw;
+        margin-bottom: 10px;
+        .aboveBelow {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: left;
+            .circle {
+                font-family: 'Oswald', sans-serif;
+                //border: 10px $accentColor solid;
+                background-color: $accentColor;
+                border-radius: 50%;
+                font-size: 3.75em;
+                font-weight: 400;
+                width: auto;
+                height: auto;
+                margin-bottom: 7px;
+                color: $colorOne;
+                text-decoration: none;
+            }
+            .descriptions {
+                font-family: 'Open Sans Condensed', sans-serif;
+                font-weight: 200;
+                font-size: 2em;
+                color: $colorTwo;
+                letter-spacing: .5em;
+            
+            }
+        }
+        
+    }
+    
     .newCall {
         display: none;
+    }
+    .greeting {
+        margin-top: 5px;
     }
 }
 

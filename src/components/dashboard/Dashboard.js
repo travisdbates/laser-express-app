@@ -24,7 +24,6 @@ export default class Dashboard extends Component {
         this.showModal = this.showModal.bind(this)
     }
     componentDidMount() {
-        // eslint-disable-next-line
         const userData = axios.get('/auth/me')
             .then(res => {
                 console.log(res.data)

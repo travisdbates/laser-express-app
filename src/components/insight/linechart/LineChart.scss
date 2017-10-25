@@ -1,7 +1,7 @@
 @import "../../../_colors.scss";
 
 .container > .contentContainer > .contentContainerBackgroundRect {
-    fill: $darkblue;
+    fill: $colorOne;
   }
   
   .container > .contentContainer .xAxis text {
@@ -10,13 +10,13 @@
   
   .container > .contentContainer .line path {
     fill: transparent;
-    stroke: $yellow;
+    stroke: $accentColor;
     stroke-width: 2;
   }
   
   .container > .contentContainer .scatter circle {
-    fill: $yellow;
-    stroke: $darkblue;
+    fill: $accentColor;
+    stroke: $colorOne;
     stroke-width: 2;
   }
   

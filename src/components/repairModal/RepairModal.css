@@ -25,7 +25,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  border: 1px solid #5DA494;
+  border: 1px solid #7F7573;
   border-radius: 2px;
   font-family: 'Oswald', sans-serif;
   z-index: 1; }
@@ -109,7 +109,7 @@
   width: 5vw; }
 
 .inputBoxR:focus {
-  border-bottom: 1.5px solid #5DA494;
+  border-bottom: 1.5px solid #7F7573;
   outline: none; }
 
 .Select-input {
@@ -117,7 +117,7 @@
   width: 20vw; }
 
 .closeButton {
-  color: #5DA494;
+  color: #7F7573;
   background: none;
   border: none;
   cursor: pointer;
@@ -137,14 +137,14 @@
   width: 25vw;
   height: 50px;
   border: none;
-  border: 1px #5DA494 solid;
+  border: 1px #7F7573 solid;
   border-radius: 3px;
   background-color: white;
   transition: .34s;
   margin-bottom: 20px;
   font-family: 'Oswald', sans-serif;
   font-size: 2em;
-  color: #5DA494; }
+  color: #7F7573; }
 
 .repairButtond:hover, .deliveryButtond:hover {
   cursor: pointer;

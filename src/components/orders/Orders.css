@@ -2,13 +2,13 @@
 .fixedHeader {
   top: 0;
   position: sticky;
-  background-color: #5DA494;
+  background-color: #7F7573;
   margin-bottom: 0px;
-  border-bottom: 3px #E5B52F solid; }
+  border-bottom: 3px #1A3368 solid; }
 
 .ordersWord {
   top: 10vh;
-  color: #8EC5BF;
+  color: #F9C757;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 200;
   font-size: 3em;
@@ -20,8 +20,8 @@
 .ordersHeader {
   display: flex;
   justify-content: space-between;
-  border-bottom: 3px #5DA494 solid;
-  color: #8EC5BF; }
+  border-bottom: 3px #7F7573 solid;
+  color: #F9C757; }
 
 .ordersDivider {
   background-color: darkslategray;
@@ -30,7 +30,7 @@
   -webkit-transform: skew(-20deg) rotate(2deg);
   -moz-transform: skew(-20deg) rotate(2deg);
   width: 1px;
-  background-color: #E5B52F; }
+  background-color: #1A3368; }
 
 .headerTitleName {
   width: 33vw;
@@ -50,7 +50,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 1px #5DA494 solid; }
+  border-bottom: 1px #7F7573 solid; }
 
 .name {
   font-family: 'Roboto Condensed', sans-serif;

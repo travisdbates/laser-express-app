@@ -2,9 +2,9 @@
 .fixedHeader {
   top: 0;
   position: sticky;
-  background-color: #5DA494;
+  background-color: #7F7573;
   margin-bottom: 0px;
-  border-bottom: 3px #E5B52F solid; }
+  border-bottom: 3px #1A3368 solid; }
 
 .sideBySide {
   display: flex;
@@ -18,7 +18,7 @@
     align-content: center;
     margin-right: 10px; }
     .sideBySide .showCompleteTitle .showComplete {
-      color: #8EC5BF;
+      color: #F9C757;
       font-family: 'Open Sans Condensed', sans-serif;
       font-weight: 200;
       font-size: 1.3em;
@@ -26,7 +26,7 @@
 
 .deliveriesWord {
   top: 10vh;
-  color: #8EC5BF;
+  color: #F9C757;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 200;
   font-size: 3em;
@@ -38,8 +38,8 @@
 .deliveriesHeader {
   display: flex;
   justify-content: space-between;
-  border-bottom: 3px #5DA494 solid;
-  color: #8EC5BF; }
+  border-bottom: 3px #7F7573 solid;
+  color: #F9C757; }
 
 .deliveriesDivider {
   background-color: darkslategray;
@@ -48,7 +48,7 @@
   -webkit-transform: skew(-20deg) rotate(2deg);
   -moz-transform: skew(-20deg) rotate(2deg);
   width: 1px;
-  background-color: #E5B52F; }
+  background-color: #1A3368; }
 
 .headerTitleName {
   width: 33vw;
@@ -68,7 +68,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  border-bottom: 1px #5DA494 solid;
+  border-bottom: 1px #7F7573 solid;
   background-color: white; }
 
 .name {
@@ -92,11 +92,11 @@
   transition: .20s; }
 
 .sendToOrder:hover {
-  color: #E5B52F;
+  color: #1A3368;
   font-size: 1.1em; }
 
 .addDeliveryButton {
-  background-color: #5DA494;
+  background-color: #7F7573;
   position: fixed;
   bottom: 30px;
   right: 30px;
@@ -110,24 +110,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px #5DA494 solid; }
+  border: 2px #7F7573 solid; }
 
 .addDeliveryButton:hover {
   background-color: white;
-  color: #5DA494;
-  border: 2px #5DA494 solid;
+  color: #7F7573;
+  border: 2px #7F7573 solid;
   cursor: pointer; }
 
 .vert {
   width: 10px;
   height: 65px;
-  background-color: #8EC5BF;
+  background-color: #F9C757;
   position: absolute; }
 
 .horiz {
   width: 65px;
   height: 10px;
-  background-color: #8EC5BF;
+  background-color: #F9C757;
   position: absolute; }
 
 .notOrdered {

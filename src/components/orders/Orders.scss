@@ -2,19 +2,19 @@
 @import "../../_colors.scss";
 
 .outermostDiv {
-    //background-color: $darkblue;
+    //background-color: $colorOne;
 }
 .fixedHeader {
     top: 0;
     position: sticky;
-    background-color: $darkblue;
+    background-color: $colorOne;
     margin-bottom: 0px;
-    border-bottom: 3px $yellow solid;
+    border-bottom: 3px $accentColor solid;
 }
 
 .ordersWord {
     top: 10vh;
-    color: $lightblue;
+    color: $colorTwo;
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: 200;
     font-size: 3em;
@@ -28,8 +28,8 @@
 .ordersHeader {
     display: flex;
     justify-content: space-between;
-    border-bottom: 3px $darkblue solid;
-    color: $lightblue;
+    border-bottom: 3px $colorOne solid;
+    color: $colorTwo;
 }
 
 .ordersDivider {
@@ -39,7 +39,7 @@
     -webkit-transform: skew(-20deg) rotate(2deg);
     -moz-transform: skew(-20deg) rotate(2deg);
     width: 1px;
-    background-color: $yellow;
+    background-color: $accentColor;
 }
 
 .headerTitleName {
@@ -61,7 +61,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-bottom: 1px $darkblue solid;
+    border-bottom: 1px $colorOne solid;
 }
 
 .name {

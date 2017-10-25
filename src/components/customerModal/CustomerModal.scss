@@ -1,4 +1,4 @@
-$darkblue: #030383;
+$colorOne: #030383;
 body {
     
     
@@ -31,7 +31,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    border: 1px solid $darkblue;
+    border: 1px solid $colorOne;
     border-radius: 2px;
     font-family: 'Roboto', sans-serif;
 }
@@ -139,7 +139,7 @@ body {
 }
 
 .inputBox:focus {
-    border-bottom: 1.5px solid $darkblue;
+    border-bottom: 1.5px solid $colorOne;
     outline: none;
     
 }
@@ -150,7 +150,7 @@ body {
 }
 
 .close-button {
-    color: $darkblue;
+    color: $colorOne;
     background: none;
     border: none;
     cursor: pointer;

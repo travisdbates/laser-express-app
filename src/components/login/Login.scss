@@ -2,7 +2,7 @@
 
 
 .login-container {
-    background-color: $darkblue;
+    background-color: $colorOne;
 
     display: flex;
     flex-direction: column;
@@ -21,7 +21,7 @@
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: 700;
     font-size: 2em;
-    color: $lightblue;
+    color: $colorTwo;
     letter-spacing: .5em;
     //margin-right: -.5em;
     margin-top: 50px;
@@ -33,7 +33,7 @@
     text-decoration: none;
     border-radius: 50px;
     transition: .84s;
-    border: 2px solid $yellow;
+    border: 2px solid $accentColor;
 }
 
 .login-button::first-letter {
@@ -42,7 +42,7 @@
 
 .login-button:hover {
     background-color: white;
-    color: $yellow;
+    color: $accentColor;
     outline: none;
 }
 
