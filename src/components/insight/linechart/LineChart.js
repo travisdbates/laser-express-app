@@ -36,12 +36,27 @@ export default ({
     .domain(d3ArrayExtent(data, selectX))
     .range([0, width]);
   const yScale = d3ScaleLinear()
-    .domain([0,20])
+    .domain([0, 18])
     .range([height, 0]);
+
+//   const xScale = d3ScaleTime()
+//   .domain(d3ArrayExtent(data, selectX))
+//   .range([0, width]);
+// const yScale = d3ScaleLinear()
+//   .domain(0,18)
+//   .range([height, 0]);
+
+  // const xAxis = d3AxisBottom()
+  //   .scale(xScale)
+  //   .ticks(data.length);
+  // const yAxis = d3AxisLeft()
+  //   .scale(yScale)
+  //   .ticks(10);
 
   const xAxis = d3AxisBottom()
     .scale(xScale)
-    .ticks(data.length);
+    .ticks(data.length / 2);
+  // Add an axis for our y scale that has 3 ticks (FIXME: we should probably make number of ticks per axis a prop).
   const yAxis = d3AxisLeft()
     .scale(yScale)
     .ticks(10);

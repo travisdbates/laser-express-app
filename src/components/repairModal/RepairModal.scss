@@ -1,5 +1,6 @@
 @import "../../_colors.scss";
 
+
 .screenDarken {
     position: fixed;
     background-color: rgba(0,0,0,0.3);
@@ -34,16 +35,30 @@
     z-index: 1;
 }
 
-.rightAlign {
-    display: flex;
-    justify-content: flex-end;
+.topContentRM {
     width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
 }
 
-.topContent {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+.Select-inputTEST {
+    color: black;
+    width: 80%;
+    height: 50px;
+    font-size: 1.5em;
+    margin-top: 15px;
+}
+
+.closeButton {
+    color: $colorOne;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2em;
+    font-weight: 200;
+    margin-top: 0px;
+    margin-right: 0px;
 }
 
 .customerInfo {
@@ -59,10 +74,12 @@
     display: flex;
     flex-direction: column;
     padding: 5px;
+    width: 100%;
 }
 
 .rowForDeliveries, .rowOne, .rowTwo {
     display: flex;
+    width: 80%;
 }
 
 .colOne, .colTwo {
@@ -80,15 +97,11 @@
 }
 
 .inputNames.Name {
-    width: 3vw;
-}
-
-.inputNames.ID {
-    width: 5vw;
+    width: 45%;
 }
 
 .inputNames.Phone {
-    width: 8vw;
+    width: 45%;
 }
 
 .inputNames.Address {
@@ -113,11 +126,11 @@
 }
 
 .inputBoxR.Name {
-    width:25vw;
+    width: 100%;
 }
 
 .inputBoxR.Phone {
-    width: 28vw;
+    width: 100%;
 }
 
 .inputBoxR.Address {
@@ -138,21 +151,8 @@
     
 }
 
-.Select-input {
-    color: black;
-    width: 20vw;
-}
 
-.closeButton {
-    color: $colorOne;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 2em;
-    font-weight: 200;
-    margin-top: 6px;
-    margin-right: 9px;
-}
+
 
 .buttons {
     display: flex;
@@ -258,4 +258,51 @@
 }
 .inputBox.IDNum {
     width: 11vw;
+}
+
+
+@media only screen and (min-width: 376px) {
+    //Mobile only - things not to be shown on desktop
+}
+
+@media only screen and (max-width: 375px) {
+
+    .screenDarken {
+        position: fixed;
+        background-color: rgba(0,0,0,0.3);
+        opacity: 24%;
+        height: 100vh;
+        width: 100vw;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding-top: 25px;
+        display: flex;
+        justify-content: flex-start;
+        transition: .84s;
+        outline: none;
+        border: none;
+        z-index: 0;
+        font-family: 'Oswald', sans-serif;   
+    }
+    
+
+    .modalWindow {
+        background-color: white;
+        height: 70vh;
+        width: 95vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        border: 1px solid $colorOne;
+        border-radius: 5px;
+        font-family: 'Oswald', sans-serif;
+        z-index: 1;
+        position: relative;
+        margin-top: 1px;
+    
+    }
+    
 }

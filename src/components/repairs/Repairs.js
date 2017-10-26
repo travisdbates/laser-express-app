@@ -1,3 +1,5 @@
+/* eslint-disable*/
+
 import "./Repairs.css"
 import RepairModal from "../repairModal/RepairModal"
 
@@ -130,17 +132,17 @@ export default class Customers extends Component {
                         <span className="headerTitleRepairs">STATUS</span>
                         <div className="repairsDivider"></div>
 
-                        <span className="headerTitleRepairs">CONTACT</span>
-                        <div className="repairsDivider"></div>
+                        <span className="headerTitleRepairsM">CONTACT</span>
+                        <div className="repairsDividerM"></div>
 
-                        <span className="headerTitleRepairs">ADDRESS</span>
-                        <div className="repairsDivider"></div>
+                        <span className="headerTitleRepairsM">ADDRESS</span>
+                        <div className="repairsDividerM"></div>
 
                         <span className="headerTitleRepairs">PHONE</span>
                         <div className="repairsDivider"></div>
 
-                        <span className="headerTitleRepairs">PRINTER</span>
-                        <div className="repairsDivider"></div>
+                        <span className="headerTitleRepairsM">PRINTER</span>
+                        <div className="repairsDividerM"></div>
 
                         <span className="headerTitleRepairs">TECH</span>
                         <div className="repairsDivider"></div>
@@ -157,7 +159,7 @@ export default class Customers extends Component {
                         <span className="headerTitleRepairs">NOTES</span>
                         <div className="repairsDivider"></div>
 
-                        <span className="headerTitleRepairs">COMPLETE</span>
+                        <span className="headerTitleRepairsM">COMPLETE</span>
 
                     </div>
                 </div>
@@ -172,10 +174,10 @@ export default class Customers extends Component {
                             <span className="detailsRepairs">{d}</span>
                             <span className="detailsRepairs">{repairs.time}</span>
                             <span className="detailsRepairs">{repairs.status}</span>
-                            <span className="detailsRepairs">{repairs.contactname}</span>
-                            <span className="detailsRepairs">{repairs.streetaddress}</span>
+                            <span className="detailsRepairsM">{repairs.contactname}</span>
+                            <span className="detailsRepairsM">{repairs.streetaddress}</span>
                             <span className="detailsRepairs">{repairs.phone}</span>
-                            <span className="detailsRepairs">{repairs.printer}</span>
+                            <span className="detailsRepairsM">{repairs.printer}</span>
                             <span className="detailsRepairs">{repairs.tech}</span>
                             <span className="detailsRepairs">{repairs.symptoms}</span>
                             <span className="detailsRepairs">{repairs.orderstatus === false ? <button onClick={() => this.updateOrder(repairs.repairsid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :
@@ -183,7 +185,7 @@ export default class Customers extends Component {
                             <span className="detailsRepairs">{repairs.invoicestatus === false ? <button onClick={() => this.updateInvoice(repairs.repairsid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :
                                 <button onClick={() => this.updateInvoice(repairs.repairsid, index)} className="Ordered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button>}</span>
                             <span className="detailsRepairs">{repairs.notes}</span>
-                            <span className="detailsRepairs"><button className="completed" onClick={() => this.completeRepair(repairs.repairsid, index)}>&#10003;</button></span>
+                            <span className="detailsRepairsM"><button className="completed" onClick={() => this.completeRepair(repairs.repairsid, index)}>&#10003;</button></span>
 
 
                         </div>
@@ -198,10 +200,10 @@ export default class Customers extends Component {
                             <span className="detailsRepairs">{d}</span>
                             <span className="detailsRepairs">{repairs.time}</span>
                             <span className="detailsRepairs">{repairs.status}</span>
-                            <span className="detailsRepairs">{repairs.contactname}</span>
-                            <span className="detailsRepairs">{repairs.streetaddress}</span>
+                            <span className="detailsRepairsM">{repairs.contactname}</span>
+                            <span className="detailsRepairsM">{repairs.streetaddress}</span>
                             <span className="detailsRepairs">{repairs.phone}</span>
-                            <span className="detailsRepairs">{repairs.printer}</span>
+                            <span className="detailsRepairsM">{repairs.printer}</span>
                             <span className="detailsRepairs">{repairs.tech}</span>
                             <span className="detailsRepairs">{repairs.symptoms}</span>
                             <span className="detailsRepairs">{repairs.orderstatus === false ? <button onClick={() => this.updateOrder(repairs.repairsid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :
@@ -209,7 +211,7 @@ export default class Customers extends Component {
                             <span className="detailsRepairs">{repairs.invoicestatus === false ? <button onClick={() => this.updateInvoice(repairs.repairsid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :
                                 <button onClick={() => this.updateInvoice(repairs.repairsid, index)} className="Ordered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button>}</span>
                             <span className="detailsRepairs">{repairs.notes}</span>
-                            <span className="detailsRepairs"><button className="complete" onClick={() => this.completeRepair(repairs.repairsid, index)}>&#10003;</button></span>
+                            <span className="detailsRepairsM"><button className="complete" onClick={() => this.completeRepair(repairs.repairsid, index)}>&#10003;</button></span>
 
 
                         </div>

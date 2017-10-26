@@ -86,7 +86,11 @@
 
 
 
-
+.buttonOrg {
+    display: flex;
+    justify-content: space-around;
+    width: -webkit-fill-available;
+}
 
 
 .newCall {
@@ -125,12 +129,12 @@
         top: 10vh;
         color: $colorTwo;
         font-family: 'Open Sans Condensed', sans-serif;
-        font-weight: 200;
-        font-size: 2em;
+        font-weight: 700;
+        font-size: 3em;
         margin-bottom: 10px;
-        letter-spacing: .5em;
+        letter-spacing: .3em;
         margin-left: 2vw;
-        margin-top: 25px;
+        margin-top: 10px;
     }
 
     .rdCircles {
@@ -162,7 +166,7 @@
             .descriptions {
                 font-family: 'Open Sans Condensed', sans-serif;
                 font-weight: 200;
-                font-size: 2em;
+                font-size: 1em;
                 color: $colorTwo;
                 letter-spacing: .5em;
             
@@ -170,12 +174,44 @@
         }
         
     }
+
+    .buttonOrg {
+        display: flex;
+        //flex-direction: column;
+        justify-content: space-around;
+        width: 50vw;
+    }
+    
     
     .newCall {
-        display: none;
-    }
+        
+            font-family: 'Open Sans Condensed', sans-serif;
+            font-weight: 200;
+            font-size: 1em;
+            color: $colorTwo;
+            height: auto;
+            width: auto;
+            border: none;
+            padding: 5px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            background-color: $colorOne;
+            border: $accentColor 1px solid;
+            border-radius: 6px;
+            color: whitesmoke;
+            transition: .84s;
+            outline: none;
+        
+            .newCall:hover {
+                background-color: $colorTwo;
+                color: $colorOne;
+                cursor: pointer;
+            }
+        }
     .greeting {
         margin-top: 5px;
+        font-size: 1.5em;
+        letter-spacing: 0.1em;
     }
 }
 

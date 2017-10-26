@@ -1,4 +1,4 @@
 SELECT COUNT (*), date FROM Repairs 
 GROUP BY date
 ORDER BY date DESC
-LIMIT 15;
+LIMIT 10;

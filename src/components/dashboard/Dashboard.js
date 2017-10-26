@@ -33,6 +33,8 @@ export default class Dashboard extends Component {
                 })
             })
 
+        console.log(userData)
+
         axios.get('/api/repairs/count')
             .then(response => {
                 console.log(response.data)
@@ -60,7 +62,7 @@ export default class Dashboard extends Component {
         return (
             <div className="dash-container">
                 <h1 className="tempTitle">DASHBOARD</h1>
-                {Object.keys(this.state.userInfo).length !== 0 ? <h1 className="greeting">Welcome, {this.state.userInfo.user_name}.</h1> : <h1 className="greeting"> Welcome.</h1>}
+                {Object.keys(this.state.userInfo).length !== 0 ? <h1 className="greeting">Welcome, {this.state.userInfo.user_name}.</h1> : <h1 className="greeting">Welcome.</h1>}
 
                 <div className="rdCircles">
                     <div className="aboveBelow">
@@ -68,21 +70,21 @@ export default class Dashboard extends Component {
                         <span className="descriptions">REPAIRS</span>
                     </div>
                     <div className="aboveBelow">
-                        <Link className="circle" to="/deliveries">{this.state.totalDeliveries === 0 ? <Spinner name='double-bounce' /> : <CountUp duration={1.84} start={0} end={this.state.totalDeliveries} />}&nbsp;</Link>
-                        <span className="descriptions">DELIVERIES</span>
-                    </div>
-                    <div className="aboveBelow">
                         <Link className="circle" to="/orders">{this.state.totalOrders === 0 ? <Spinner name='double-bounce' /> : <CountUp duration={1.84} start={0} end={this.state.totalOrders} />}&nbsp;</Link>
                         <span className="descriptions">ORDERS</span>
                     </div>
+                    <div className="aboveBelow">
+                        <Link className="circle" to="/deliveries">{this.state.totalDeliveries === 0 ? <Spinner name='double-bounce' /> : <CountUp duration={1.84} start={0} end={this.state.totalDeliveries} />}&nbsp;</Link>
+                        <span className="descriptions">DELIVERIES</span>
+                    </div>
+                </div>
+                <div className="buttonOrg">
+                    <button onClick={this.showModal} onClose={this.showModal} className="newCall">NEW CALL</button>
+
+                    <a href='http://localhost:3005/auth/logout'><button className="newCall">LOG OUT</button></a>
                 </div>
 
-                <button onClick={this.showModal} onClose={this.showModal} className="newCall">N&nbsp;&nbsp;E&nbsp;&nbsp;W&nbsp;&nbsp;&nbsp;&nbsp; C&nbsp;&nbsp;A&nbsp;&nbsp;L&nbsp;&nbsp;L</button>
-
-                <RepairModal show={this.state.hideModal} onClose={this.showModal} />
-
-                <a href='http://localhost:3005/auth/logout'><button className="newCall">L&nbsp;&nbsp;O&nbsp;&nbsp;G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; O&nbsp;&nbsp;U&nbsp;&nbsp;T</button></a>
-
+                    <RepairModal show={this.state.hideModal} onClose={this.showModal} />
             </div>
         )
     }

@@ -25,20 +25,33 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  border: 1px solid #7F7573;
+  border: 1px solid #3e3e3e;
   border-radius: 2px;
   font-family: 'Oswald', sans-serif;
   z-index: 1; }
 
-.rightAlign {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%; }
-
-.topContent {
+.topContentRM {
   width: 100%;
   display: flex;
-  justify-content: center; }
+  justify-content: space-around;
+  margin-top: 10px; }
+
+.Select-inputTEST {
+  color: black;
+  width: 80%;
+  height: 50px;
+  font-size: 1.5em;
+  margin-top: 15px; }
+
+.closeButton {
+  color: #3e3e3e;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 2em;
+  font-weight: 200;
+  margin-top: 0px;
+  margin-right: 0px; }
 
 .customerInfo {
   display: flex;
@@ -51,10 +64,12 @@
 .aboveBelow {
   display: flex;
   flex-direction: column;
-  padding: 5px; }
+  padding: 5px;
+  width: 100%; }
 
 .rowForDeliveries, .rowOne, .rowTwo {
-  display: flex; }
+  display: flex;
+  width: 80%; }
 
 .colOne, .colTwo {
   display: flex;
@@ -68,13 +83,10 @@
   color: lightgray; }
 
 .inputNames.Name {
-  width: 3vw; }
-
-.inputNames.ID {
-  width: 5vw; }
+  width: 45%; }
 
 .inputNames.Phone {
-  width: 8vw; }
+  width: 45%; }
 
 .inputNames.Address {
   width: 8vw; }
@@ -94,10 +106,10 @@
   font-size: 2vw; }
 
 .inputBoxR.Name {
-  width: 25vw; }
+  width: 100%; }
 
 .inputBoxR.Phone {
-  width: 28vw; }
+  width: 100%; }
 
 .inputBoxR.Address {
   width: 25vw; }
@@ -109,22 +121,8 @@
   width: 5vw; }
 
 .inputBoxR:focus {
-  border-bottom: 1.5px solid #7F7573;
+  border-bottom: 1.5px solid #3e3e3e;
   outline: none; }
-
-.Select-input {
-  color: black;
-  width: 20vw; }
-
-.closeButton {
-  color: #7F7573;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 2em;
-  font-weight: 200;
-  margin-top: 6px;
-  margin-right: 9px; }
 
 .buttons {
   display: flex;
@@ -137,14 +135,14 @@
   width: 25vw;
   height: 50px;
   border: none;
-  border: 1px #7F7573 solid;
+  border: 1px #3e3e3e solid;
   border-radius: 3px;
   background-color: white;
   transition: .34s;
   margin-bottom: 20px;
   font-family: 'Oswald', sans-serif;
   font-size: 2em;
-  color: #7F7573; }
+  color: #3e3e3e; }
 
 .repairButtond:hover, .deliveryButtond:hover {
   cursor: pointer;
@@ -209,3 +207,37 @@
 
 .inputBox.IDNum {
   width: 11vw; }
+
+@media only screen and (max-width: 375px) {
+  .screenDarken {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.3);
+    opacity: 24%;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-top: 25px;
+    display: flex;
+    justify-content: flex-start;
+    transition: .84s;
+    outline: none;
+    border: none;
+    z-index: 0;
+    font-family: 'Oswald', sans-serif; }
+  .modalWindow {
+    background-color: white;
+    height: 70vh;
+    width: 95vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid #3e3e3e;
+    border-radius: 5px;
+    font-family: 'Oswald', sans-serif;
+    z-index: 1;
+    position: relative;
+    margin-top: 1px; } }

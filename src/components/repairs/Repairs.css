@@ -2,13 +2,13 @@
 .fixedHeader {
   top: 0;
   position: sticky;
-  background-color: #7F7573;
+  background-color: #3e3e3e;
   margin-bottom: 0px;
-  border-bottom: 3px #1A3368 solid; }
+  border-bottom: 3px #ffb433 solid; }
 
 .repairsWord {
   top: 10vh;
-  color: #F9C757;
+  color: #7b9cc1;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 200;
   font-size: 3em;
@@ -37,7 +37,7 @@
   margin-right: 10px; }
 
 .repairsShowComplete {
-  color: #F9C757;
+  color: #7b9cc1;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 200;
   font-size: 1.3em;
@@ -46,17 +46,24 @@
 .repairsHeader {
   display: flex;
   justify-content: space-between;
-  border-bottom: 3px #7F7573 solid;
-  color: #F9C757; }
+  border-bottom: 3px #3e3e3e solid;
+  color: #7b9cc1; }
 
 .repairsDivider {
-  background-color: darkslategray;
   height: 15px;
   transform: skew(-20deg) rotate(2deg);
   -webkit-transform: skew(-20deg) rotate(2deg);
   -moz-transform: skew(-20deg) rotate(2deg);
   width: 1px;
-  background-color: #1A3368; }
+  background-color: #ffb433; }
+
+.repairsDividerM {
+  height: 15px;
+  transform: skew(-20deg) rotate(2deg);
+  -webkit-transform: skew(-20deg) rotate(2deg);
+  -moz-transform: skew(-20deg) rotate(2deg);
+  width: 1px;
+  background-color: #ffb433; }
 
 .headerTitleName {
   width: 33vw;
@@ -72,17 +79,31 @@
   display: flex;
   justify-content: space-around; }
 
+.headerTitleRepairsM {
+  width: 10vw;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 200;
+  font-size: 1em;
+  display: flex;
+  justify-content: space-around; }
+
 .repairContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 1px #7F7573 solid; }
+  border-bottom: 1px #3e3e3e solid; }
   .repairContainer .name {
     font-family: 'Oswald', sans-serif;
     font-weight: 200;
     font-size: 1em;
     width: 33vw; }
   .repairContainer .detailsRepairs {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    font-size: 1em;
+    width: 7.69vw;
+    text-align: center; }
+  .repairContainer .detailsRepairsM {
     font-family: 'Oswald', sans-serif;
     font-weight: 200;
     font-size: 1em;
@@ -142,3 +163,92 @@
   transition: .24s;
   color: limegreen;
   font-size: 1.5em; }
+
+@media only screen and (max-width: 375px) {
+  .headerTitleRepairs, .repairsDivider, .detailsRepairs {
+    display: none; }
+  .repairsWord {
+    top: 10vh;
+    color: #7b9cc1;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 200;
+    font-size: 1em;
+    margin-bottom: 10px;
+    letter-spacing: 1em;
+    margin-left: 2vw;
+    margin-top: 10px; }
+  .repairsSideBySide {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    margin-bottom: 5px; }
+    .repairsSideBySide .repairsShowCompleteTitle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      margin-right: 10px; }
+      .repairsSideBySide .repairsShowCompleteTitle .repairsShowComplete {
+        color: #7b9cc1;
+        font-family: 'Open Sans Condensed', sans-serif;
+        font-weight: 200;
+        font-size: .5em;
+        letter-spacing: .2em; }
+  .headerTitleRepairsM {
+    width: 25vw;
+    font-size: .5em; }
+  .repairContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 0.5px #7b9cc1 solid; }
+    .repairContainer .name {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 200;
+      font-size: 1em;
+      width: 33vw; }
+    .repairContainer .detailsRepairs {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 200;
+      font-size: 1em;
+      width: 7.69vw;
+      text-align: center; }
+    .repairContainer .detailsRepairsM {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 200;
+      font-size: 1em;
+      width: 25vw;
+      text-align: center;
+      border-right: #7b9cc1 0.5px solid; }
+  .addDeliveryButton {
+    background-color: #3e3e3e;
+    position: fixed;
+    bottom: 60px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    color: white;
+    border-radius: 100%;
+    border: none;
+    outline: none;
+    transition: .84s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px #3e3e3e solid; }
+  .addDeliveryButton:hover {
+    background-color: white;
+    color: #3e3e3e;
+    border: 2px #3e3e3e solid;
+    cursor: pointer; }
+  .vert {
+    width: 7px;
+    height: 45px;
+    background-color: #7b9cc1;
+    position: absolute; }
+  .horiz {
+    width: 45px;
+    height: 7px;
+    background-color: #7b9cc1;
+    position: absolute; } }

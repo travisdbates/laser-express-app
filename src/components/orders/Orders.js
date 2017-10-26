@@ -103,14 +103,14 @@ export default class Orders extends Component {
 
                         <span className="headerTitleOrders">TIME</span>
                         <div className="ordersDivider"></div>
-                        <span className="headerTitleOrders">QUANTITY</span>
-                        <div className="ordersDivider"></div>
+                        <span className="headerTitleOrdersM">QUANTITY</span>
+                        <div className="ordersDividerM"></div>
 
-                        <span className="headerTitleOrders">ITEM</span>
-                        <div className="ordersDivider"></div>
+                        <span className="headerTitleOrdersM">ITEM</span>
+                        <div className="ordersDividerM"></div>
 
-                        <span className="headerTitleOrders">CUSTOMER</span>
-                        <div className="ordersDivider"></div>
+                        <span className="headerTitleOrdersM">CUSTOMER</span>
+                        <div className="ordersDividerM"></div>
 
                         <span className="headerTitleOrders">COST</span>
                         <div className="ordersDivider"></div>
@@ -127,7 +127,7 @@ export default class Orders extends Component {
                         <span className="headerTitleOrders">NOTES</span>
                         <div className="ordersDivider"></div>
 
-                        <span className="headerTitleOrders">COMPLETE</span>
+                        <span className="headerTitleOrdersM">COMPLETE</span>
 
                     </div>
                 </div>
@@ -151,15 +151,15 @@ export default class Orders extends Component {
                             <div className="ordersContainer" key={index}>
                                 <span className="detailsOrders">{order.date}</span>
                                 <span className="detailsOrders">{order.time}</span>
-                                <span className="detailsOrders">{order.quantity}</span>
-                                <span className="detailsOrders">{order.item}</span>
-                                <span className="detailsOrders">{order.customer}</span>
+                                <span className="detailsOrdersM">{order.quantity}</span>
+                                <span className="detailsOrdersM">{order.item}</span>
+                                <span className="detailsOrdersM">{order.customer}</span>
                                 <span className="detailsOrders">{order.cost}</span>
                                 <span className="detailsOrders">{order.ordernumber}</span>
                                 <span className="detailsOrders">{order.vendor}</span>
                                 <span className="detailsOrders">{formatter.format(order.quantity * costOfProduct)}</span>
                                 <span className="detailsOrders">{order.notes}</span>
-                                <span className="detailsOrders"><button className="completedOrdercomplete" onClick={() => this.completeOrder(order.ordersid, index)}>&#10003;</button></span>
+                                <span className="detailsOrdersM"><button className="completedOrdercomplete" onClick={() => this.completeOrder(order.ordersid, index)}>&#10003;</button></span>
 
 
                             </div>
@@ -189,15 +189,15 @@ export default class Orders extends Component {
                             <div className="ordersContainer" key={index}>
                     <span className="detailsOrders">{order.date}</span>
                     <span className="detailsOrders">{order.time}</span>
-                    <span className="detailsOrders">{order.quantity}</span>
-                    <span className="detailsOrders">{order.item}</span>
-                    <span className="detailsOrders">{order.customer}</span>
+                    <span className="detailsOrdersM">{order.quantity}</span>
+                    <span className="detailsOrdersM">{order.item}</span>
+                    <span className="detailsOrdersM">{order.customer}</span>
                     <span className="detailsOrders">{order.cost}</span>
                     <span className="detailsOrders">{order.ordernumber}</span>
                     <span className="detailsOrders">{order.vendor}</span>
                     <span className="detailsOrders">{formatter.format(order.quantity * costOfProduct)}</span>
                     <span className="detailsOrders">{order.notes}</span>
-                    <span className="detailsOrders"><button className="completedOrder" onClick={() => this.completeOrder(order.ordersid, index)}>&#10003;</button></span>
+                    <span className="detailsOrdersM"><button className="completedOrder" onClick={() => this.completeOrder(order.ordersid, index)}>&#10003;</button></span>
 
 
                 </div>

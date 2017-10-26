@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from "react"
 import PropTypes from "prop-types"
 import Select from "react-select"
@@ -7,7 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import "../../../node_modules/react-toastify/dist/ReactToastify.min.css"
 
 
-import '../../../node_modules/react-select/dist/react-select.css'
+//import './Select.css'
 
 import "./RepairModal.css"
 
@@ -60,7 +61,7 @@ class RepairModal extends Component {
     }
 
     notify = () => toast.success("Added Customer!");
-    
+
 
     componentDidMount() {
         axios.get('/api/customers/getselect')
@@ -134,24 +135,24 @@ class RepairModal extends Component {
             notes: this.state.notes
 
         }
-        :
-        {
-            customerId: this.state.customerID,
-            date: today,
-            time: time,
-            status: "In Process",
-            contactName: this.state.contactName,
-            streetAddress: this.state.streetaddress,
-            city: this.state.city,
-            state: this.state.state,
-            phone: this.state.phone,
-            printer: this.state.printer,
-            tech: this.state.tech,
-            symptoms: this.state.symptoms,
-            orderStatus: false,
-            invoiceStatus: false,
-            notes: this.state.notes
-        }
+            :
+            {
+                customerId: this.state.customerID,
+                date: today,
+                time: time,
+                status: "In Process",
+                contactName: this.state.contactName,
+                streetAddress: this.state.streetaddress,
+                city: this.state.city,
+                state: this.state.state,
+                phone: this.state.phone,
+                printer: this.state.printer,
+                tech: this.state.tech,
+                symptoms: this.state.symptoms,
+                orderStatus: false,
+                invoiceStatus: false,
+                notes: this.state.notes
+            }
 
         axios.post('/api/repairs/insert', repair)
             .then(response => {
@@ -213,24 +214,24 @@ class RepairModal extends Component {
             notes: this.state.notes,
             quantity: '{' + quantities + '}',
         }
-        :
-        {
-            customerId: this.state.customerID,
-            date: date,
-            time: time,
-            status: "In Process",
-            contactName: this.state.contactName,
-            streetAddress: this.state.streetaddress,
-            city: this.state.city,
-            state: this.state.state,
-            phone: this.state.phone,
-            cartridge: '{' + names + '}',
-            tech: this.state.tech,
-            orderStatus: false,
-            invoiceStatus: false,
-            notes: this.state.notes,
-            quantity: '{' + quantities + '}',
-        }
+            :
+            {
+                customerId: this.state.customerID,
+                date: date,
+                time: time,
+                status: "In Process",
+                contactName: this.state.contactName,
+                streetAddress: this.state.streetaddress,
+                city: this.state.city,
+                state: this.state.state,
+                phone: this.state.phone,
+                cartridge: '{' + names + '}',
+                tech: this.state.tech,
+                orderStatus: false,
+                invoiceStatus: false,
+                notes: this.state.notes,
+                quantity: '{' + quantities + '}',
+            }
 
         console.log(delivery)
         axios.post('/api/deliveries/insert', delivery)
@@ -321,7 +322,7 @@ class RepairModal extends Component {
     }
 
 
-    submitCustomer(){
+    submitCustomer() {
         var data = {
             name: this.state.name,
             phone: this.state.phone,
@@ -330,13 +331,13 @@ class RepairModal extends Component {
             state: this.state.state,
         }
         axios.post('/api/customers/insert', data)
-        .then(response => {
-            this.setState({customerId: response.data[0].customerid}) 
-            console.log(response.data)
-        })
-        this.setState({customerAdded: !this.state.customerAdded})
+            .then(response => {
+                this.setState({ customerId: response.data[0].customerid })
+                console.log(response.data)
+            })
+        this.setState({ customerAdded: !this.state.customerAdded })
         this.notify();
-        
+
     }
 
 
@@ -348,42 +349,40 @@ class RepairModal extends Component {
             <div className="screendarken">
                 {this.props.children}
                 <div className="modalWindow">
-                    <div className="rightAlign">
-                        <button className="closeButton" onClick={this.props.onClose}>&#10006;</button>
-                    </div>
-                    <div className="topContent">
+                    
+                    <div className="topContentRM">
+
                         <Select
-                            className="Select-input"
+                            className="Select-inputTEST"
                             name="form-field-one"
                             placeholder="Existing company select"
                             value={this.state.value}
                             options={this.state.customers}
                             onChange={this.logChange} />
+                        <button className="closeButton" onClick={this.props.onClose}>&#10006;</button>
+
+
+
                     </div>
                     {this.state.currentCustomer.length !== 0 ?
                         <div className="customerInfo">
                             <div className="rowOne">
                                 <div className="aboveBelow">
-                                    <span className="inputNames Name">Name:  </span>
                                     <input className="inputBoxR Name" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].name}></input>
                                 </div>
                                 <div className="aboveBelow">
-                                    <span className="inputNames Phone">Phone:  </span>
                                     <input className="inputBoxR Phone" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].phone}></input>
                                 </div>
                             </div>
                             <div className="rowTwo">
 
                                 <div className="aboveBelow">
-                                    <span className="inputNames Address">Address:  </span>
                                     <input className="inputBoxR Address" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].streetaddress}></input>
                                 </div>
                                 <div className="aboveBelow">
-                                    <span className="inputNames City">City:  </span>
                                     <input className="inputBoxR City" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].city}></input>
                                 </div>
                                 <div className="aboveBelow">
-                                    <span className="inputNames State">State:  </span>
                                     <input className="inputBoxR State" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].state}></input>
                                 </div>
                             </div>

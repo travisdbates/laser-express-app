@@ -1,12 +1,13 @@
 .outermostDivI {
-  background-color: #7F7573; }
+  background-color: #3e3e3e; }
 
 .fixedHeaderI {
   top: 0;
   position: sticky;
-  background-color: #7F7573;
+  background-color: #3e3e3e;
   margin-bottom: 0px;
-  border-bottom: 3px #1A3368 solid; }
+  border-bottom: 3px #ffb433 solid;
+  z-index: 1; }
 
 .sideBySideI {
   display: flex;
@@ -16,7 +17,7 @@
 
 .insightsWord {
   top: 10vh;
-  color: #F9C757;
+  color: #7b9cc1;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 200;
   font-size: 3em;
@@ -36,13 +37,23 @@
   -o-transform: rotate(-90deg);
   /* Internet Explorer */
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-  color: #F9C757;
+  color: #7b9cc1;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 200;
   letter-spacing: .25em;
   font-size: 2em; }
 
+.alignCenterC {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  overflow-y: scroll;
+  overflow-x: scroll; }
+
 .centerGraphD {
   display: flex;
   justify-content: flex-start;
-  align-items: center; }
+  align-items: center;
+  width: auto;
+  overflow-x: scroll; }

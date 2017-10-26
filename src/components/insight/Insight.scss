@@ -9,6 +9,7 @@
     background-color: $colorOne;
     margin-bottom: 0px;
     border-bottom: 3px $accentColor solid;
+    z-index: 1;
 }
 
 .sideBySideI {
@@ -56,8 +57,22 @@
 
 }
 
+.alignCenterC {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    overflow-y: scroll;
+
+    overflow-x: scroll;
+}
+
 .centerGraphD {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    width: auto;
+    overflow-x: scroll;
+    
 }
+

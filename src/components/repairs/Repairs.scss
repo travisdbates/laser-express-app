@@ -64,7 +64,15 @@
 }
 
 .repairsDivider {
-    background-color: darkslategray;
+    height: 15px;
+    transform: skew(-20deg) rotate(2deg);
+    -webkit-transform: skew(-20deg) rotate(2deg);
+    -moz-transform: skew(-20deg) rotate(2deg);
+    width: 1px;
+    background-color: $accentColor;
+}
+
+.repairsDividerM {
     height: 15px;
     transform: skew(-20deg) rotate(2deg);
     -webkit-transform: skew(-20deg) rotate(2deg);
@@ -88,6 +96,14 @@
     justify-content: space-around;
 }
 
+.headerTitleRepairsM{
+    width: 10vw;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;    font-size: 1em; 
+    display: flex;
+    justify-content: space-around;
+}
+
 .repairContainer {
     display: flex;
     flex-direction: row;
@@ -100,6 +116,13 @@
         width: 33vw;
     }
     .detailsRepairs {
+        font-family: 'Oswald', sans-serif;
+        font-weight: 200;      
+        font-size: 1em; 
+        width: 7.69vw;
+        text-align: center;
+    }
+    .detailsRepairsM {
         font-family: 'Oswald', sans-serif;
         font-weight: 200;      
         font-size: 1em; 
@@ -176,4 +199,131 @@
         color: limegreen;
         font-size: 1.5em;
        
+}
+
+@media only screen and (min-width: 376px) {
+    //Mobile only - things not to be shown on desktop
+}
+
+@media only screen and (max-width: 375px) {
+    //Mobile Formatting
+
+    .headerTitleRepairs, .repairsDivider, .detailsRepairs {
+        display: none;
+    }
+
+    .repairsWord {
+        top: 10vh;
+        color: $colorTwo;
+        font-family: 'Open Sans Condensed', sans-serif;
+        font-weight: 200;
+        font-size: 1em;
+        margin-bottom: 10px;
+        letter-spacing: 1em;
+        margin-left: 2vw;
+        margin-top: 10px;
+    }
+
+
+    .repairsSideBySide {
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        align-items: center;
+        margin-bottom: 5px;
+        .repairsShowCompleteTitle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            margin-right: 10px;
+            .repairsShowComplete {
+                color: $colorTwo;
+                font-family: 'Open Sans Condensed', sans-serif;
+                font-weight: 200;
+                font-size: .5em;
+                letter-spacing: .2em;
+                
+            }
+        }
+    }
+
+    
+
+    .headerTitleRepairsM {
+        width: 25vw;
+        font-size: .5em;
+    }
+
+    .repairContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-bottom: .5px $colorTwo solid;
+        .name {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 200;      
+            font-size: 1em; 
+            width: 33vw;
+        }
+        .detailsRepairs {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 200;      
+            font-size: 1em; 
+            width: 7.69vw;
+            text-align: center;
+        }
+        .detailsRepairsM {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 200;      
+            font-size: 1em; 
+            width: 25vw;
+            text-align: center;
+            border-right: $colorTwo .5px solid
+        }
+    }
+
+   
+
+    .addDeliveryButton {
+        background-color: $colorOne;
+        position: fixed;
+        bottom: 60px;
+        right: 15px;
+        width: 50px;
+        height: 50px;
+        color: white;
+        border-radius: 100%;
+        border: none;
+        outline: none;
+        transition: .84s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px $colorOne solid;
+        
+    }
+    
+    .addDeliveryButton:hover {
+        background-color: white;
+        color: $colorOne;
+        border: 2px $colorOne solid;
+        cursor: pointer;
+       
+    }
+
+    .vert {
+        width: 7px;
+        height: 45px;
+        background-color: $colorTwo;
+        position: absolute;
+    
+    }
+    
+    .horiz {
+        width: 45px;
+        height: 7px;
+        background-color: $colorTwo;
+        position: absolute;
+    }
 }

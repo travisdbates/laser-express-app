@@ -6,7 +6,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  background-color: #7F7573;
+  background-color: #3e3e3e;
   align-items: center;
   font-family: 'Oswald', sans-serif;
   font-weight: 200;
@@ -16,7 +16,7 @@ body {
   position: sticky; }
 
 .divider {
-  background-color: darkslategray;
+  background-color: #7b9cc1;
   height: 5vh;
   transform: skew(-20deg) rotate(2deg);
   -webkit-transform: skew(-20deg) rotate(2deg);
@@ -40,7 +40,7 @@ body {
   justify-content: space-between;
   width: 100%;
   align-items: center;
-  background-color: #7F7573;
+  background-color: #3e3e3e;
   font-size: 1em;
   font-family: 'Oswald', sans-serif;
   font-weight: 200; }
@@ -55,15 +55,15 @@ body {
   transition: .74s;
   align-items: center;
   text-align: center;
-  color: darkslategray;
+  color: #ffb433;
   font-size: 1vw; }
 
 .tabbedLinks:hover {
   font-size: 1.3vw; }
 
 .tabbedLinksActive {
-  background-color: #7F7573;
-  color: #1A3368;
+  background-color: #3e3e3e;
+  color: #ffb433;
   font-weight: 700;
   font-size: 1.3vw; }
 
@@ -84,25 +84,26 @@ body {
     transition: .74s;
     align-items: center;
     text-align: center;
-    color: darkslategray;
+    color: #7b9cc1;
     font-size: 1vw; }
   .logoForNavMobile {
-    height: 45px;
-    background-color: transparent;
+    width: 65px;
     z-index: 1; }
+  .delivTruck {
+    z-index: 1;
+    height: 25px; }
   .NavBarContainer {
     height: 0px; }
   .footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     position: fixed;
     bottom: 0px;
     width: 100%;
     height: 50px;
-    border-top: #F9C757 2px solid;
-    background-color: #7F7573; }
+    border-top: #7b9cc1 2px solid;
+    background-color: #3e3e3e; }
   .tabbedLinksMobile {
     text-decoration: none;
-    color: darkslategrey;
-    padding: 25px; } }
+    color: #7b9cc1; } }

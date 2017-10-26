@@ -45,6 +45,7 @@
 
 .name {
     font-size: 2em;
+    color: $accentColor
 }
 .horizontal {
     display: flex;
@@ -55,7 +56,7 @@
 .plusMinus {
     background-color: transparent;
     border: none;
-    color: $accentColor;
+    color: $colorTwo;
     font-size: 2em;
     outline: none;
     cursor: pointer;
@@ -67,7 +68,7 @@
 }
 
 .noSub {
-    color: $colorTwo;
+    color: $accentColor;
     cursor: not-allowed;
     font-size: 2em;
 }

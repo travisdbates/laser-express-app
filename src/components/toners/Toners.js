@@ -1,12 +1,10 @@
 import React, { Component } from "react"
 import Select from "react-select"
 import axios from "axios"
-import CountUp from "react-countup"
 
 import "./Toners.css"
 import '../../../node_modules/react-select/dist/react-select.css'
 
-var Spinner = require('react-spinkit');
 
 
 export default class Toners extends Component {

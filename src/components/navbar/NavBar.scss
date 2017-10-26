@@ -21,7 +21,7 @@ body {
 }
 
 .divider {
-    background-color: darkslategray;
+    background-color: $colorTwo;
     height: 5vh;
     transform: skew(-20deg) rotate(2deg);
     -webkit-transform: skew(-20deg) rotate(2deg);
@@ -65,7 +65,7 @@ body {
     transition: .74s;
     align-items: center;
     text-align: center;
-    color: darkslategray;
+    color: $accentColor;
     font-size: 1vw;
 }
 
@@ -103,20 +103,24 @@ body {
     transition: .74s;
     align-items: center;
     text-align: center;
-    color: darkslategray;
+    color: $colorTwo;
     font-size: 1vw;
     }
     .logoForNavMobile {
-        height: 45px;
-        background-color: transparent;
+        width: 65px;
+         
         z-index: 1;
+    }
+    .delivTruck {
+        z-index: 1;
+        height: 25px;
     }
     .NavBarContainer {
         height: 0px;
     }
     .footer {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
         position: fixed;
         bottom: 0px;
@@ -127,7 +131,7 @@ body {
     }
     .tabbedLinksMobile {
         text-decoration: none;
-        color: darkslategrey;
-        padding: 25px;
+        color: $colorTwo;
+       
     }
 }

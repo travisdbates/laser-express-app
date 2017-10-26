@@ -79,6 +79,14 @@
     text-align: center;
 }
 
+.detailsOrdersM {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 200; 
+    font-size: 1em; 
+    width: 9.09vw;
+    text-align: center;
+}
+
 
 .addDelivery {
     background-color: darkblue;
@@ -113,4 +121,87 @@
     color: limegreen;
     border: none;
     font-size: 1.5em;
+}
+
+@media only screen and (min-width: 376px) {
+    //Mobile only - things not to be shown on desktop
+}
+
+@media only screen and (max-width: 375px) {
+
+    .ordersDivider, .headerTitleOrders, .detailsOrders {
+        display: none;
+    }
+
+    .sideBySide {
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        align-items: center;
+        margin-bottom: 5px;
+        .showCompleteTitle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            margin-right: 10px;
+            .showComplete {
+                color: $colorTwo;
+                font-family: 'Open Sans Condensed', sans-serif;
+                font-weight: 200;
+                font-size: .5em;
+                letter-spacing: .2em;
+                
+            }
+        }
+    }
+
+    .ordersContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-bottom: .5px $colorTwo solid;
+    }
+
+    .ordersWord {
+        top: 10vh;
+        color: $colorTwo;
+        font-family: 'Open Sans Condensed', sans-serif;
+        font-weight: 200;
+        font-size: 1em;
+        margin-bottom: 10px;
+        letter-spacing: 1em;
+        margin-left: 2vw;
+        margin-top: 10px;
+
+    }
+
+    .ordersDividerM {
+        background-color: darkslategray;
+        height: 15px;
+        transform: skew(-20deg) rotate(2deg);
+        -webkit-transform: skew(-20deg) rotate(2deg);
+        -moz-transform: skew(-20deg) rotate(2deg);
+        width: 1px;
+        background-color: $accentColor;
+    }
+    
+    .headerTitleOrdersM {
+        width: 25vw;
+        font-family: 'Oswald', sans-serif;
+        font-weight: 200;    
+        font-size: .5em; 
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .detailsOrdersM {
+        font-family: 'Roboto Condensed', sans-serif;
+        font-weight: 200; 
+        font-size: 1em; 
+        width: 25vw;
+        text-align: center;
+        border-right: $colorTwo solid .5px;
+        
+    }
 }
