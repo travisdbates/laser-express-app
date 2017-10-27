@@ -2,13 +2,13 @@
 .fixedHeader {
   top: 0;
   position: sticky;
-  background-color: #939393;
+  background-color: #4f4f4f;
   margin-bottom: 0px;
-  border-bottom: 3px #080a8a solid; }
+  border-bottom: 3px #dcb20a solid; }
 
 .ordersWord {
   top: 10vh;
-  color: #FFF;
+  color: #686ad8;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 200;
   font-size: 3em;
@@ -20,8 +20,8 @@
 .ordersHeader {
   display: flex;
   justify-content: space-between;
-  border-bottom: 3px #939393 solid;
-  color: #FFF; }
+  border-bottom: 3px #4f4f4f solid;
+  color: #686ad8; }
 
 .ordersDivider {
   background-color: darkslategray;
@@ -30,7 +30,7 @@
   -webkit-transform: skew(-20deg) rotate(2deg);
   -moz-transform: skew(-20deg) rotate(2deg);
   width: 1px;
-  background-color: #080a8a; }
+  background-color: #dcb20a; }
 
 .ordersDividerM {
   background-color: darkslategray;
@@ -39,7 +39,7 @@
   -webkit-transform: skew(-20deg) rotate(2deg);
   -moz-transform: skew(-20deg) rotate(2deg);
   width: 1px;
-  background-color: #080a8a; }
+  background-color: #dcb20a; }
 
 .headerTitleName {
   width: 33vw;
@@ -67,7 +67,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 1px #939393 solid; }
+  border-bottom: 1px #4f4f4f solid; }
 
 .name {
   font-family: 'Roboto Condensed', sans-serif;
@@ -135,7 +135,7 @@
       align-content: center;
       margin-right: 10px; }
       .sideBySide .showCompleteTitle .showComplete {
-        color: #FFF;
+        color: #686ad8;
         font-family: 'Open Sans Condensed', sans-serif;
         font-weight: 200;
         font-size: .5em;
@@ -144,10 +144,10 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-bottom: 0.5px #FFF solid; }
+    border-bottom: 0.5px #686ad8 solid; }
   .ordersWord {
     top: 10vh;
-    color: #FFF;
+    color: #686ad8;
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: 200;
     font-size: 1em;
@@ -162,7 +162,7 @@
     -webkit-transform: skew(-20deg) rotate(2deg);
     -moz-transform: skew(-20deg) rotate(2deg);
     width: 1px;
-    background-color: #080a8a; }
+    background-color: #dcb20a; }
   .headerTitleOrdersM {
     width: 25vw;
     font-family: 'Oswald', sans-serif;
@@ -176,4 +176,4 @@
     font-size: 1em;
     width: 25vw;
     text-align: center;
-    border-right: #FFF solid 0.5px; } }
+    border-right: #686ad8 solid 0.5px; } }

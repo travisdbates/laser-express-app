@@ -2,9 +2,9 @@
 .fixedHeader {
   top: 0;
   position: sticky;
-  background-color: #939393;
+  background-color: #4f4f4f;
   margin-bottom: 0px;
-  border-bottom: 3px #080a8a solid; }
+  border-bottom: 3px #dcb20a solid; }
 
 .sideBySide {
   display: flex;
@@ -18,7 +18,7 @@
     align-content: center;
     margin-right: 10px; }
     .sideBySide .showCompleteTitle .showComplete {
-      color: #FFF;
+      color: #686ad8;
       font-family: 'Open Sans Condensed', sans-serif;
       font-weight: 200;
       font-size: 1.3em;
@@ -26,7 +26,7 @@
 
 .deliveriesWord {
   top: 10vh;
-  color: #FFF;
+  color: #686ad8;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 200;
   font-size: 3em;
@@ -38,8 +38,8 @@
 .deliveriesHeader {
   display: flex;
   justify-content: space-between;
-  border-bottom: 3px #939393 solid;
-  color: #FFF; }
+  border-bottom: 3px #4f4f4f solid;
+  color: #686ad8; }
 
 .deliveriesDivider {
   background-color: darkslategray;
@@ -48,7 +48,7 @@
   -webkit-transform: skew(-20deg) rotate(2deg);
   -moz-transform: skew(-20deg) rotate(2deg);
   width: 1px;
-  background-color: #080a8a; }
+  background-color: #dcb20a; }
 
 .deliveriesDividerM {
   background-color: darkslategray;
@@ -57,7 +57,7 @@
   -webkit-transform: skew(-20deg) rotate(2deg);
   -moz-transform: skew(-20deg) rotate(2deg);
   width: 1px;
-  background-color: #080a8a; }
+  background-color: #dcb20a; }
 
 .headerTitleName {
   width: 33vw;
@@ -85,7 +85,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  border-bottom: 1px #939393 solid;
+  border-bottom: 1px #4f4f4f solid;
   background-color: white; }
 
 .name {
@@ -125,11 +125,11 @@
   padding-left: 2px; }
 
 .sendToOrder:hover {
-  color: #080a8a;
+  color: #dcb20a;
   font-size: 1.1em; }
 
 .addDeliveryButton {
-  background-color: #939393;
+  background-color: #4f4f4f;
   position: fixed;
   bottom: 30px;
   right: 30px;
@@ -143,24 +143,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px #939393 solid; }
+  border: 2px #4f4f4f solid; }
 
 .addDeliveryButton:hover {
   background-color: white;
-  color: #939393;
-  border: 2px #939393 solid;
+  color: #4f4f4f;
+  border: 2px #4f4f4f solid;
   cursor: pointer; }
 
 .vert {
   width: 10px;
   height: 65px;
-  background-color: #080a8a;
+  background-color: #dcb20a;
   position: absolute; }
 
 .horiz {
   width: 65px;
   height: 10px;
-  background-color: #080a8a;
+  background-color: #dcb20a;
   position: absolute; }
 
 .notOrdered {
@@ -212,7 +212,7 @@
     display: none; }
   .deliveriesWord {
     top: 10vh;
-    color: #FFF;
+    color: #686ad8;
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: 200;
     font-size: 1em;
@@ -224,7 +224,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    border-bottom: 0.5px #FFF solid;
+    border-bottom: 0.5px #686ad8 solid;
     background-color: white; }
   .sideBySide {
     display: flex;
@@ -239,7 +239,7 @@
       align-content: center;
       margin-right: 10px; }
       .sideBySide .showCompleteTitle .showComplete {
-        color: #FFF;
+        color: #686ad8;
         font-family: 'Open Sans Condensed', sans-serif;
         font-weight: 200;
         font-size: .5em;
@@ -249,12 +249,12 @@
     font-size: .5em; }
   .detailsDeliveriesM {
     width: 25vw;
-    border-right: #FFF solid 0.5px; }
+    border-right: #686ad8 solid 0.5px; }
   .detailsDeliveriesO {
     width: 25vw;
     margin-left: .5px; }
   .addDeliveryButton {
-    background-color: #939393;
+    background-color: #4f4f4f;
     position: fixed;
     bottom: 60px;
     right: 15px;
@@ -268,19 +268,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px #939393 solid; }
+    border: 2px #4f4f4f solid; }
   .addDeliveryButton:hover {
     background-color: white;
-    color: #939393;
-    border: 2px #939393 solid;
+    color: #4f4f4f;
+    border: 2px #4f4f4f solid;
     cursor: pointer; }
   .vert {
     width: 7px;
     height: 45px;
-    background-color: #080a8a;
+    background-color: #dcb20a;
     position: absolute; }
   .horiz {
     width: 45px;
     height: 7px;
-    background-color: #080a8a;
+    background-color: #dcb20a;
     position: absolute; } }

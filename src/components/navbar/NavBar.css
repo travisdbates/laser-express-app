@@ -6,7 +6,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  background-color: #939393;
+  background-color: #4f4f4f;
   align-items: center;
   font-family: 'Oswald', sans-serif;
   font-weight: 200;
@@ -16,7 +16,7 @@ body {
   position: sticky; }
 
 .divider {
-  background-color: #FFF;
+  background-color: #686ad8;
   height: 5vh;
   transform: skew(-20deg) rotate(2deg);
   -webkit-transform: skew(-20deg) rotate(2deg);
@@ -40,7 +40,7 @@ body {
   justify-content: space-between;
   width: 100%;
   align-items: center;
-  background-color: #939393;
+  background-color: #4f4f4f;
   font-size: 1em;
   font-family: 'Oswald', sans-serif;
   font-weight: 200; }
@@ -55,15 +55,15 @@ body {
   transition: .74s;
   align-items: center;
   text-align: center;
-  color: #080a8a;
+  color: #dcb20a;
   font-size: 1vw; }
 
 .tabbedLinks:hover {
   font-size: 1.3vw; }
 
 .tabbedLinksActive {
-  background-color: #939393;
-  color: #080a8a;
+  background-color: #4f4f4f;
+  color: #dcb20a;
   font-weight: 700;
   font-size: 1.3vw; }
 
@@ -84,7 +84,7 @@ body {
     transition: .74s;
     align-items: center;
     text-align: center;
-    color: #FFF;
+    color: #686ad8;
     font-size: 1vw; }
   .logoForNavMobile {
     width: 65px;
@@ -102,8 +102,8 @@ body {
     bottom: 0px;
     width: 100%;
     height: 50px;
-    border-top: #FFF 2px solid;
-    background-color: #939393; }
+    border-top: #686ad8 2px solid;
+    background-color: #4f4f4f; }
   .tabbedLinksMobile {
     text-decoration: none;
-    color: #FFF; } }
+    color: #686ad8; } }

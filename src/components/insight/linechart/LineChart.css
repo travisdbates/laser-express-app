@@ -1,17 +1,17 @@
 .container > .contentContainer > .contentContainerBackgroundRect {
-  fill: #939393; }
+  fill: #4f4f4f; }
 
 .container > .contentContainer .xAxis text {
   font-size: .75em; }
 
 .container > .contentContainer .line path {
   fill: transparent;
-  stroke: #080a8a;
+  stroke: #dcb20a;
   stroke-width: 2; }
 
 .container > .contentContainer .scatter circle {
-  fill: #080a8a;
-  stroke: #939393;
+  fill: #dcb20a;
+  stroke: #4f4f4f;
   stroke-width: 2; }
 
 .yAxis, .xAxis {

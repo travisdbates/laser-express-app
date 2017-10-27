@@ -25,7 +25,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  border: 1px solid #939393;
+  border: 1px solid #4f4f4f;
   border-radius: 2px;
   font-family: 'Oswald', sans-serif;
   z-index: 1; }
@@ -44,7 +44,7 @@
   margin-top: 15px; }
 
 .closeButton {
-  color: #939393;
+  color: #4f4f4f;
   background: none;
   border: none;
   cursor: pointer;
@@ -117,7 +117,7 @@
   width: 100%; }
 
 .inputBoxR:focus {
-  border-bottom: 1.5px solid #939393;
+  border-bottom: 1.5px solid #4f4f4f;
   outline: none; }
 
 .buttons {
@@ -131,14 +131,14 @@
   width: 25vw;
   height: 50px;
   border: none;
-  border: 1px #939393 solid;
+  border: 1px #4f4f4f solid;
   border-radius: 3px;
   background-color: white;
   transition: .34s;
   margin-bottom: 20px;
   font-family: 'Oswald', sans-serif;
   font-size: 2em;
-  color: #939393; }
+  color: #4f4f4f; }
 
 .repairButtond:hover, .deliveryButtond:hover {
   cursor: pointer;
@@ -237,7 +237,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    border: 1px solid #939393;
+    border: 1px solid #4f4f4f;
     border-radius: 5px;
     font-family: 'Oswald', sans-serif;
     z-index: 1;
@@ -274,14 +274,14 @@
     width: 25vw;
     height: 50px;
     border: none;
-    border: 1px #939393 solid;
+    border: 1px #4f4f4f solid;
     border-radius: 3px;
     background-color: white;
     transition: .34s;
     margin-bottom: 20px;
     font-family: 'Oswald', sans-serif;
     font-size: .75em;
-    color: #939393; }
+    color: #4f4f4f; }
   .repairButtond:hover, .deliveryButtond:hover {
     cursor: pointer;
     border: 3px lime solid;

@@ -1,12 +1,12 @@
 .outermostDivI {
-  background-color: #939393; }
+  background-color: #4f4f4f; }
 
 .fixedHeaderI {
   top: 0;
   position: sticky;
-  background-color: #939393;
+  background-color: #4f4f4f;
   margin-bottom: 0px;
-  border-bottom: 3px #080a8a solid;
+  border-bottom: 3px #dcb20a solid;
   z-index: 1; }
 
 .sideBySideI {
@@ -17,7 +17,7 @@
 
 .insightsWord {
   top: 10vh;
-  color: #FFF;
+  color: #686ad8;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 200;
   font-size: 3em;
@@ -37,7 +37,7 @@
   -o-transform: rotate(-90deg);
   /* Internet Explorer */
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-  color: #FFF;
+  color: #686ad8;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 200;
   letter-spacing: .25em;

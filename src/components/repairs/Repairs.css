@@ -2,13 +2,13 @@
 .fixedHeader {
   top: 0;
   position: sticky;
-  background-color: #939393;
+  background-color: #4f4f4f;
   margin-bottom: 0px;
-  border-bottom: 3px #080a8a solid; }
+  border-bottom: 3px #dcb20a solid; }
 
 .repairsWord {
   top: 10vh;
-  color: #FFF;
+  color: #686ad8;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 200;
   font-size: 3em;
@@ -37,7 +37,7 @@
   margin-right: 10px; }
 
 .repairsShowComplete {
-  color: #FFF;
+  color: #686ad8;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 200;
   font-size: 1.3em;
@@ -46,8 +46,8 @@
 .repairsHeader {
   display: flex;
   justify-content: space-between;
-  border-bottom: 3px #939393 solid;
-  color: #FFF; }
+  border-bottom: 3px #4f4f4f solid;
+  color: #686ad8; }
 
 .repairsDivider {
   height: 15px;
@@ -55,7 +55,7 @@
   -webkit-transform: skew(-20deg) rotate(2deg);
   -moz-transform: skew(-20deg) rotate(2deg);
   width: 1px;
-  background-color: #080a8a; }
+  background-color: #dcb20a; }
 
 .repairsDividerM {
   height: 15px;
@@ -63,7 +63,7 @@
   -webkit-transform: skew(-20deg) rotate(2deg);
   -moz-transform: skew(-20deg) rotate(2deg);
   width: 1px;
-  background-color: #080a8a; }
+  background-color: #dcb20a; }
 
 .headerTitleName {
   width: 33vw;
@@ -91,7 +91,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 1px #939393 solid; }
+  border-bottom: 1px #4f4f4f solid; }
   .repairContainer .name {
     font-family: 'Oswald', sans-serif;
     font-weight: 200;
@@ -169,7 +169,7 @@
     display: none; }
   .repairsWord {
     top: 10vh;
-    color: #FFF;
+    color: #686ad8;
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: 200;
     font-size: 1em;
@@ -190,7 +190,7 @@
       align-content: center;
       margin-right: 10px; }
       .repairsSideBySide .repairsShowCompleteTitle .repairsShowComplete {
-        color: #FFF;
+        color: #686ad8;
         font-family: 'Open Sans Condensed', sans-serif;
         font-weight: 200;
         font-size: .5em;
@@ -202,7 +202,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-bottom: 0.5px #FFF solid; }
+    border-bottom: 0.5px #686ad8 solid; }
     .repairContainer .name {
       font-family: 'Oswald', sans-serif;
       font-weight: 200;
@@ -220,9 +220,9 @@
       font-size: 1em;
       width: 25vw;
       text-align: center;
-      border-right: #FFF 0.5px solid; }
+      border-right: #686ad8 0.5px solid; }
   .addDeliveryButton {
-    background-color: #939393;
+    background-color: #4f4f4f;
     position: fixed;
     bottom: 60px;
     right: 15px;
@@ -236,19 +236,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px #939393 solid; }
+    border: 2px #4f4f4f solid; }
   .addDeliveryButton:hover {
     background-color: white;
-    color: #939393;
-    border: 2px #939393 solid;
+    color: #4f4f4f;
+    border: 2px #4f4f4f solid;
     cursor: pointer; }
   .vert {
     width: 7px;
     height: 45px;
-    background-color: #080a8a;
+    background-color: #dcb20a;
     position: absolute; }
   .horiz {
     width: 45px;
     height: 7px;
-    background-color: #080a8a;
+    background-color: #dcb20a;
     position: absolute; } }
