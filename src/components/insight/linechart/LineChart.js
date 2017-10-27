@@ -55,7 +55,7 @@ export default ({
 
   const xAxis = d3AxisBottom()
     .scale(xScale)
-    .ticks(data.length / 2);
+    .ticks(14);
   // Add an axis for our y scale that has 3 ticks (FIXME: we should probably make number of ticks per axis a prop).
   const yAxis = d3AxisLeft()
     .scale(yScale)

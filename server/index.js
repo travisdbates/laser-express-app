@@ -8,6 +8,8 @@ const Auth0Strategy = require('passport-auth0');
 
 const customers_controller = require('./controllers/customers_controller')
 
+app.use( express.static(`${__dirname}/../build`))
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -77,7 +79,7 @@ app.get("/auth/callback", passport.authenticate('auth0', {
 
 app.get('/auth/me', (req,res) => {
     if(!req.user){
-        return res.status(404).send("User not found")
+        return res.status(200).send(false)
     }
     
     return res.status(200).send(req.user)
@@ -222,6 +224,14 @@ app.get('/api/repairs/d3count', (req, res) => {
     })
 })
 
+app.delete('/api/repairs/deleterepair/:id', (req,res) => {
+    const repairID = req.params.id;
+    app.get('db').repairs_delete([repairID])
+    .then(response => {
+        res.status(200).send(response)
+    })
+})
+
 //DELIVERIES ************************************************
 app.get('/api/deliveries/getall', (req,res) => {
     app.get('db').deliveries_return_all()
@@ -298,6 +308,14 @@ app.put('/api/deliveries/completedelivery/:id', (req,res) => {
 
 app.get('/api/deliveries/d3count', (req, res) => {
     app.get('db').deliveries_counts_for_d3()
+    .then(response => {
+        res.status(200).send(response)
+    })
+})
+
+app.put('/api/deliveries/deletedelivery/:id', (req,res) => {
+    const deliveryID = req.params.id;
+    app.get('db').deliveries_delete([deliveryID])
     .then(response => {
         res.status(200).send(response)
     })

@@ -2,9 +2,9 @@
 .fixedHeader {
   top: 0;
   position: sticky;
-  background-color: #3e3e3e;
+  background-color: #939393;
   margin-bottom: 0px;
-  border-bottom: 3px #ffb433 solid; }
+  border-bottom: 3px #080a8a solid; }
 
 .switchButtonOverlay {
   background-color: transparent;
@@ -13,7 +13,7 @@
 
 .customersWord {
   top: 10vh;
-  color: #7b9cc1;
+  color: #FFF;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 200;
   font-size: 3em;
@@ -29,8 +29,8 @@
 .customerHeader {
   display: flex;
   justify-content: space-between;
-  border-bottom: 3px #3e3e3e solid;
-  color: #7b9cc1; }
+  border-bottom: 3px #939393 solid;
+  color: #FFF; }
 
 .customersDivider {
   background-color: darkslategray;
@@ -39,7 +39,7 @@
   -webkit-transform: skew(-20deg) rotate(2deg);
   -moz-transform: skew(-20deg) rotate(2deg);
   width: 1px;
-  background-color: #ffb433; }
+  background-color: #080a8a; }
 
 .aboveBelowNav {
   display: flex;
@@ -72,11 +72,11 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 1px #3e3e3e solid; }
+  border-bottom: 1px #939393 solid; }
 
 .custName {
   font-family: 'Oswald', sans-serif;
-  font-weight: 700;
+  font-weight: 200;
   font-size: 1em;
   width: 10vw; }
 
@@ -88,7 +88,7 @@
   text-align: center; }
 
 .addCustomer {
-  background-color: #3e3e3e;
+  background-color: #939393;
   position: fixed;
   bottom: 30px;
   right: 30px;
@@ -102,40 +102,40 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px #3e3e3e solid; }
+  border: 2px #939393 solid; }
 
 .addCustomer:hover {
   background-color: white;
-  color: #3e3e3e;
-  border: 2px #3e3e3e solid;
+  color: #939393;
+  border: 2px #939393 solid;
   cursor: pointer; }
 
 .vert {
   width: 10px;
   height: 75px;
-  background-color: #ffb433;
+  background-color: #080a8a;
   position: absolute; }
 
 .horiz {
   width: 75px;
   height: 10px;
-  background-color: #ffb433;
+  background-color: #080a8a;
   position: absolute; }
 
 @media only screen and (max-width: 375px) {
   .fixedHeader {
     top: 0;
     position: sticky;
-    background-color: #3e3e3e;
+    background-color: #939393;
     margin-bottom: 0px;
-    border-bottom: 3px #ffb433 solid; }
+    border-bottom: 3px #080a8a solid; }
   .switchButtonOverlay {
     background-color: transparent;
     border: none;
     outline: none; }
   .customersWord {
     top: 10vh;
-    color: #7b9cc1;
+    color: #FFF;
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: 200;
     font-size: 1em;
@@ -149,8 +149,8 @@
   .customerHeader {
     display: flex;
     justify-content: space-between;
-    border-bottom: 3px #3e3e3e solid;
-    color: #7b9cc1; }
+    border-bottom: 3px #939393 solid;
+    color: #FFF; }
   .customersDivider {
     background-color: darkslategray;
     height: 15px;
@@ -158,7 +158,7 @@
     -webkit-transform: skew(-20deg) rotate(2deg);
     -moz-transform: skew(-20deg) rotate(2deg);
     width: 1px;
-    background-color: #ffb433; }
+    background-color: #080a8a; }
   .aboveBelowNav {
     display: flex;
     flex-direction: column;
@@ -186,22 +186,22 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-bottom: 0.5px #7b9cc1 solid; }
+    border-bottom: 0.5px #FFF solid; }
   .custName {
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
     font-size: .7em;
     width: 20vw;
-    border-right: 0.5px #7b9cc1 solid; }
+    border-right: 0.5px #FFF solid; }
   .details {
     font-family: 'Oswald', sans-serif;
     font-weight: 200;
     font-size: .7em;
     width: 20vw;
     text-align: center;
-    border-right: 0.5px #7b9cc1 solid; }
+    border-right: 0.5px #FFF solid; }
   .addCustomer {
-    background-color: #3e3e3e;
+    background-color: #939393;
     position: fixed;
     bottom: 60px;
     right: 15px;
@@ -215,19 +215,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px #3e3e3e solid; }
+    border: 2px #939393 solid; }
   .addCustomer:hover {
     background-color: white;
-    color: #3e3e3e;
-    border: 2px #3e3e3e solid;
+    color: #939393;
+    border: 2px #939393 solid;
     cursor: pointer; }
   .vert {
     width: 7px;
     height: 45px;
-    background-color: #7b9cc1;
+    background-color: #FFF;
     position: absolute; }
   .horiz {
     width: 45px;
     height: 7px;
-    background-color: #7b9cc1;
+    background-color: #FFF;
     position: absolute; } }

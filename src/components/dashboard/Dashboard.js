@@ -26,6 +26,11 @@ export default class Dashboard extends Component {
     componentDidMount() {
         const userData = axios.get('/auth/me')
             .then(res => {
+                console.log(res)
+                if (!res.data){
+                     window.location = "/"
+                    console.log("no user")
+                }
                 console.log(res.data)
                 this.setState({
 
@@ -33,7 +38,7 @@ export default class Dashboard extends Component {
                 })
             })
 
-        console.log(userData)
+        //console.log(userData)
 
         axios.get('/api/repairs/count')
             .then(response => {
@@ -81,7 +86,7 @@ export default class Dashboard extends Component {
                 <div className="buttonOrg">
                     <button onClick={this.showModal} onClose={this.showModal} className="newCall">NEW CALL</button>
 
-                    <a href='http://localhost:3005/auth/logout'><button className="newCall">LOG OUT</button></a>
+                    <a href={process.env.REACT_APP_LOGOUT}><button className="newCall">LOG OUT</button></a>
                 </div>
 
                     <RepairModal show={this.state.hideModal} onClose={this.showModal} />

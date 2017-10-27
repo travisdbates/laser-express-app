@@ -244,8 +244,7 @@ class RepairModal extends Component {
                 this.setState({ customers: response.data })
             })
         this.props.OnClose;
-        window.location.replace('http://localhost:3000/#/deliveries')
-
+        window.location.reload(true)
     }
 
     addCartridge() {
@@ -304,11 +303,6 @@ class RepairModal extends Component {
         this.setState({ cartridgeForOrder: newCart });
     }
 
-    handleSubmit = (evt) => {
-        const { name, shareholders } = this.state;
-        alert(`Incorporated: ${name} with ${shareholders.length} shareholders`);
-    }
-
     handleAddCartridgeOrder = () => {
         this.setState({
             cartridgeForOrder: this.state.cartridgeForOrder.concat([{ name: '', quant: '' }])
@@ -365,7 +359,7 @@ class RepairModal extends Component {
 
                     </div>
                     {this.state.currentCustomer.length !== 0 ?
-                        <div className="customerInfo">
+                        <div className="customerInfoRM">
                             <div className="rowOne">
                                 <div className="aboveBelow">
                                     <input className="inputBoxR Name" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].name}></input>
@@ -389,7 +383,7 @@ class RepairModal extends Component {
 
                         </div>
                         :
-                        <div className="customerInfo">
+                        <div className="customerInfoRM">
                             <div className="rowOne">
                                 <div className="aboveBelow">
                                     <input className="inputBoxR Name" placeholder="NAME" onChange={(e) => { this.handleChange(e.target.value, "name") }}></input>
@@ -411,7 +405,7 @@ class RepairModal extends Component {
                                     <input className="inputBoxR State" placeholder="ST" onChange={(e) => { this.handleChange(e.target.value, "state") }}></input>
                                 </div>
                             </div>
-                            {this.state.customerAdded ? null : <button onClick={this.submitCustomer}>Submit New Customer</button>}
+                            {this.state.customerAdded ? null : <button onClick={this.submitCustomer} className="repairButtond">Submit New Customer</button>}
                         </div>
                     }
 

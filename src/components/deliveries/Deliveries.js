@@ -34,11 +34,13 @@ export default class Deliveries extends Component {
         this.completeDelivery = this.completeDelivery.bind(this)
         this.toggleSwitch = this.toggleSwitch.bind(this)
         this.sendToOrder = this.sendToOrder.bind(this)
+        this.deleteDelivery = this.deleteDelivery.bind(this)
     }
 
     notify = () => toast.success("Marked as complete!");
     notifyOrder = () => toast.success("Sent to Order Log!");
-    
+    deleted = () => toast.warning("Deleted!")
+
 
     componentDidMount() {
 
@@ -80,9 +82,9 @@ export default class Deliveries extends Component {
     }
 
     updateInvoice(id, index) {
-   
+
         axios.put(`/api/deliveries/updateinvoice/${id}`)
-           
+
 
         this.state.deliveries[index].invoicestatus = !this.state.deliveries[index].invoicestatus;
         this.setState({ deliveries: this.state.deliveries })
@@ -90,7 +92,7 @@ export default class Deliveries extends Component {
 
     completeDelivery(id, index) {
         axios.put(`/api/deliveries/completedelivery/${id}`)
-            
+
         this.state.deliveries.splice(index, 1)
         this.setState({ deliveries: this.state.deliveries })
         this.notify();
@@ -111,8 +113,8 @@ export default class Deliveries extends Component {
 
     }
 
-    sendToOrder(index, indexOrder, order, delivCart, delivQuant){
-        
+    sendToOrder(index, indexOrder, order, delivCart, delivQuant) {
+
 
         var order = {
             date: this.state.deliveries[index].date,
@@ -123,10 +125,20 @@ export default class Deliveries extends Component {
         }
 
         axios.post('/api/orders/insert', order)
-        .then((response) => {
-        })
-        
+            .then((response) => {
+            })
+
         this.notifyOrder();
+    }
+
+    deleteDelivery(id, index) {
+        const result = window.confirm("Are you sure? This action cannot be undone.")
+        if (!result) return;
+        axios.put(`/api/deliveries/deletedelivery/${id}`)
+
+        this.state.completeDeliveries.splice(index, 1)
+        this.setState({ completeDeliveries: this.state.completeDeliveries })
+        this.deleted();
     }
 
     render() {
@@ -175,7 +187,7 @@ export default class Deliveries extends Component {
                         <span className="headerTitleDeliveries">NOTES</span>
                         <div className="deliveriesDivider"></div>
 
-                        <span className="headerTitleDeliveriesM">COMPLETE</span>
+                        {this.state.hideComplete ? <span className="headerTitleDeliveriesM">DELETE</span> : <span className="headerTitleDeliveriesM">COMPLETE</span>}
 
                     </div>
                 </div>
@@ -198,7 +210,7 @@ export default class Deliveries extends Component {
                                 <span className="detailsDeliveries">{deliveries.invoicestatus === false ? <button onClick={() => this.updateInvoice(deliveries.deliveriesid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :
                                     <button onClick={() => this.updateInvoice(deliveries.deliveriesid, index)} className="Ordered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button>}</span>
                                 <span className="detailsDeliveries">{deliveries.notes}</span>
-                                <span className="detailsDeliveriesM"><button className="completed" onClick={() => this.completeDelivery(deliveries.deliveriesid, index)}>&#10003;</button></span>
+                                <span className="detailsDeliveriesM"><button className="completed" onClick={() => this.deleteDelivery(deliveries.deliveriesid, index)}>&#x2715;</button></span>
 
 
 
@@ -217,11 +229,11 @@ export default class Deliveries extends Component {
                                 <span className="detailsDeliveriesM">{deliveries.streetaddress}</span>
                                 <span className="detailsDeliveries">{deliveries.phone}</span>
                                 <span className="detailsDeliveriesM">{this.orderFormat(deliveries.deliveriesid, deliveries.quantity, deliveries.cartridge).map((order, indexOrder) => {
-                                    return(
-                                    <div>
-                                        <span className="detailsDeliveriesO">{order}</span>
-                                        <button className="sendToOrder" onClick={() => this.sendToOrder(index, indexOrder, order, deliveries.cartridge, deliveries.quantity)}>&rarr;</button>
-                                    </div>)
+                                    return (
+                                        <div>
+                                            <span className="detailsDeliveriesO">{order}</span>
+                                            <button className="sendToOrder" onClick={() => this.sendToOrder(index, indexOrder, order, deliveries.cartridge, deliveries.quantity)}>&rarr;</button>
+                                        </div>)
                                 })}</span>
                                 <span className="detailsDeliveries">{deliveries.tech}</span>
                                 <span className="detailsDeliveries">{deliveries.orderstatus === false ? <button onClick={() => this.updateOrder(deliveries.deliveriesid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :

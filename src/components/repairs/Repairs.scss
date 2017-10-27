@@ -315,7 +315,7 @@
     .vert {
         width: 7px;
         height: 45px;
-        background-color: $colorTwo;
+        background-color: $accentColor;
         position: absolute;
     
     }
@@ -323,7 +323,7 @@
     .horiz {
         width: 45px;
         height: 7px;
-        background-color: $colorTwo;
+        background-color: $accentColor;
         position: absolute;
     }
 }

@@ -1,0 +1,1 @@
+DELETE FROM Repairs WHERE repairsid = $1;

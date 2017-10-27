@@ -21,6 +21,7 @@ export default class Customers extends Component {
         this.showModal = this.showModal.bind(this)
     }
     componentDidMount() {
+        
         axios.get("/api/customers/get")
             .then(response => {
                 //console.log(response.data)
@@ -78,7 +79,7 @@ export default class Customers extends Component {
                 {this.state.customers.length === 0 ? <Spinner name='double-bounce' /> : this.state.customers.map((customer, index) => {
                     return (
                         <div className="customerContainerC" key={customer.customerid}>
-                            <span className="custName">{customer.name}</span>
+                            <span className="details">{customer.name}</span>
                             <span className="details">{customer.phone}</span>
                             <span className="details">{customer.streetaddress}</span>
                             <span className="details">{customer.city}</span>

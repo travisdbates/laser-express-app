@@ -1,5 +1,5 @@
 .outerDivD {
-  background-color: #3e3e3e;
+  background-color: #939393;
   width: 100vw;
   height: 90vh;
   font-family: "Oswald", sans-serif; }
@@ -23,19 +23,19 @@
   margin-right: 35px; }
   .aboveBelowT .circleT {
     font-family: 'Oswald', sans-serif;
-    background-color: #ffb433;
+    background-color: #080a8a;
     border-radius: 50%;
     font-size: 15em;
     font-weight: 400;
     width: 200px;
     height: auto;
     margin-bottom: 25px;
-    color: #3e3e3e;
+    color: #939393;
     text-decoration: none; }
 
 .name {
   font-size: 2em;
-  color: #ffb433; }
+  color: #080a8a; }
 
 .horizontal {
   display: flex;
@@ -46,16 +46,16 @@
 .plusMinus {
   background-color: transparent;
   border: none;
-  color: #7b9cc1;
+  color: #FFF;
   font-size: 2em;
   outline: none;
   cursor: pointer;
   transition: .14s; }
 
 .plusMinus:active {
-  color: #7b9cc1; }
+  color: #FFF; }
 
 .noSub {
-  color: #ffb433;
+  color: #080a8a;
   cursor: not-allowed;
   font-size: 2em; }

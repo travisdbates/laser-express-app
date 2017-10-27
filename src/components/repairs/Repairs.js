@@ -33,10 +33,12 @@ export default class Customers extends Component {
         this.mapOverUsers = this.mapOverUsers.bind(this)
         this.showModal = this.showModal.bind(this)
         this.toggleSwitch = this.toggleSwitch.bind(this)
+        this.deleteRepair = this.deleteRepair.bind(this)
 
     }
 
     notify = () => toast.success("Marked as complete!");
+    deleted = () => toast.warning("Deleted!")
 
     componentDidMount() {
         axios.get("/api/repairs/get")
@@ -109,6 +111,16 @@ export default class Customers extends Component {
         console.log(this.state.hideComplete)
     }
 
+    deleteRepair(id, index) {
+        const result = window.confirm("Are you sure? This action cannot be undone.")
+        if (!result) return;
+        axios.delete(`/api/repairs/deleterepair/${id}`)
+            .then(response => console.log(response))
+        this.state.completeRepairs.splice(index, 1)
+        this.setState({ completeRepairs: this.state.completeRepairs })
+        this.deleted();
+    }
+
     render() {
         return (
             <div className="outermostDiv">
@@ -159,7 +171,7 @@ export default class Customers extends Component {
                         <span className="headerTitleRepairs">NOTES</span>
                         <div className="repairsDivider"></div>
 
-                        <span className="headerTitleRepairsM">COMPLETE</span>
+                        {this.state.hideComplete ? <span className="headerTitleRepairsM">DELETE</span> : <span className="headerTitleRepairsM">COMPLETE</span>}
 
                     </div>
                 </div>
@@ -185,7 +197,7 @@ export default class Customers extends Component {
                             <span className="detailsRepairs">{repairs.invoicestatus === false ? <button onClick={() => this.updateInvoice(repairs.repairsid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :
                                 <button onClick={() => this.updateInvoice(repairs.repairsid, index)} className="Ordered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button>}</span>
                             <span className="detailsRepairs">{repairs.notes}</span>
-                            <span className="detailsRepairsM"><button className="completed" onClick={() => this.completeRepair(repairs.repairsid, index)}>&#10003;</button></span>
+                            <span className="detailsRepairsM"><button className="completed" onClick={() => this.deleteRepair(repairs.repairsid, index)}>&#x2715;</button></span>
 
 
                         </div>
