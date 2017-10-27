@@ -10,10 +10,10 @@ const customers_controller = require('./controllers/customers_controller')
 
 app.use( express.static(`${__dirname}/../build`))
 
-const app = express();
 
 app.use(bodyParser.json());
 
+const app = express();
 /** Order matters **
  * 
  * use session
@@ -73,8 +73,8 @@ passport.use(new Auth0Strategy({
 
 app.get("/auth", passport.authenticate('auth0'));
 app.get("/auth/callback", passport.authenticate('auth0', {
-    successRedirect: 'http://localhost:3000/#/dashboard',
-    failureRedirect: '/auth'
+    successRedirect: process.env.SUCCESS_REDIRECT,
+    failureRedirect: process.env.FAILURE_REDIRECT
 }))
 
 app.get('/auth/me', (req,res) => {
