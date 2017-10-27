@@ -7,13 +7,13 @@ const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 
 const customers_controller = require('./controllers/customers_controller')
+const app = express();
 
 app.use( express.static(`${__dirname}/../build`))
 
 
 app.use(bodyParser.json());
 
-const app = express();
 /** Order matters **
  * 
  * use session
