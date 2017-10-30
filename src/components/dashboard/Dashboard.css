@@ -87,7 +87,8 @@
   font-weight: 900;
   color: whitesmoke;
   transition: .84s;
-  outline: none; }
+  outline: none;
+  cursor: pointer; }
   .button .button:hover {
     background-color: #5e96be;
     color: #142836;

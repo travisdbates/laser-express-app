@@ -344,7 +344,7 @@ class RepairModal extends Component {
                 {this.props.children}
                 <div className="modalWindow">
                     
-                    <div className="topContentRM">
+                    <div className="topContentRMD">
 
                         <Select
                             className="Select-inputTEST"
@@ -434,8 +434,8 @@ class RepairModal extends Component {
                                         </div>
 
                                 </div>
-                                <div className="colOneS">
-                                    <span className="cartridgesName">CARTRIDGES</span>
+                                <div className="colOneDC">
+                                    <span className="cartridgesNameD">CARTRIDGES</span>
                                     <div>
                                     {this.state.cartridgeForOrder.map((cartridge, idx) => (
                                                 <div className="cartQuantD">
@@ -463,18 +463,18 @@ class RepairModal extends Component {
                                                         <option value="12">12</option>
 
                                                     </select>
-                                                    <button type="button" className="removeButton" onClick={this.handleRemoveCartridgeOrder(idx)}>-</button>
+                                                    <button type="button" className="removeButtonD" onClick={this.handleRemoveCartridgeOrder(idx)}>-</button>
                                             </div>
                                         ))}
 
 
                                     </div>
-                                    <div className="centerButtons"><button type="button" onClick={this.handleAddCartridgeOrder} className="smallSAdd">+</button></div>
+                                    <div className="centerButtonD"><button type="button" onClick={this.handleAddCartridgeOrder} className="smallSAddD">+</button></div>
                                     
                                 </div>
 
                             </div>
-                            <div className="centerButton"><button onClick={this.submitDelivery} className="submit">Submit</button></div>
+                            <div className="centerButtonD"><button onClick={this.submitDelivery} className="submit">Submit</button></div>
                             
                         </div>
 
@@ -483,21 +483,21 @@ class RepairModal extends Component {
                         <div>
                             <div className="rowOne">
                                 <div className="aboveBelow">
-                                    <input className="inputBoxR ContactNameRep" onChange={(e) => { this.handleChange(e.target.value, "contactName") }} placeholder="Contact Name"></input>
+                                    <input className="inputBoxR ContactNameRep" onChange={(e) => { this.handleChange(e.target.value, "contactName") }} placeholder="CONTACT NAME"></input>
                                 </div>
                                 <div className="aboveBelow">
-                                    <input className="inputBoxR Printer" onChange={(e) => { this.handleChange(e.target.value, "printer") }} placeholder="Printer"></input>
+                                    <input className="inputBoxR Printer" onChange={(e) => { this.handleChange(e.target.value, "printer") }} placeholder="PRINTER"></input>
                                 </div>
                                 <div className="aboveBelow">
 
-                                    <input className="inputBoxR IDNum" onChange={(e) => { this.handleChange(e.target.value, "printerID") }} placeholder="Printer ID"></input>
+                                    <input className="inputBoxR IDNum" onChange={(e) => { this.handleChange(e.target.value, "printerID") }} placeholder="PRINTER ID"></input>
                                 </div>
 
                             </div>
                             <div className="rowTwo">
 
                                 <div className="aboveBelow">
-                                    <input className="inputBoxR Loc" onChange={(e) => { this.handleChange(e.target.value, "location") }} placeholder="Location"></input>
+                                    <input className="inputBoxR Loc" onChange={(e) => { this.handleChange(e.target.value, "location") }} placeholder="LOCATION"></input>
                                 </div>
                                 <div className="aboveBelow">
                                     <span className="inputNames Tech">Tech:  </span>
@@ -509,10 +509,10 @@ class RepairModal extends Component {
                                     </select>
                                 </div>
                                 <div className="aboveBelow">
-                                    <input className="inputBoxR Notes" onChange={(e) => { this.handleChange(e.target.value, "notes") }} placeholder="Notes"></input>
+                                    <input className="inputBoxR Notes" onChange={(e) => { this.handleChange(e.target.value, "notes") }} placeholder="NOTES"></input>
                                 </div>
                             </div>
-                            <div className="centerButton"><button onClick={this.submitRepair} className="submit">Submit</button></div>
+                            <div className="centerButtonD"><button onClick={this.submitRepair} className="submit">Submit</button></div>
 
                         </div>}
                 </div>

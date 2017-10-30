@@ -35,7 +35,7 @@
     z-index: 1;
 }
 
-.topContentRM {
+.topContentRMD {
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -199,6 +199,15 @@
     align-items: center;
 }
 
+.colOneDC {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
 .inputBoxD {
     border: none;
     border-bottom: 1.5px solid rgb(84, 84, 84);
@@ -219,7 +228,7 @@
 .cartQuantD {
     display: flex;
     justify-content: space-around;
-    width: 90vw;
+    width: 100%;
     margin-top: 1vh;
     overflow-y: scroll;
 }
@@ -227,10 +236,10 @@
 .cartNameD {
     border: none;
     border-bottom: 1.5px solid rgb(84, 84, 84);
-    width: 40vw;
+    width: 20vw;
     transition: .64s;
     font-family: 'Oswald', sans-serif;
-    font-size: 2em;
+    font-size: 1em;
     color: black;
     background-color: white;
     outline: none;
@@ -247,11 +256,43 @@
     border: none;
     color: black;
     font-family: 'Oswald', sans-serif;
-    font-size: 2em;
+    font-size: 1em;
     color: #757575;
 
 
 }
+
+
+.removeButtonD {
+    border: darkred 1px solid;
+    border-radius: 50%;
+    color: darkred;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    cursor: pointer;
+    outline: none;
+}
+.smallSAddD {
+    border: darkgreen 1px solid;
+    border-radius: 50%;
+    color: darkgreen;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    cursor: pointer;
+    outline: none;
+    margin-top: 1vh;
+}
+
+.cartridgesNameD {
+    font-size: 2em;
+    margin-top: 1vh;  
+    font-family: 'Oswald', sans-serif;
+    text-shadow: none;
+    color: #757575;
+}
+
 
 .inputNames.ContactName {
     width: 20vw;
@@ -306,7 +347,7 @@
     width: 11vw;
 }
 
-.centerButton {
+.centerButtonD {
     display: flex;
     width: 100%;
     justify-content: center;
@@ -321,7 +362,7 @@
     padding: 25px 50px;
     cursor: pointer;
     outline: none;
-    margin-top: 10vh;    
+    margin-top: 2vh;    
 }
 
 

@@ -24,7 +24,7 @@ class ApprovalModal extends Component {
         this.orderFormat = this.orderFormat.bind(this)
     }
 
-    notify = () => toast.success("Submitted to Delivery Log!");
+    notifyD = () => toast.success("Submitted to Delivery Log!");
 
 
     componentDidMount() {
@@ -45,7 +45,7 @@ class ApprovalModal extends Component {
 
     }
 
-    submitDelivery(index) {
+    submitDelivery(index, timeD) {
         var date = new Date();
         var dd = date.getDate();
         var mm = date.getMonth() + 1; //January is 0!
@@ -70,7 +70,20 @@ class ApprovalModal extends Component {
             .then(response => {
                 console.log(response)
             })
-        this.notify;
+        axios.put(`/api/deliveriesapproval/update/${timeD}`)
+        this.state.deliveriesForApproval.splice(index, 1)
+        this.setState({ deliveriesForApproval: this.state.deliveriesForApproval })
+        this.notifyD();
+    }
+
+    deleteDelivery(index, time) {
+        this.state.deliveriesForApproval.splice(index, 1)
+        this.setState({ deliveriesForApproval: this.state.deliveriesForApproval })
+        console.log(time)
+        axios.put(`/api/deliveriesapproval/update/${time}`)
+            .then(response => {
+                console.log(response)
+            })
     }
 
     render() {
@@ -83,27 +96,31 @@ class ApprovalModal extends Component {
                 {this.props.children}
                 <div className="modalWindowA">
                     <div className="topContentRM">
-                        <button className="closeButton" onClick={this.props.onClose}>&#10006;</button>
+                        <button className="closeButton" onClick={() => window.location.reload(true)}>&#10006;</button>
                     </div>
-                    {this.state.deliveriesForApproval.map((delivery, index) => {
-                        
-                        return (
-                            <div className="containerForA">
-                                <span>{delivery.contactname}</span>
-                                <span >{this.orderFormat(delivery.quantity, delivery.cartridge).map((order, indexOrder) => {
-                                    return (
-                                        <div>
-                                            <span >{order}</span>
-                                        </div>)
+                    <div className="centerContainer">
+                        <div className="containerForAdds">
+                            {this.state.deliveriesForApproval.map((delivery, index) => {
 
-                                })}</span>
-                                <button onClick={() => this.submitDelivery(index)}></button>
+                                return (
+                                    <div className="containerForA">
+                                        <span>Name: {delivery.contactname}</span>
+                                        <span >Order: {this.orderFormat(delivery.quantity, delivery.cartridge).map((order, indexOrder) => {
+                                            return (
 
+                                                <span >{order}</span>
+                                            )
 
-                            </div>
-                        )
-                    })}
-
+                                        })}</span>
+                                        <div className="rowFlexAM">
+                                            <button className="yes" onClick={() => this.submitDelivery(index, delivery.time)}>&#10003;</button>
+                                            <button className="no" onClick={() => this.deleteDelivery(index, delivery.time)}>&#x2715;</button>
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
                 </div>
                 <ToastContainer
                     position="top-right"

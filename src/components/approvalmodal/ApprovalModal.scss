@@ -23,8 +23,8 @@
 
 .modalWindowA {
     background-color: white;
-    height: 70vh;
-    width: 70vw;
+    height: 85vh;
+    width: 85vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,6 +33,7 @@
     border-radius: 2px;
     font-family: 'Oswald', sans-serif;
     z-index: 1;
+    overflow-y: scroll;
 }
 
 .topContentRM {
@@ -52,6 +53,54 @@
     font-weight: 200;
     margin-top: 0px;
     margin-right: 10px;
+}
+.containerForAdds {
+    display: flex;
+    width: 80%;
+    flex-wrap: wrap;
+
+}
+
+.rowFlexAM {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 2vh;
+}
+
+.centerContainer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.yes {
+    background-color: white;
+    cursor: pointer;
+    color: limegreen;
+    border: none;
+    outline: none;
+}
+
+.no {
+    background-color: white;
+    cursor: pointer;
+    color: red;
+    border: none;
+    outline: none;
+}
+
+.containerForA {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: $colorTwo solid 1px;
+    border-radius: 5px;
+    height: 20vh;
+    width: 20vw;
+    margin: 1vh;
 }
 
 

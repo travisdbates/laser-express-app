@@ -458,6 +458,14 @@ app.get('/api/deliveriesapprove/count', (req, res) => {
     })
 })
 
+app.put('/api/deliveriesapproval/update/:id', (req, res) => {
+    const id = req.params.id;
+    app.get('db').deliveries_approve_complete([id])
+    .then(delivery => {
+        res.status(200).send(delivery)
+    })
+})
+
 
 const PORT = 3005
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
