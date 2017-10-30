@@ -1,19 +1,21 @@
 .container > .contentContainer > .contentContainerBackgroundRect {
-  fill: #4f4f4f; }
+  fill: #142836; }
 
 .container > .contentContainer .xAxis text {
-  font-size: .75em; }
+  font-size: .75em;
+  color: white; }
 
 .container > .contentContainer .line path {
   fill: transparent;
-  stroke: #dcb20a;
+  stroke: #e87925;
   stroke-width: 2; }
 
 .container > .contentContainer .scatter circle {
-  fill: #dcb20a;
-  stroke: #4f4f4f;
+  fill: #e87925;
+  stroke: #142836;
   stroke-width: 2; }
 
 .yAxis, .xAxis {
   font-family: "Oswald", sans-serif;
-  font-size: 1.5em; }
+  font-size: 1.5em;
+  color: white; }

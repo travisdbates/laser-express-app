@@ -71,9 +71,20 @@
 .headerTitleCustomers {
     width: 10vw;
     font-family: 'Oswald', sans-serif;
-    font-weight: 200;    font-size: 1em; 
+    font-weight: 200;    
+    font-size: 1em; 
     display: flex;
     justify-content: space-around;
+}
+
+.headerTitleCustomers.Custname {
+    width: 10vw;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;    
+    font-size: 1em; 
+    display: flex;
+    justify-content: space-around;
+    cursor: pointer;
 }
 
 .headerTitleCustomersName {

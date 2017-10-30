@@ -2,9 +2,9 @@
 .fixedHeader {
   top: 0;
   position: sticky;
-  background-color: #4f4f4f;
+  background-color: #142836;
   margin-bottom: 0px;
-  border-bottom: 3px #dcb20a solid; }
+  border-bottom: 3px #e87925 solid; }
 
 .sideBySide {
   display: flex;
@@ -18,7 +18,7 @@
     align-content: center;
     margin-right: 10px; }
     .sideBySide .showCompleteTitle .showComplete {
-      color: #686ad8;
+      color: #5e96be;
       font-family: 'Open Sans Condensed', sans-serif;
       font-weight: 200;
       font-size: 1.3em;
@@ -26,7 +26,7 @@
 
 .deliveriesWord {
   top: 10vh;
-  color: #686ad8;
+  color: #5e96be;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 200;
   font-size: 3em;
@@ -38,8 +38,8 @@
 .deliveriesHeader {
   display: flex;
   justify-content: space-between;
-  border-bottom: 3px #4f4f4f solid;
-  color: #686ad8; }
+  border-bottom: 3px #142836 solid;
+  color: #5e96be; }
 
 .deliveriesDivider {
   background-color: darkslategray;
@@ -48,7 +48,7 @@
   -webkit-transform: skew(-20deg) rotate(2deg);
   -moz-transform: skew(-20deg) rotate(2deg);
   width: 1px;
-  background-color: #dcb20a; }
+  background-color: #e87925; }
 
 .deliveriesDividerM {
   background-color: darkslategray;
@@ -57,7 +57,7 @@
   -webkit-transform: skew(-20deg) rotate(2deg);
   -moz-transform: skew(-20deg) rotate(2deg);
   width: 1px;
-  background-color: #dcb20a; }
+  background-color: #e87925; }
 
 .headerTitleName {
   width: 33vw;
@@ -65,13 +65,16 @@
   font-weight: 900;
   font-size: 2em; }
 
-.headerTitleDeliveries {
+.headerTitleDeliveries, .Tech {
   width: 10vw;
   font-family: 'Oswald', sans-serif;
   font-weight: 200;
   font-size: 1em;
   display: flex;
   justify-content: space-around; }
+
+.Tech {
+  cursor: pointer; }
 
 .headerTitleDeliveriesM {
   width: 10vw;
@@ -85,7 +88,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  border-bottom: 1px #4f4f4f solid;
+  border-bottom: 0.1px #5e96be solid;
   background-color: white; }
 
 .name {
@@ -125,11 +128,11 @@
   padding-left: 2px; }
 
 .sendToOrder:hover {
-  color: #dcb20a;
+  color: #e87925;
   font-size: 1.1em; }
 
 .addDeliveryButton {
-  background-color: #4f4f4f;
+  background-color: #142836;
   position: fixed;
   bottom: 30px;
   right: 30px;
@@ -143,24 +146,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px #4f4f4f solid; }
+  border: 2px #142836 solid; }
 
 .addDeliveryButton:hover {
   background-color: white;
-  color: #4f4f4f;
-  border: 2px #4f4f4f solid;
+  color: #142836;
+  border: 2px #142836 solid;
   cursor: pointer; }
 
 .vert {
-  width: 10px;
+  width: 3px;
   height: 65px;
-  background-color: #dcb20a;
+  background-color: #e87925;
   position: absolute; }
 
 .horiz {
   width: 65px;
-  height: 10px;
-  background-color: #dcb20a;
+  height: 3px;
+  background-color: #e87925;
   position: absolute; }
 
 .notOrdered {
@@ -208,11 +211,11 @@
   font-size: 1.5em; }
 
 @media only screen and (max-width: 375px) {
-  .headerTitleDeliveries, .deliveriesDivider, .detailsDeliveries {
+  .headerTitleDeliveries, .Tech, .deliveriesDivider, .detailsDeliveries {
     display: none; }
   .deliveriesWord {
     top: 10vh;
-    color: #686ad8;
+    color: #5e96be;
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: 200;
     font-size: 1em;
@@ -224,7 +227,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    border-bottom: 0.5px #686ad8 solid;
+    border-bottom: 0.5px #5e96be solid;
     background-color: white; }
   .sideBySide {
     display: flex;
@@ -239,7 +242,7 @@
       align-content: center;
       margin-right: 10px; }
       .sideBySide .showCompleteTitle .showComplete {
-        color: #686ad8;
+        color: #5e96be;
         font-family: 'Open Sans Condensed', sans-serif;
         font-weight: 200;
         font-size: .5em;
@@ -249,12 +252,12 @@
     font-size: .5em; }
   .detailsDeliveriesM {
     width: 25vw;
-    border-right: #686ad8 solid 0.5px; }
+    border-right: #5e96be solid 0.5px; }
   .detailsDeliveriesO {
     width: 25vw;
     margin-left: .5px; }
   .addDeliveryButton {
-    background-color: #4f4f4f;
+    background-color: #142836;
     position: fixed;
     bottom: 60px;
     right: 15px;
@@ -268,19 +271,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px #4f4f4f solid; }
+    border: 2px #142836 solid; }
   .addDeliveryButton:hover {
     background-color: white;
-    color: #4f4f4f;
-    border: 2px #4f4f4f solid;
+    color: #142836;
+    border: 2px #142836 solid;
     cursor: pointer; }
   .vert {
     width: 7px;
     height: 45px;
-    background-color: #dcb20a;
+    background-color: #e87925;
     position: absolute; }
   .horiz {
     width: 45px;
     height: 7px;
-    background-color: #dcb20a;
+    background-color: #e87925;
     position: absolute; } }

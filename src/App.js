@@ -12,6 +12,7 @@ import Deliveries from "./components/deliveries/Deliveries"
 import Orders from "./components/orders/Orders"
 import Insight from "./components/insight/Insight"
 import Toners from "./components/toners/Toners"
+import LaserExpress from "./components/staticsite/LaserExpress"
 
 
 class App extends Component {
@@ -21,7 +22,7 @@ class App extends Component {
 
         <HashRouter>
           <div>
-            <NavBar />
+          {/* window.location.href.search('static') === -1 ? <NavBar/> : null */}
             <Route component={Login} exact path='/' />
             <Route component={Dashboard} path='/dashboard' />
             <Route component={Deliveries} path='/deliveries' />
@@ -30,6 +31,7 @@ class App extends Component {
             <Route component={Orders} path="/orders" />
             <Route component={Insight} path="/insight" />
             <Route component={Toners} path="/toners" />
+            <Route component={LaserExpress} path="/static"/>
           </div>
         </HashRouter>
       </div>

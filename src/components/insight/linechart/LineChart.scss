@@ -6,6 +6,8 @@
   
   .container > .contentContainer .xAxis text {
     font-size: .75em;
+    color: white;
+
   }
   
   .container > .contentContainer .line path {
@@ -23,5 +25,6 @@
   .yAxis, .xAxis {
       font-family: "Oswald", sans-serif;
       font-size: 1.5em;
+      color: white;
       
   }

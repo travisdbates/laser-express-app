@@ -12,6 +12,8 @@ import "../../../node_modules/react-toastify/dist/ReactToastify.min.css"
 import Toggle from 'react-toggle'
 import "../deliveries/react-toggle.css"
 
+import NavBar from "../navbar/NavBar"
+
 
 var Spinner = require('react-spinkit');
 
@@ -123,129 +125,132 @@ export default class Customers extends Component {
 
     render() {
         return (
-            <div className="outermostDiv">
-                <div className="fixedHeader">
-                    <div className="repairsSideBySide">
-                        <h1 className="repairsWord">REPAIRS</h1>
-                        <div className="repairsShowCompleteTitle">
-                            <span className="repairsShowComplete">SHOW COMPLETE</span>
-                            <Toggle
-                                defaultChecked={this.state.hideComplete}
-                                onChange={this.toggleSwitch} />
+            <div>
+                <NavBar/>
+                <div className="outermostDiv">
+                    <div className="fixedHeader">
+                        <div className="repairsSideBySide">
+                            <h1 className="repairsWord">REPAIRS</h1>
+                            <div className="repairsShowCompleteTitle">
+                                <span className="repairsShowComplete">SHOW COMPLETE</span>
+                                <Toggle
+                                    defaultChecked={this.state.hideComplete}
+                                    onChange={this.toggleSwitch} />
+                            </div>
+                        </div>
+                        <div className="repairsHeader">
+                            <span className="headerTitleRepairs">DATE</span>
+                            <div className="repairsDivider"></div>
+
+                            <span className="headerTitleRepairs">TIME</span>
+                            <div className="repairsDivider"></div>
+
+                            <span className="headerTitleRepairs">STATUS</span>
+                            <div className="repairsDivider"></div>
+
+                            <span className="headerTitleRepairsM">CONTACT</span>
+                            <div className="repairsDividerM"></div>
+
+                            <span className="headerTitleRepairsM">ADDRESS</span>
+                            <div className="repairsDividerM"></div>
+
+                            <span className="headerTitleRepairs">PHONE</span>
+                            <div className="repairsDivider"></div>
+
+                            <span className="headerTitleRepairsM">PRINTER</span>
+                            <div className="repairsDividerM"></div>
+
+                            <span className="headerTitleRepairs">TECH</span>
+                            <div className="repairsDivider"></div>
+
+                            <span className="headerTitleRepairs">SYMPTOMS</span>
+                            <div className="repairsDivider"></div>
+
+                            <span className="headerTitleRepairs">ORDERED</span>
+                            <div className="repairsDivider"></div>
+
+                            <span className="headerTitleRepairs">INVOICED</span>
+                            <div className="repairsDivider"></div>
+
+                            <span className="headerTitleRepairs">NOTES</span>
+                            <div className="repairsDivider"></div>
+
+                            {this.state.hideComplete ? <span className="headerTitleRepairsM">DELETE</span> : <span className="headerTitleRepairsM">COMPLETE</span>}
+
                         </div>
                     </div>
-                    <div className="repairsHeader">
-                        <span className="headerTitleRepairs">DATE</span>
-                        <div className="repairsDivider"></div>
+                    {this.state.repairs.length === 0 ? <Spinner name='double-bounce' /> : this.state.hideComplete ?
 
-                        <span className="headerTitleRepairs">TIME</span>
-                        <div className="repairsDivider"></div>
+                        this.state.completeRepairs.map((repairs, index) => {
+                            let d = repairs.date.substring(0, repairs.date.indexOf('T'))
 
-                        <span className="headerTitleRepairs">STATUS</span>
-                        <div className="repairsDivider"></div>
 
-                        <span className="headerTitleRepairsM">CONTACT</span>
-                        <div className="repairsDividerM"></div>
+                            return (
+                                <div className="repairContainer" key={repairs.repairsid}>
+                                    <span className="detailsRepairs">{d}</span>
+                                    <span className="detailsRepairs">{repairs.time}</span>
+                                    <span className="detailsRepairs">{repairs.status}</span>
+                                    <span className="detailsRepairsM">{repairs.contactname}</span>
+                                    <span className="detailsRepairsM">{repairs.streetaddress}</span>
+                                    <span className="detailsRepairs">{repairs.phone}</span>
+                                    <span className="detailsRepairsM">{repairs.printer}</span>
+                                    <span className="detailsRepairs">{repairs.tech}</span>
+                                    <span className="detailsRepairs">{repairs.symptoms}</span>
+                                    <span className="detailsRepairs">{repairs.orderstatus === false ? <button onClick={() => this.updateOrder(repairs.repairsid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :
+                                        <button onClick={() => this.updateOrder(repairs.repairsid, index)} className="Ordered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button>}</span>
+                                    <span className="detailsRepairs">{repairs.invoicestatus === false ? <button onClick={() => this.updateInvoice(repairs.repairsid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :
+                                        <button onClick={() => this.updateInvoice(repairs.repairsid, index)} className="Ordered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button>}</span>
+                                    <span className="detailsRepairs">{repairs.notes}</span>
+                                    <span className="detailsRepairsM"><button className="completed" onClick={() => this.deleteRepair(repairs.repairsid, index)}>&#x2715;</button></span>
 
-                        <span className="headerTitleRepairsM">ADDRESS</span>
-                        <div className="repairsDividerM"></div>
 
-                        <span className="headerTitleRepairs">PHONE</span>
-                        <div className="repairsDivider"></div>
+                                </div>
+                            )
+                        })
+                        :
+                        this.state.repairs.map((repairs, index) => {
+                            let d = repairs.date.substring(0, repairs.date.indexOf('T'))
 
-                        <span className="headerTitleRepairsM">PRINTER</span>
-                        <div className="repairsDividerM"></div>
+                            return (
+                                <div className="repairContainer" key={repairs.repairsid}>
+                                    <span className="detailsRepairs">{d}</span>
+                                    <span className="detailsRepairs">{repairs.time}</span>
+                                    <span className="detailsRepairs">{repairs.status}</span>
+                                    <span className="detailsRepairsM">{repairs.contactname}</span>
+                                    <span className="detailsRepairsM">{repairs.streetaddress}</span>
+                                    <span className="detailsRepairs">{repairs.phone}</span>
+                                    <span className="detailsRepairsM">{repairs.printer}</span>
+                                    <span className="detailsRepairs">{repairs.tech}</span>
+                                    <span className="detailsRepairs">{repairs.symptoms}</span>
+                                    <span className="detailsRepairs">{repairs.orderstatus === false ? <button onClick={() => this.updateOrder(repairs.repairsid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :
+                                        <button onClick={() => this.updateOrder(repairs.repairsid, index)} className="Ordered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button>}</span>
+                                    <span className="detailsRepairs">{repairs.invoicestatus === false ? <button onClick={() => this.updateInvoice(repairs.repairsid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :
+                                        <button onClick={() => this.updateInvoice(repairs.repairsid, index)} className="Ordered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button>}</span>
+                                    <span className="detailsRepairs">{repairs.notes}</span>
+                                    <span className="detailsRepairsM"><button className="complete" onClick={() => this.completeRepair(repairs.repairsid, index)}>&#10003;</button></span>
 
-                        <span className="headerTitleRepairs">TECH</span>
-                        <div className="repairsDivider"></div>
 
-                        <span className="headerTitleRepairs">SYMPTOMS</span>
-                        <div className="repairsDivider"></div>
+                                </div>
+                            )
+                        })
 
-                        <span className="headerTitleRepairs">ORDERED</span>
-                        <div className="repairsDivider"></div>
+                    }
+                    <button className="addDeliveryButton" onClick={this.showModal} onClose={this.showModal}>
+                        <div className="vert"></div>
+                        <div className="horiz"></div>
+                    </button>
 
-                        <span className="headerTitleRepairs">INVOICED</span>
-                        <div className="repairsDivider"></div>
-
-                        <span className="headerTitleRepairs">NOTES</span>
-                        <div className="repairsDivider"></div>
-
-                        {this.state.hideComplete ? <span className="headerTitleRepairsM">DELETE</span> : <span className="headerTitleRepairsM">COMPLETE</span>}
-
-                    </div>
+                    <RepairModal show={this.state.hideModal} onClose={this.showModal} />
+                    <ToastContainer
+                        position="top-right"
+                        type="default"
+                        autoClose={3500}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        pauseOnHover
+                    />
                 </div>
-                {this.state.repairs.length === 0 ? <Spinner name='double-bounce' /> : this.state.hideComplete ?
-                
-                this.state.completeRepairs.map((repairs, index) => {
-                    let d = repairs.date.substring(0, repairs.date.indexOf('T'))
-                    
-
-                    return (
-                        <div className="repairContainer" key={repairs.repairsid}>
-                            <span className="detailsRepairs">{d}</span>
-                            <span className="detailsRepairs">{repairs.time}</span>
-                            <span className="detailsRepairs">{repairs.status}</span>
-                            <span className="detailsRepairsM">{repairs.contactname}</span>
-                            <span className="detailsRepairsM">{repairs.streetaddress}</span>
-                            <span className="detailsRepairs">{repairs.phone}</span>
-                            <span className="detailsRepairsM">{repairs.printer}</span>
-                            <span className="detailsRepairs">{repairs.tech}</span>
-                            <span className="detailsRepairs">{repairs.symptoms}</span>
-                            <span className="detailsRepairs">{repairs.orderstatus === false ? <button onClick={() => this.updateOrder(repairs.repairsid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :
-                                <button onClick={() => this.updateOrder(repairs.repairsid, index)} className="Ordered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button>}</span>
-                            <span className="detailsRepairs">{repairs.invoicestatus === false ? <button onClick={() => this.updateInvoice(repairs.repairsid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :
-                                <button onClick={() => this.updateInvoice(repairs.repairsid, index)} className="Ordered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button>}</span>
-                            <span className="detailsRepairs">{repairs.notes}</span>
-                            <span className="detailsRepairsM"><button className="completed" onClick={() => this.deleteRepair(repairs.repairsid, index)}>&#x2715;</button></span>
-
-
-                        </div>
-                    )
-                })
-                :
-                this.state.repairs.map((repairs, index) => {
-                    let d = repairs.date.substring(0, repairs.date.indexOf('T'))
-                    
-                    return (
-                        <div className="repairContainer" key={repairs.repairsid}>
-                            <span className="detailsRepairs">{d}</span>
-                            <span className="detailsRepairs">{repairs.time}</span>
-                            <span className="detailsRepairs">{repairs.status}</span>
-                            <span className="detailsRepairsM">{repairs.contactname}</span>
-                            <span className="detailsRepairsM">{repairs.streetaddress}</span>
-                            <span className="detailsRepairs">{repairs.phone}</span>
-                            <span className="detailsRepairsM">{repairs.printer}</span>
-                            <span className="detailsRepairs">{repairs.tech}</span>
-                            <span className="detailsRepairs">{repairs.symptoms}</span>
-                            <span className="detailsRepairs">{repairs.orderstatus === false ? <button onClick={() => this.updateOrder(repairs.repairsid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :
-                                <button onClick={() => this.updateOrder(repairs.repairsid, index)} className="Ordered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button>}</span>
-                            <span className="detailsRepairs">{repairs.invoicestatus === false ? <button onClick={() => this.updateInvoice(repairs.repairsid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :
-                                <button onClick={() => this.updateInvoice(repairs.repairsid, index)} className="Ordered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button>}</span>
-                            <span className="detailsRepairs">{repairs.notes}</span>
-                            <span className="detailsRepairsM"><button className="complete" onClick={() => this.completeRepair(repairs.repairsid, index)}>&#10003;</button></span>
-
-
-                        </div>
-                    )
-                })
-                
-            }
-                <button className="addDeliveryButton" onClick={this.showModal} onClose={this.showModal}>
-                    <div className="vert"></div>
-                    <div className="horiz"></div>
-                </button>
-
-                <RepairModal show={this.state.hideModal} onClose={this.showModal} />
-                <ToastContainer
-                    position="top-right"
-                    type="default"
-                    autoClose={3500}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    pauseOnHover
-                />
             </div>
 
         )

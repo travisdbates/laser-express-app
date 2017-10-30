@@ -61,7 +61,7 @@ passport.use(new Auth0Strategy({
                 return done(null, user[0].id)
             }
             else {
-                db.create_user([profile._json.name, profile._json.email, profile._json.picture,profile._json.identities[0].user_id])
+                db.create_user([profile._json.name, profile._json.email, profile._json.picture,profile._json.identities[0].user_id, profile._json.app_metadata.roles[0]])
                 .then( user => {
                     return done(null, user[0].id)
                 })
@@ -87,7 +87,7 @@ app.get('/auth/me', (req,res) => {
 
 app.get('/auth/logout', (req,res)=> {
     req.logOut();
-    res.redirect(302,"http://localhost:3000/#/")
+    res.redirect(302,"/")
 })
 
 passport.serializeUser(function (id, done) {

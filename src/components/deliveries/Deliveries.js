@@ -8,7 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import "../../../node_modules/react-toastify/dist/ReactToastify.css"
 import Toggle from 'react-toggle'
 import "./react-toggle.css"
-
+import NavBar from "../navbar/NavBar"
 
 var Spinner = require('react-spinkit');
 
@@ -25,8 +25,10 @@ export default class Deliveries extends Component {
             deliveries: [],
             deliveriesToOrders: [],
             completeDeliveries: [],
+            deliveriesReset: [],
 
             updateState: 0,
+            delivTech: true,
 
         }
         this.showModal = this.showModal.bind(this)
@@ -35,6 +37,9 @@ export default class Deliveries extends Component {
         this.toggleSwitch = this.toggleSwitch.bind(this)
         this.sendToOrder = this.sendToOrder.bind(this)
         this.deleteDelivery = this.deleteDelivery.bind(this)
+        this.sortDeliveryName = this.sortDeliveryName.bind(this)
+        this.sortDeliveryTech = this.sortDeliveryTech.bind(this)
+
     }
 
     notify = () => toast.success("Marked as complete!");
@@ -64,7 +69,9 @@ export default class Deliveries extends Component {
                     }
                     return 0;
                 })
+                console.log(response.data)
                 this.setState({ deliveries: response.data })
+                this.setState({ deliveriesReset: response.data })
             })
 
 
@@ -141,132 +148,197 @@ export default class Deliveries extends Component {
         this.deleted();
     }
 
+    sortDeliveryName() {
+        let tempArr = this.state.deliveries;
+        tempArr.sort((a, b) => {
+            var xa = a.contactname.toLowerCase(), xb = b.contactname.toLowerCase();
+            if (xa < xb) {
+                return -1;
+            }
+            if (xa > xb) {
+                return 1;
+            }
+            return 0;
+        })
+        this.setState({ deliveries: tempArr })
+
+    }
+
+    sortDeliveryTech() {
+        if (this.state.delivTech) {
+            console.log("Tech Sort Active")
+            let tempArr = this.state.deliveries;
+            tempArr.sort((a, b) => {
+                var xa = a.tech.toLowerCase(), xb = b.tech.toLowerCase();
+                if (xa < xb) {
+                    return -1;
+                }
+                if (xa > xb) {
+                    return 1;
+                }
+                return 0;
+            })
+            this.setState({
+                deliveries: tempArr,
+                delivTech: !this.state.delivTech
+            })
+        }
+        else {
+            console.log("Tech Sort Inactive")
+            console.log(this.state.deliveriesReset)
+            var tempArr = this.state.deliveries;
+            tempArr.sort((a, b) => {
+                var nameA = a.deliveriesid, nameB = b.deliveriesid;
+                if (nameA < nameB) {
+                    return -1;
+                }
+                if (nameA > nameB) {
+                    return 1;
+                }
+                return 0;
+            })
+            this.setState({
+                deliveries: tempArr,
+                delivTech: !this.state.delivTech
+            })
+
+        }
+
+    }
+
+
     render() {
         return (
-            <div className="outermostDiv">
-                <div className="fixedHeader">
-                    <div className="sideBySide">
-                        <h1 className="deliveriesWord">DELIVERIES</h1>
-                        <div className="showCompleteTitle">
-                            <span className="showComplete">SHOW COMPLETE</span>
-                            <Toggle
-                                defaultChecked={this.state.hideComplete}
-                                onChange={this.toggleSwitch} />
+            <div>
+                <NavBar/>
+                <div className="outermostDiv">
+                    <div className="fixedHeader">
+                        <div className="sideBySide">
+                            <h1 className="deliveriesWord">DELIVERIES</h1>
+                            <div className="showCompleteTitle">
+                                <span className="showComplete">SHOW COMPLETE</span>
+                                <Toggle
+                                    defaultChecked={this.state.hideComplete}
+                                    onChange={this.toggleSwitch} />
+                            </div>
                         </div>
-                    </div>
-                    <div className="deliveriesHeader">
-                        <span className="headerTitleDeliveries">DATE</span>
-                        <div className="deliveriesDivider"></div>
+                        <div className="deliveriesHeader">
+                            <span className="headerTitleDeliveries">DATE</span>
+                            <div className="deliveriesDivider"></div>
 
-                        <span className="headerTitleDeliveries">TIME</span>
-                        <div className="deliveriesDivider"></div>
-                        {/* <span className="headerTitleDeliveries">STATUS</span>
+                            <span className="headerTitleDeliveries">TIME</span>
+                            <div className="deliveriesDivider"></div>
+                            {/* <span className="headerTitleDeliveries">STATUS</span>
                         <div className="deliveriesDivider"></div> */}
 
-                        <span className="headerTitleDeliveriesM">CONTACT</span>
-                        <div className="deliveriesDividerM"></div>
+                            <span className="headerTitleDeliveriesM" onClick={this.sortDeliveryName}>CONTACT</span>
+                            
 
-                        <span className="headerTitleDeliveriesM">ADDRESS</span>
-                        <div className="deliveriesDividerM"></div>
+                            <div className="deliveriesDividerM"></div>
 
-                        <span className="headerTitleDeliveries">PHONE</span>
-                        <div className="deliveriesDivider"></div>
+                            <span className="headerTitleDeliveriesM">ADDRESS</span>
+                            <div className="deliveriesDividerM"></div>
 
-                        <span className="headerTitleDeliveriesM">CARTRIDGE</span>
-                        <div className="deliveriesDividerM"></div>
+                            <span className="headerTitleDeliveries">PHONE</span>
+                            <div className="deliveriesDivider"></div>
 
-                        <span className="headerTitleDeliveries">TECH</span>
-                        <div className="deliveriesDivider"></div>
+                            <span className="headerTitleDeliveriesM">CARTRIDGE</span>
+                            <div className="deliveriesDividerM"></div>
 
-                        <span className="headerTitleDeliveries">ORDERED</span>
-                        <div className="deliveriesDivider"></div>
+                            <span className="Tech" onClick={this.sortDeliveryTech}>TECH</span>
+                            <div className="deliveriesDivider"></div>
 
-                        <span className="headerTitleDeliveries">INVOICED</span>
-                        <div className="deliveriesDivider"></div>
+                            <span className="headerTitleDeliveries">ORDERED</span>
+                            <div className="deliveriesDivider"></div>
 
-                        <span className="headerTitleDeliveries">NOTES</span>
-                        <div className="deliveriesDivider"></div>
+                            <span className="headerTitleDeliveries">INVOICED</span>
+                            <div className="deliveriesDivider"></div>
 
-                        {this.state.hideComplete ? <span className="headerTitleDeliveriesM">DELETE</span> : <span className="headerTitleDeliveriesM">COMPLETE</span>}
+                            <span className="headerTitleDeliveries">NOTES</span>
+                            <div className="deliveriesDivider"></div>
 
+                            {this.state.hideComplete ? <span className="headerTitleDeliveriesM">DELETE</span> : <span className="headerTitleDeliveriesM">COMPLETE</span>}
+
+                        </div>
                     </div>
+                    {this.state.deliveries.length === 0 ? <Spinner name='double-bounce' /> : this.state.hideComplete ?
+                        this.state.completeDeliveries.map((deliveries, index) => {
+
+
+                            return (
+                                <div className="deliveryContainer" key={deliveries.deliveriesid}>
+                                    <span className="detailsDeliveries">{deliveries.date}</span>
+                                    <span className="detailsDeliveries">{deliveries.time}</span>
+                                    {/* <span className="detailsDeliveries">{deliveries.status}</span> */}
+                                    <span className="detailsDeliveriesM">{deliveries.contactname}</span>
+                                    <span className="detailsDeliveriesM">{deliveries.streetaddress}</span>
+                                    <span className="detailsDeliveries">{deliveries.phone}</span>
+                                    <span className="detailsDeliveriesM">{deliveries.cartridge}</span>
+                                    <span className="detailsDeliveries">{deliveries.tech}</span>
+                                    <span className="detailsDeliveries">{deliveries.orderstatus === false ? <button onClick={() => this.updateOrder(deliveries.deliveriesid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :
+                                        <button onClick={() => this.updateOrder(deliveries.deliveriesid, index)} className="Ordered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button>}</span>
+                                    <span className="detailsDeliveries">{deliveries.invoicestatus === false ? <button onClick={() => this.updateInvoice(deliveries.deliveriesid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :
+                                        <button onClick={() => this.updateInvoice(deliveries.deliveriesid, index)} className="Ordered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button>}</span>
+                                    <span className="detailsDeliveries">{deliveries.notes}</span>
+                                    <span className="detailsDeliveriesM"><button className="completed" onClick={() => this.deleteDelivery(deliveries.deliveriesid, index)}>&#x2715;</button></span>
+
+
+
+                                </div>
+                            )
+                        })
+                        :
+                        this.state.deliveries.map((deliveries, index) => {
+
+                            return (
+                                <div className="deliveryContainer" key={deliveries.deliveriesid}>
+                                    <span className="detailsDeliveries">{deliveries.date}</span>
+                                    <span className="detailsDeliveries">{deliveries.time}</span>
+                                    {/* <span className="detailsDeliveries">{deliveries.status}</span> */}
+                                    <span className="detailsDeliveriesM">{deliveries.contactname}</span>
+                                    <span className="detailsDeliveriesM">{deliveries.streetaddress}</span>
+                                    <span className="detailsDeliveries">{deliveries.phone}</span>
+                                    <span className="detailsDeliveriesM">{this.orderFormat(deliveries.deliveriesid, deliveries.quantity, deliveries.cartridge).map((order, indexOrder) => {
+                                        return (
+                                            <div>
+                                                <span className="detailsDeliveriesO">{order}</span>
+                                                <button className="sendToOrder" onClick={() => this.sendToOrder(index, indexOrder, order, deliveries.cartridge, deliveries.quantity)}>&rarr;</button>
+                                            </div>)
+                                    })}</span>
+                                    <span className="detailsDeliveries">{deliveries.tech}</span>
+                                    <span className="detailsDeliveries">{deliveries.orderstatus === false ? <button onClick={() => this.updateOrder(deliveries.deliveriesid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :
+                                        <button onClick={() => this.updateOrder(deliveries.deliveriesid, index)} className="Ordered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button>}</span>
+                                    <span className="detailsDeliveries">{deliveries.invoicestatus === false ? <button onClick={() => this.updateInvoice(deliveries.deliveriesid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :
+                                        <button onClick={() => this.updateInvoice(deliveries.deliveriesid, index)} className="Ordered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button>}</span>
+                                    <span className="detailsDeliveries">{deliveries.notes}</span>
+                                    <span className="detailsDeliveriesM"><button className="complete" onClick={() => this.completeDelivery(deliveries.deliveriesid, index)}>&#10003;</button></span>
+
+
+
+                                </div>
+                            )
+                        })
+
+
+                    }
+                    <button className="addDeliveryButton" onClick={this.showModal} onClose={this.showModal}>
+                        <div className="vert"></div>
+                        <div className="horiz"></div>
+                    </button>
+
+                    <RepairModal show={this.state.hideModal} onClose={this.showModal} />
+
+                    <ToastContainer
+                        position="top-right"
+                        type="default"
+                        autoClose={3500}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        pauseOnHover
+                    />
                 </div>
-                {this.state.deliveries.length === 0 ? <Spinner name='double-bounce' /> : this.state.hideComplete ?
-                    this.state.completeDeliveries.map((deliveries, index) => {
 
-
-                        return (
-                            <div className="deliveryContainer" key={deliveries.deliveriesid}>
-                                <span className="detailsDeliveries">{deliveries.date}</span>
-                                <span className="detailsDeliveries">{deliveries.time}</span>
-                                {/* <span className="detailsDeliveries">{deliveries.status}</span> */}
-                                <span className="detailsDeliveriesM">{deliveries.contactname}</span>
-                                <span className="detailsDeliveriesM">{deliveries.streetaddress}</span>
-                                <span className="detailsDeliveries">{deliveries.phone}</span>
-                                <span className="detailsDeliveriesM">{deliveries.cartridge}</span>
-                                <span className="detailsDeliveries">{deliveries.tech}</span>
-                                <span className="detailsDeliveries">{deliveries.orderstatus === false ? <button onClick={() => this.updateOrder(deliveries.deliveriesid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :
-                                    <button onClick={() => this.updateOrder(deliveries.deliveriesid, index)} className="Ordered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button>}</span>
-                                <span className="detailsDeliveries">{deliveries.invoicestatus === false ? <button onClick={() => this.updateInvoice(deliveries.deliveriesid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :
-                                    <button onClick={() => this.updateInvoice(deliveries.deliveriesid, index)} className="Ordered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button>}</span>
-                                <span className="detailsDeliveries">{deliveries.notes}</span>
-                                <span className="detailsDeliveriesM"><button className="completed" onClick={() => this.deleteDelivery(deliveries.deliveriesid, index)}>&#x2715;</button></span>
-
-
-
-                            </div>
-                        )
-                    })
-                    :
-                    this.state.deliveries.map((deliveries, index) => {
-
-                        return (
-                            <div className="deliveryContainer" key={deliveries.deliveriesid}>
-                                <span className="detailsDeliveries">{deliveries.date}</span>
-                                <span className="detailsDeliveries">{deliveries.time}</span>
-                                {/* <span className="detailsDeliveries">{deliveries.status}</span> */}
-                                <span className="detailsDeliveriesM">{deliveries.contactname}</span>
-                                <span className="detailsDeliveriesM">{deliveries.streetaddress}</span>
-                                <span className="detailsDeliveries">{deliveries.phone}</span>
-                                <span className="detailsDeliveriesM">{this.orderFormat(deliveries.deliveriesid, deliveries.quantity, deliveries.cartridge).map((order, indexOrder) => {
-                                    return (
-                                        <div>
-                                            <span className="detailsDeliveriesO">{order}</span>
-                                            <button className="sendToOrder" onClick={() => this.sendToOrder(index, indexOrder, order, deliveries.cartridge, deliveries.quantity)}>&rarr;</button>
-                                        </div>)
-                                })}</span>
-                                <span className="detailsDeliveries">{deliveries.tech}</span>
-                                <span className="detailsDeliveries">{deliveries.orderstatus === false ? <button onClick={() => this.updateOrder(deliveries.deliveriesid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :
-                                    <button onClick={() => this.updateOrder(deliveries.deliveriesid, index)} className="Ordered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button>}</span>
-                                <span className="detailsDeliveries">{deliveries.invoicestatus === false ? <button onClick={() => this.updateInvoice(deliveries.deliveriesid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :
-                                    <button onClick={() => this.updateInvoice(deliveries.deliveriesid, index)} className="Ordered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button>}</span>
-                                <span className="detailsDeliveries">{deliveries.notes}</span>
-                                <span className="detailsDeliveriesM"><button className="complete" onClick={() => this.completeDelivery(deliveries.deliveriesid, index)}>&#10003;</button></span>
-
-
-
-                            </div>
-                        )
-                    })
-
-
-                }
-                <button className="addDeliveryButton" onClick={this.showModal} onClose={this.showModal}>
-                    <div className="vert"></div>
-                    <div className="horiz"></div>
-                </button>
-
-                <RepairModal show={this.state.hideModal} onClose={this.showModal} />
-
-                <ToastContainer
-                    position="top-right"
-                    type="default"
-                    autoClose={3500}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    pauseOnHover
-                />
             </div>
 
 

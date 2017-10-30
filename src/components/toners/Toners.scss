@@ -50,6 +50,8 @@
 .horizontal {
     display: flex;
     width: auto;
+    height: 80vh;
+    align-items: center;
     overflow-x: scroll;
     padding: 50px;
 }

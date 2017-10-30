@@ -1,0 +1,178 @@
+@import "../../_colors.scss";
+//@import url('https://fonts.googleapis.com/css?family=Open+Sans:300');
+
+
+.headerTitle {
+    color: black;
+    font-size: 2.2em;
+    letter-spacing: .75em;
+}
+
+.headerTest {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: "Oswald", sans-serif;
+    margin-left: 5px;
+    cursor: pointer;
+    text-shadow: 2px 1px 0px rgba(69, 69, 69, 0.153);
+}
+
+.links {
+    color: black;
+    margin-right: 8.5px;
+    cursor: pointer;
+    font-family: "Oswald", sans-serif;
+    font-weight: 200;
+    letter-spacing: .1em;
+}
+
+.darken {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(4, 4, 4, 0.68);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.test {
+    height: 100vh;
+    width: 100%;
+   // z-index: 1;
+    background: url('https://images.unsplash.com/photo-1471890701797-59336a877de4?auto=format&fit=crop&w=2930&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D') no-repeat center center;
+    //background-color: black;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    // position: absolute;
+    top: 0;
+   
+}
+
+
+
+.line {
+    background-color: white;
+    height: 1px;
+    width: 16vw;
+}
+
+.logoForStatic {
+    opacity: 1;
+    width: 50vw;
+    padding: 5vw;
+}
+
+.about {
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.what {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: flex-start;
+    text-shadow: 2px 1px 0px rgba(254, 254, 254, 0.714);
+    
+    
+}
+
+.whatEnd {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    text-shadow: 2px 1px 0px rgba(254, 254, 254, 0.714);
+    justify-content: flex-end;
+}
+
+.columnFlex {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.whatWeDo {
+    font-family: "Oswald", sans-serif;
+    color: rgb(255, 255, 255);
+    font-size: 8em;
+    margin-left: 0;
+    height: auto;
+    letter-spacing: .1em;
+}
+.whatWeDoA {
+    font-family: "Oswald", sans-serif;
+    color: rgb(255, 255, 255);
+    font-size: 8em;
+    margin-left: 0;
+    height: auto;
+    letter-spacing: .1em;
+    width: 100vw;
+    text-align: right;
+}
+
+.fullWidth {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin-top: 10vh;
+}
+
+.scrollFlex {
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+    justify-content: space-between;
+}
+
+.flexLeft {
+    display: flex;
+    width: 65vw;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+}
+
+.flexRight {
+    display: flex;
+    width: 65vw;
+    justify-content: flex-end;
+    align-items: center;
+    align-content: center;
+}
+
+.icon {
+    height: 10vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.centerText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconText {
+    color: white;
+    text-shadow: none;
+    font-family: "Oswald", sans-serif;
+    font-size: 1.5em;
+    font-weight: 700;
+    margin: 0vh 2vw;
+    overflow-wrap: break-word;
+    
+    
+}
+
+

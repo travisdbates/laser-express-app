@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import Select from "react-select"
 import axios from "axios"
+import NavBar from "../navbar/NavBar"
 
 import "./Toners.css"
 import '../../../node_modules/react-select/dist/react-select.css'
@@ -90,48 +91,52 @@ export default class Toners extends Component {
 
     render() {
         return (
-            <div className="outerDivD">
-                <div className="sideBySideSelect">
-                    <div>
-                        <Select
-                            className="Select-input"
-                            name="form-field-one"
-                            placeholder="Search by printer"
-                            value={this.state.value}
-                            options={this.state.printers}
-                            onChange={this.logChange} />
-                        <div className="placeholder"></div>
-                    </div>
-                    <div>
-                        <Select
-                            className="Select-input"
-                            name="form-field-two"
-                            placeholder="Search by cartridge"
-                            value={this.state.value}
-                            options={this.state.cartridges}
-                            onChange={this.logChange} />
-                        <div className="placeholder"></div>
-                    </div>
-                </div>
-                <div className="horizontal">
-                    {this.state.toners.map((toner, index) => {
-                        return (
-                            <div className="aboveBelowT" key={index}>
-                                <div className="circleT">{this.state.toners === 0 ? 0 : <span>{toner.number}&nbsp;&nbsp;</span>}</div>
-                                <div>
-                                    {toner.number === 0 ? <span className="noSub"> - </span> : <button className="plusMinus" onClick={() => this.subtract(toner.tonerid, index)}> - </button>}
-                                    <span className="name">{toner.name}</span>
-                                    <button className="plusMinus" onClick={() => this.add(toner.tonerid, index)}> + </button>
-                                </div>
+            <div>
+                <NavBar />
+                <div className="outerDivD">
+                    {/* <div className="sideBySideSelect">
+                        <div> */}
+                            {/* <Select
+                                className="Select-input"
+                                name="form-field-one"
+                                placeholder="Search by printer"
+                                value={this.state.value}
+                                options={this.state.printers}
+                                onChange={this.logChange} />
+                            <div className="placeholder"></div>
+                        </div>
+                        <div>
+                            <Select
+                                className="Select-input"
+                                name="form-field-two"
+                                placeholder="Search by cartridge"
+                                value={this.state.value}
+                                options={this.state.cartridges}
+                                onChange={this.logChange} />
+                            <div className="placeholder"></div>
+                        </div>
+                    </div> */}
+                            <div className="horizontal">
+                                {this.state.toners.map((toner, index) => {
+                                    return (
+                                        <div className="aboveBelowT" key={index}>
+                                            <div className="circleT">{this.state.toners === 0 ? 0 : <span>{toner.number}&nbsp;&nbsp;</span>}</div>
+                                            <div>
+                                                {toner.number === 0 ? <span className="noSub"> - </span> : <button className="plusMinus" onClick={() => this.subtract(toner.tonerid, index)}> - </button>}
+                                                <span className="name">{toner.name}</span>
+                                                <button className="plusMinus" onClick={() => this.add(toner.tonerid, index)}> + </button>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+
+
+
+                                }
                             </div>
-                        )
-                    })
+                        </div>
+                    </div>
 
-
-
-                    }
-                </div>
-            </div>
-        )
+                )
     }
 }
