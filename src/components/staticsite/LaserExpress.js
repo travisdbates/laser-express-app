@@ -7,6 +7,11 @@ import scrollIntoViewIfNeeded from 'scroll-into-view-if-needed'
 import "../../../node_modules/animate.css/animate.min.css"
 import ScrollAnimation from 'react-animate-on-scroll';
 import axios from "axios"
+import Select from "react-select"
+import { ToastContainer, toast } from 'react-toastify';
+import "../../../node_modules/react-toastify/dist/ReactToastify.css"
+
+
 
 import deliv from "./delivery-truck (1).svg"
 import print from "./print.svg"
@@ -25,6 +30,8 @@ export default class LaserExpress extends Component {
         this.state = {
             userInfo: [],
             customers: [],
+            currentCustomer: [],
+            
             rdSetting: null,
             customerAdded: false,
 
@@ -45,7 +52,7 @@ export default class LaserExpress extends Component {
             phone: "",
             state: "",
             streetaddress: "",
-            customerID: "",
+            customerid: "",
 
 
             cartridgeForOrder: [{ name: '', quant: '' }],
@@ -68,6 +75,9 @@ export default class LaserExpress extends Component {
         this.submitCustomer = this.submitCustomer.bind(this)
 
     }
+
+    notify = () => toast.success("Submitted Succesfully!");
+    
 
     componentDidMount() {
         const userData = axios.get('/auth/me')
@@ -205,8 +215,8 @@ export default class LaserExpress extends Component {
         console.log(today)
         var time = new Date().toLocaleTimeString();
 
-        var repair = this.state.currentCustomer.length !== 0 ? {
-            customerId: this.state.currentCustomer[0].customerid,
+        var repair = {
+            customerid: this.state.currentCustomer[0].customerid,
             date: today,
             time: time,
             status: "In Process",
@@ -223,31 +233,11 @@ export default class LaserExpress extends Component {
             notes: this.state.notes
 
         }
-            :
-            {
-                customerId: this.state.customerID,
-                date: today,
-                time: time,
-                status: "In Process",
-                contactName: this.state.contactName,
-                streetAddress: this.state.streetaddress,
-                city: this.state.city,
-                state: this.state.state,
-                phone: this.state.phone,
-                printer: this.state.printer,
-                tech: this.state.tech,
-                symptoms: this.state.symptoms,
-                orderStatus: false,
-                invoiceStatus: false,
-                notes: this.state.notes
-            }
 
-        axios.post('/api/repairs/insert', repair)
+        axios.post('/api/repairsapprove/insert', repair)
             .then(response => {
                 console.log(response)
             })
-        this.props.onClose;
-        window.location.replace('http://localhost:3000/#/repairs')
 
     }
 
@@ -285,8 +275,8 @@ export default class LaserExpress extends Component {
         quantities.join()
         console.log(quantities)
 
-        var delivery = this.state.currentCustomer.length !== 0 ? {
-            customerId: this.state.currentCustomer[0].customerid,
+        var delivery = {
+            customerid: this.state.currentCustomer[0].customerid,
             date: date,
             time: time,
             status: "In Process",
@@ -302,37 +292,40 @@ export default class LaserExpress extends Component {
             notes: this.state.notes,
             quantity: '{' + quantities + '}',
         }
-            :
-            {
-                customerId: this.state.customerID,
-                date: date,
-                time: time,
-                status: "In Process",
-                contactName: this.state.contactName,
-                streetAddress: this.state.streetaddress,
-                city: this.state.city,
-                state: this.state.state,
-                phone: this.state.phone,
-                cartridge: '{' + names + '}',
-                tech: this.state.tech,
-                orderStatus: false,
-                invoiceStatus: false,
-                notes: this.state.notes,
-                quantity: '{' + quantities + '}',
-            }
+           
 
         console.log(delivery)
-        axios.post('/api/deliveries/insert', delivery)
+        axios.post('/api/deliveriesapprove/insert', delivery)
             .then(response => {
                 console.log(response)
             })
-        axios.get('/api/customers/getselect')
-            .then(response => {
-                console.log(response.data)
-                this.setState({ customers: response.data })
-            })
-        this.props.OnClose;
-        window.location.reload(true)
+            this.notify();
+            this.setState({
+                rdSetting: null,
+                customerAdded: false,
+    
+                contactName: "",
+                printer: "",
+                printerID: "",
+                symptoms: "",
+    
+                tech: "BB",
+                notes: "",
+                location: "",
+    
+                cartridge: "",
+                quantity: "",
+    
+                city: "",
+                name: "",
+                phone: "",
+                state: "",
+                streetaddress: "",
+                customerid: "",})
+            
+
+        
+        
     }
 
     addCartridge() {
@@ -516,11 +509,19 @@ export default class LaserExpress extends Component {
 
                 </div>
                 <div ref={this.setAboutNode}></div>
-                <div className="what">
+                <div className="whatSR">
                     <div className="columnFlex">
-                        <span className="whatWeDo">SERVICE REQUEST</span>{this.state.userInfo === false ? <button onClick={() => window.location = "/"} className="smallSL"> PLEASE LOGIN TO SUBMIT A REQUEST</button> : <span className="welcome">Welcome, {this.state.userInfo.user_name}</span>}
+                        <span className="whatWeDo">SERVICE REQUEST</span>{this.state.userInfo === false ? <button onClick={() => window.location = "/"} className="smallSL"> PLEASE LOGIN TO SUBMIT A REQUEST</button> : <span className="welcome">Welcome, {this.state.userInfo.user_name}<br/>Please select a company:</span>}
+                        {this.state.userInfo === false ? null : <Select
+                            className="Select-inputS"
+                            name="form-field-one"
+                            placeholder="Existing company select"
+                            value={this.state.value}
+                            options={this.state.customers}
+                            onChange={this.logChange} />}
 
-                        {this.state.userInfo === false ? null : <div>
+                        {
+                        this.state.currentCustomer.length === 0 ? null : <div>
                             <div className="buttons">
                                 <button className="repairButtond" onClick={this.setRepair}>REPAIR</button>
                                 <button className="deliveryButtond" onClick={this.setDelivery}>DELIVERY</button>
@@ -586,18 +587,27 @@ export default class LaserExpress extends Component {
 
                                             <div className="centerButtons"><input className="inputBoxS" placeholder="CONTACT NAME" onChange={(e) => { this.handleChange(e.target.value, "contactName") }}></input></div>
                                             <div className="centerButtons"><input className="inputBoxS" placeholder="PRINTER" onChange={(e) => { this.handleChange(e.target.value, "printer") }}></input></div>
-                                            <div className="centerButtons"><input className="inputBoxS" placeholder="SYMPTOMS" onChange={(e) => { this.handleChange(e.target.value, "notes") }}></input></div>
+                                            <div className="centerButtons"><input className="inputBoxS" placeholder="SYMPTOMS" onChange={(e) => { this.handleChange(e.target.value, "symptoms") }}></input></div>
                                         </div>
                                     </div>
-                                    <div className="centerButtons"><button onClick={this.submitRepair} className="smallSL">SUBMIT</button></div>
+                                    <div className="centerButtons"><button onClick={this.submitRepair} className="smallSLR">SUBMIT</button></div>
 
                                 </div>}
                         </div>}
                     </div>
                 </div>
 
+                <a href={process.env.REACT_APP_LOGOUT}><button className="logout">LOG OUT</button></a>
                 <div ref={this.setRequestNode}></div>
-
+                <ToastContainer
+                        position="top-right"
+                        type="default"
+                        autoClose={3500}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        pauseOnHover
+                    />
 
             </div >
         )

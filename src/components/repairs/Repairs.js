@@ -251,6 +251,16 @@ export default class Customers extends Component {
                         pauseOnHover
                     />
                 </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
             </div>
 
         )

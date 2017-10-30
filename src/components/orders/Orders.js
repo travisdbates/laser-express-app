@@ -216,6 +216,16 @@ export default class Orders extends Component {
                         pauseOnHover
                     />
                 </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
 
             </div>
 

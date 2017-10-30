@@ -89,9 +89,14 @@
     justify-content: space-around;
 }
 
-.Tech {
-    @extend .headerTitleDeliveries;
+.TechD {
+    width: 10vw;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;    font-size: 1em; 
+    display: flex;
+    justify-content: space-around;
     cursor: pointer;
+    background-color: $colorOne;
 }
 
 .headerTitleDeliveriesM {
@@ -100,6 +105,39 @@
     font-weight: 200;    font-size: 1em; 
     display: flex;
     justify-content: space-around;
+}
+
+.flexRow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.forApproval {
+    color: $colorTwo;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 200;
+    font-size: 1em;
+    letter-spacing: .2em;
+    width: auto;
+    margin-right: 5px;
+    
+}
+
+.circleD {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;    
+    font-size: 2em; 
+    border: $accentColor solid 1px;
+    color: $colorTwo;
+    padding: 3px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 .deliveryContainer {
@@ -265,7 +303,7 @@
 @media only screen and (max-width: 375px) {
     //Mobile Formatting
 
-    .headerTitleDeliveries, .deliveriesDivider, .detailsDeliveries {
+    .headerTitleDeliveries, .deliveriesDivider, .detailsDeliveries, .flexRow {
         display: none;
     }
 

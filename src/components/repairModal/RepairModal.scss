@@ -23,8 +23,8 @@
 
 .modalWindow {
     background-color: white;
-    height: 70vh;
-    width: 70vw;
+    height: 90vh;
+    width: 90vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -77,9 +77,13 @@
     width: 100%;
 }
 
-.rowForDeliveries, .rowOne, .rowTwo {
+.rowOne, .rowTwo {
     display: flex;
     width: 80%;
+}
+
+.rowForDeliveriesD {
+    width: 90vw;
 }
 
 .inputNames {
@@ -188,9 +192,64 @@
     outline: none;
 }
 
-.colOne, .colTwo {
+.colOneD {
     display: flex;
-    flex-direction: column;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.inputBoxD {
+    border: none;
+    border-bottom: 1.5px solid rgb(84, 84, 84);
+    width: auto;
+    transition: .64s;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2em;
+    color: black;
+    background-color: white;
+    outline: none;
+}
+
+.inputBoxD:focus {
+    border-bottom: 1.5px solid $accentColor;
+    
+}
+
+.cartQuantD {
+    display: flex;
+    justify-content: space-around;
+    width: 90vw;
+    margin-top: 1vh;
+    overflow-y: scroll;
+}
+
+.cartNameD {
+    border: none;
+    border-bottom: 1.5px solid rgb(84, 84, 84);
+    width: 40vw;
+    transition: .64s;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2em;
+    color: black;
+    background-color: white;
+    outline: none;
+}
+
+.cartNameD:focus {
+    border-bottom: 1.5px solid rgb(249, 249, 249);    
+
+}   
+
+.quantD {
+    background-color: white;
+    cursor: pointer;
+    border: none;
+    color: black;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2em;
+    color: #757575;
+
 
 }
 
@@ -215,6 +274,7 @@
 }
 .inputNames.Tech {
     width: 11vw;
+    font-size: 2em;
 }
 .inputBox.Tech {
     width: 11vw;
@@ -244,6 +304,24 @@
 }
 .inputBox.IDNum {
     width: 11vw;
+}
+
+.centerButton {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.submit {
+    border: darkgreen 1px solid;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2em;
+    background-color: white;
+    color: black;
+    padding: 25px 50px;
+    cursor: pointer;
+    outline: none;
+    margin-top: 10vh;    
 }
 
 

@@ -86,6 +86,18 @@
     
 }
 
+.whatSR {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: flex-start;
+    text-shadow: 2px 1px 0px rgba(254, 254, 254, 0.714);
+    overflow-y: auto;
+    
+}
+
+
 .whatEnd {
     width: 100%;
     height: 100vh;
@@ -310,13 +322,51 @@
     cursor: pointer;
     outline: none;
     margin-top: 25vh;
+    margin-bottom: 2vh;
 }
+
+.smallSLR {
+    border: darkgreen 1px solid;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2em;
+    background-color: black;
+    color: #757575;
+    padding: 25px 50px;
+    cursor: pointer;
+    outline: none;
+    margin-top: 25vh;
+    margin-bottom: 2vh;
+}
+
 
 .centerButtons {
     display: flex;
     width: 100vw;
     justify-content: center;
     margin-top: 5vh;
+}
+
+.Select-inputS {
+    font-family: "Oswald", sans-serif;
+    width: 80vw;
+    margin-top: 1vh;
+    font-size: 2em;
+}
+
+.logout {
+    border: darkgreen 1px solid;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2em;
+    background-color: black;
+    color: #757575;
+    padding: 5px 10px;
+    cursor: pointer;
+    outline: none;
+    margin-top: 25vh;
+    margin-bottom: 2vh; 
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
 }
 
 
@@ -345,7 +395,7 @@
         font-family: "Oswald", sans-serif;
         font-weight: 200;
         letter-spacing: .1em;
-        font-size: .3em;
+        font-size: .5em;
     }
     
 }

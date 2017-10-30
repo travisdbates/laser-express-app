@@ -256,19 +256,19 @@ app.get('/api/deliveries/count', (req, res) => {
 
 app.post('/api/deliveries/insert',(req,res) => {
     var delivery = [
-        req.body.customerID,
+        req.body.customerid,
         req.body.date,
         req.body.time,
         req.body.status,
-        req.body.contactName,
-        req.body.streetAddress,
+        req.body.contactname,
+        req.body.streetaddress,
         req.body.city,
         req.body.state,
         req.body.phone,
         req.body.cartridge,
         req.body.tech,
-        req.body.orderStatus,
-        req.body.invoiceStatus,
+        req.body.orderstatus,
+        req.body.invoicestatus,
         req.body.notes,
         req.body.quantity
     ]
@@ -392,6 +392,71 @@ app.put('/api/toners/subtract/:id', (req,res) => {
     })
 })
 
+// STATIC **************************************************
+
+app.post('/api/deliveriesapprove/insert',(req,res) => {
+    var delivery = [
+        req.body.customerid,
+        req.body.date,
+        req.body.time,
+        req.body.status,
+        req.body.contactName,
+        req.body.streetAddress,
+        req.body.city,
+        req.body.state,
+        req.body.phone,
+        req.body.cartridge,
+        req.body.tech,
+        req.body.orderStatus,
+        req.body.invoiceStatus,
+        req.body.notes,
+        req.body.quantity
+    ]
+    
+    app.get('db').static_deliveries_insert(delivery)
+    .then(delivery => {
+        res.status(200).send(delivery)
+    })
+})
+
+app.post('/api/repairsapprove/insert',(req,res) => {
+    var repair = [
+        req.body.customerid,
+        req.body.date,
+        req.body.time,
+        req.body.status,
+        req.body.contactName,
+        req.body.streetAddress,
+        req.body.city,
+        req.body.state,
+        req.body.phone,
+        req.body.printer,
+        req.body.tech,
+        req.body.symptoms,
+        req.body.orderStatus,
+        req.body.invoiceStatus,
+        req.body.notes
+    ]
+    
+    app.get('db').static_repairs_insert(repair)
+    .then(repair => {
+        res.status(200).send(repair)
+    })
+})
+
+app.get('/api/deliveriesapprove/get', (req,res) => {
+    app.get('db').static_deliveries_return()
+    .then(deliveries => {
+        res.status(200).send(deliveries)
+    })
+})
+
+app.get('/api/deliveriesapprove/count', (req, res) => {
+    app.get('db').static_deliveries_count()
+    .then(deliveries => {
+        res.status(200).send(deliveries)
+    })
+})
 
 
 const PORT = 3005

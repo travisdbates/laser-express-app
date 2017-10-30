@@ -39,7 +39,7 @@ class RepairModal extends Component {
             phone: "",
             state: "",
             streetaddress: "",
-            customerID: "",
+            customerid: "",
 
 
             cartridgeForOrder: [{ name: '', quant: '' }],
@@ -118,7 +118,7 @@ class RepairModal extends Component {
         var time = new Date().toLocaleTimeString();
 
         var repair = this.state.currentCustomer.length !== 0 ? {
-            customerId: this.state.currentCustomer[0].customerid,
+            customerid: this.state.currentCustomer[0].customerid,
             date: today,
             time: time,
             status: "In Process",
@@ -137,7 +137,7 @@ class RepairModal extends Component {
         }
             :
             {
-                customerId: this.state.customerID,
+                customerId: this.state.customerid,
                 date: today,
                 time: time,
                 status: "In Process",
@@ -198,25 +198,25 @@ class RepairModal extends Component {
         console.log(quantities)
 
         var delivery = this.state.currentCustomer.length !== 0 ? {
-            customerId: this.state.currentCustomer[0].customerid,
+            customerid: this.state.currentCustomer[0].customerid,
             date: date,
             time: time,
             status: "In Process",
-            contactName: this.state.contactName,
-            streetAddress: this.state.currentCustomer[0].streetaddress,
+            contactname: this.state.contactName,
+            streetaddress: this.state.currentCustomer[0].streetaddress,
             city: this.state.currentCustomer[0].city,
             state: this.state.currentCustomer[0].state,
             phone: this.state.currentCustomer[0].phone,
             cartridge: '{' + names + '}',
             tech: this.state.tech,
-            orderStatus: false,
-            invoiceStatus: false,
+            orderstatus: false,
+            invoicestatus: false,
             notes: this.state.notes,
             quantity: '{' + quantities + '}',
         }
             :
             {
-                customerId: this.state.customerID,
+                customerId: this.state.customerid,
                 date: date,
                 time: time,
                 status: "In Process",
@@ -418,15 +418,10 @@ class RepairModal extends Component {
                     {this.state.rdSetting === null ? null : this.state.rdSetting === "d" ?
                         //DELIVERY ***********************************************************************************************
                         <div>
-                            <div className="rowForDeliveries">
-                                <div className="colOne">
-                                    <div className="aboveBelow">
-                                        <input className="inputBoxR Name" onChange={(e) => { this.handleChange(e.target.value, "contactName") }} placeholder="CONTACT NAME"></input>
-                                    </div>
-                                    <div className="aboveBelow">
-                                        <input className="inputBoxR Notes" onChange={(e) => { this.handleChange(e.target.value, "notes") }} placeholder="NOTES"></input>
-                                    </div>
-                                    <div className="aboveBelow">
+                            <div className="rowForDeliveriesD">
+                                <div className="colOneD">
+                                        <input className="inputBoxD Name" onChange={(e) => { this.handleChange(e.target.value, "contactName") }} placeholder="CONTACT NAME"></input>
+                                        <input className="inputBoxD Notes" onChange={(e) => { this.handleChange(e.target.value, "notes") }} placeholder="NOTES"></input>
                                         <span className="inputNames Tech">Tech:  </span>
                                         {/* <input className="inputBoxR Tech" onChange={(e) => { this.handleChange(e.target.value, "tech") }}></input> */}
                                         <div className="selectFormat">
@@ -438,49 +433,49 @@ class RepairModal extends Component {
                                             </select>
                                         </div>
 
-                                    </div>
                                 </div>
-                                <div className="colTwo">
-                                    <span>Quantity - Cartridge</span>
+                                <div className="colOneS">
+                                    <span className="cartridgesName">CARTRIDGES</span>
                                     <div>
-                                        {this.state.cartridgeForOrder.map((cartridge, idx) => (
-                                            <div className="shareholder">
-                                                <input
-                                                    type="text"
-                                                    placeholder={`Cartridge #${idx + 1} name`}
-                                                    value={cartridge.quant}
-                                                    onChange={this.handleCartridgeOrderChangeQuantity(idx)}
-                                                />
+                                    {this.state.cartridgeForOrder.map((cartridge, idx) => (
+                                                <div className="cartQuantD">
+                                                    <input
+                                                        type="text"
+                                                        placeholder={`CARTRIDGE #${idx + 1}`}
+                                                        value={cartridge.quant}
+                                                        onChange={this.handleCartridgeOrderChangeQuantity(idx)}
+                                                        className="cartNameD"
+                                                    />
 
-                                                <select onChange={this.handleCartridgeOrderChangeName(idx)}>
-                                                    <option selected disabled>Select Quantity</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                    <option value="6">6</option>
-                                                    <option value="7">7</option>
-                                                    <option value="8">8</option>
-                                                    <option value="9">9</option>
-                                                    <option value="10">10</option>
-                                                    <option value="11">11</option>
-                                                    <option value="12">12</option>
+                                                    <select onChange={this.handleCartridgeOrderChangeName(idx)} className="quantD">
+                                                        <option selected disabled>QUANTITY</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
 
-                                                </select>
-                                                <button type="button" onClick={this.handleRemoveCartridgeOrder(idx)} className="small">-</button>
+                                                    </select>
+                                                    <button type="button" className="removeButton" onClick={this.handleRemoveCartridgeOrder(idx)}>-</button>
                                             </div>
                                         ))}
 
 
                                     </div>
-                                    <button type="button" onClick={this.handleAddCartridgeOrder} className="small">Add Cartridge</button>
-
+                                    <div className="centerButtons"><button type="button" onClick={this.handleAddCartridgeOrder} className="smallSAdd">+</button></div>
+                                    
                                 </div>
 
                             </div>
-                            <button onClick={this.submitDelivery}>Submit</button>
-
+                            <div className="centerButton"><button onClick={this.submitDelivery} className="submit">Submit</button></div>
+                            
                         </div>
 
                         :
@@ -488,25 +483,21 @@ class RepairModal extends Component {
                         <div>
                             <div className="rowOne">
                                 <div className="aboveBelow">
-                                    <span className="inputNames ContactNameRep">Contact Name:  </span>
-                                    <input className="inputBoxR ContactNameRep" onChange={(e) => { this.handleChange(e.target.value, "contactName") }}></input>
+                                    <input className="inputBoxR ContactNameRep" onChange={(e) => { this.handleChange(e.target.value, "contactName") }} placeholder="Contact Name"></input>
                                 </div>
                                 <div className="aboveBelow">
-                                    <span className="inputNames Printer">Printer:  </span>
-                                    <input className="inputBoxR Printer" onChange={(e) => { this.handleChange(e.target.value, "printer") }}></input>
+                                    <input className="inputBoxR Printer" onChange={(e) => { this.handleChange(e.target.value, "printer") }} placeholder="Printer"></input>
                                 </div>
                                 <div className="aboveBelow">
 
-                                    <span className="inputNames IDNum">ID#: </span>
-                                    <input className="inputBoxR IDNum" onChange={(e) => { this.handleChange(e.target.value, "printerID") }}></input>
+                                    <input className="inputBoxR IDNum" onChange={(e) => { this.handleChange(e.target.value, "printerID") }} placeholder="Printer ID"></input>
                                 </div>
 
                             </div>
                             <div className="rowTwo">
 
                                 <div className="aboveBelow">
-                                    <span className="inputNames Loc">Symptoms:  </span>
-                                    <input className="inputBoxR Loc" onChange={(e) => { this.handleChange(e.target.value, "location") }}></input>
+                                    <input className="inputBoxR Loc" onChange={(e) => { this.handleChange(e.target.value, "location") }} placeholder="Location"></input>
                                 </div>
                                 <div className="aboveBelow">
                                     <span className="inputNames Tech">Tech:  </span>
@@ -518,11 +509,10 @@ class RepairModal extends Component {
                                     </select>
                                 </div>
                                 <div className="aboveBelow">
-                                    <span className="inputNames Notes">Notes:  </span>
-                                    <input className="inputBoxR Notes" onChange={(e) => { this.handleChange(e.target.value, "notes") }}></input>
+                                    <input className="inputBoxR Notes" onChange={(e) => { this.handleChange(e.target.value, "notes") }} placeholder="Notes"></input>
                                 </div>
                             </div>
-                            <button onClick={this.submitRepair}>Submit</button>
+                            <div className="centerButton"><button onClick={this.submitRepair} className="submit">Submit</button></div>
 
                         </div>}
                 </div>

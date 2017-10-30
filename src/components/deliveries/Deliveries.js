@@ -9,6 +9,8 @@ import "../../../node_modules/react-toastify/dist/ReactToastify.css"
 import Toggle from 'react-toggle'
 import "./react-toggle.css"
 import NavBar from "../navbar/NavBar"
+import CountUp from "react-countup"
+import ApprovalModal from "../approvalmodal/ApprovalModal"
 
 var Spinner = require('react-spinkit');
 
@@ -20,18 +22,22 @@ export default class Deliveries extends Component {
         super(props);
         this.state = {
             hideModal: false,
+            hideApproval: false,
             hideComplete: false,
 
             deliveries: [],
             deliveriesToOrders: [],
             completeDeliveries: [],
             deliveriesReset: [],
+            deliveriesForApprovalCount: 0,
 
             updateState: 0,
             delivTech: true,
 
         }
         this.showModal = this.showModal.bind(this)
+        this.showModalApprove = this.showModalApprove.bind(this)
+        
         this.updateOrder = this.updateOrder.bind(this)
         this.completeDelivery = this.completeDelivery.bind(this)
         this.toggleSwitch = this.toggleSwitch.bind(this)
@@ -74,11 +80,22 @@ export default class Deliveries extends Component {
                 this.setState({ deliveriesReset: response.data })
             })
 
+            axios.get("/api/deliveriesapprove/count")
+            .then(response => {
+                console.log(response.data)
+                this.setState({deliveriesForApprovalCount: response.data[0].count})
+            })
+            console.log(this.state.deliveriesForApprovalCount)
 
     }
 
     showModal() {
         this.setState({ hideModal: !this.state.hideModal })
+    }
+
+    showModalApprove() {
+        this.setState({ hideApproval: !this.state.hideApproval })
+        console.log(this.state.hideApproval)
     }
 
     updateOrder(id, index) {
@@ -214,7 +231,7 @@ export default class Deliveries extends Component {
                 <div className="outermostDiv">
                     <div className="fixedHeader">
                         <div className="sideBySide">
-                            <h1 className="deliveriesWord">DELIVERIES</h1>
+                            <h1 className="deliveriesWord">DELIVERIES</h1>{this.state.deliveriesForApprovalCount.length === 0 ? null : <div className="flexRow"><span className="forApproval">Deliveries for approval: </span><span onClick={this.showModalApprove} className="circleD"><CountUp duration={3} start={0} end={this.state.deliveriesForApprovalCount} /></span></div>}
                             <div className="showCompleteTitle">
                                 <span className="showComplete">SHOW COMPLETE</span>
                                 <Toggle
@@ -245,7 +262,7 @@ export default class Deliveries extends Component {
                             <span className="headerTitleDeliveriesM">CARTRIDGE</span>
                             <div className="deliveriesDividerM"></div>
 
-                            <span className="Tech" onClick={this.sortDeliveryTech}>TECH</span>
+                            <span className="TechD" onClick={this.sortDeliveryTech}>TECH</span>
                             <div className="deliveriesDivider"></div>
 
                             <span className="headerTitleDeliveries">ORDERED</span>
@@ -327,7 +344,7 @@ export default class Deliveries extends Component {
                     </button>
 
                     <RepairModal show={this.state.hideModal} onClose={this.showModal} />
-
+                    <ApprovalModal  show={this.state.hideApproval} onClose={this.showModalApprove} />
                     <ToastContainer
                         position="top-right"
                         type="default"
@@ -338,6 +355,16 @@ export default class Deliveries extends Component {
                         pauseOnHover
                     />
                 </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
 
             </div>
 
