@@ -81,7 +81,7 @@
 .whatWeDo {
   font-family: "Oswald", sans-serif;
   color: white;
-  font-size: 8em;
+  font-size: 10vw;
   margin-left: 0;
   height: auto;
   letter-spacing: .1em; }
@@ -89,7 +89,7 @@
 .whatWeDoA {
   font-family: "Oswald", sans-serif;
   color: white;
-  font-size: 8em;
+  font-size: 10vw;
   margin-left: 0;
   height: auto;
   letter-spacing: .1em;
@@ -141,3 +141,150 @@
   font-weight: 700;
   margin: 0vh 2vw;
   overflow-wrap: break-word; }
+
+.rowForDeliveriesS {
+  width: 100vw; }
+
+.colOneS {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  justify-content: center;
+  align-items: center; }
+
+.inputNames, .selectFormat, .Tech {
+  background-color: white; }
+
+.inputBoxS {
+  border: none;
+  border-bottom: 1.5px solid #545454;
+  width: 90vw;
+  transition: .64s;
+  font-family: 'Oswald', sans-serif;
+  font-size: 2em;
+  color: white;
+  background-color: black;
+  outline: none; }
+
+.inputBoxS:focus {
+  border-bottom: 1.5px solid #f9f9f9; }
+
+.tech {
+  color: white;
+  font-family: 'Oswald', sans-serif;
+  font-size: 2em;
+  text-shadow: none; }
+
+.cartridgesName {
+  font-size: 2em;
+  margin-top: 5vh;
+  font-family: 'Oswald', sans-serif;
+  text-shadow: none;
+  color: #757575; }
+
+.welcome {
+  font-size: 2em;
+  font-family: 'Oswald', sans-serif;
+  text-shadow: none;
+  color: #757575; }
+
+.cartQuant {
+  display: flex;
+  justify-content: space-around;
+  width: 90vw;
+  margin-top: 1vh;
+  overflow-y: scroll; }
+
+.cartName {
+  border: none;
+  border-bottom: 1.5px solid #545454;
+  width: 40vw;
+  transition: .64s;
+  font-family: 'Oswald', sans-serif;
+  font-size: 2em;
+  color: white;
+  background-color: black;
+  outline: none; }
+
+.cartName:focus {
+  border-bottom: 1.5px solid #f9f9f9; }
+
+.quant {
+  background-color: black;
+  cursor: pointer;
+  border: none;
+  color: white;
+  font-family: 'Oswald', sans-serif;
+  font-size: 2em;
+  color: #757575; }
+
+.removeButton {
+  border: darkred 1px solid;
+  border-radius: 50%;
+  color: darkred;
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  cursor: pointer;
+  outline: none; }
+
+.smallSAdd {
+  border: darkgreen 1px solid;
+  border-radius: 50%;
+  color: darkgreen;
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  cursor: pointer;
+  outline: none; }
+
+.smallS {
+  border: darkgreen 1px solid;
+  font-family: 'Oswald', sans-serif;
+  font-size: 2em;
+  background-color: black;
+  color: #757575;
+  padding: 25px 50px;
+  cursor: pointer;
+  outline: none; }
+
+.smallSL {
+  border: darkgreen 1px solid;
+  font-family: 'Oswald', sans-serif;
+  font-size: 2em;
+  background-color: black;
+  color: #757575;
+  padding: 25px 50px;
+  cursor: pointer;
+  outline: none;
+  margin-top: 25vh; }
+
+.centerButtons {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  margin-top: 5vh; }
+
+@media only screen and (max-width: 375px) {
+  .headerTitle {
+    color: black;
+    font-size: 1em;
+    letter-spacing: .4em; }
+  .headerTest {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: "Oswald", sans-serif;
+    margin-left: 5px;
+    cursor: pointer;
+    text-shadow: 2px 1px 0px rgba(69, 69, 69, 0.153); }
+  .links {
+    color: black;
+    margin-right: 8.5px;
+    cursor: pointer;
+    font-family: "Oswald", sans-serif;
+    font-weight: 200;
+    letter-spacing: .1em;
+    font-size: .3em; } }

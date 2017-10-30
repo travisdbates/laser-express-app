@@ -115,7 +115,7 @@ export default class Orders extends Component {
                             <span className="headerTitleOrdersM">CUSTOMER</span>
                             <div className="ordersDividerM"></div>
 
-                            <span className="headerTitleOrders">COST</span>
+                            <span className="headerTitleOrders">COST PER</span>
                             <div className="ordersDivider"></div>
 
                             <span className="headerTitleOrders">ORDER NUMBER</span>
@@ -124,7 +124,7 @@ export default class Orders extends Component {
                             <span className="headerTitleOrders">VENDOR</span>
                             <div className="ordersDivider"></div>
 
-                            <span className="headerTitleOrders">COST</span>
+                            <span className="headerTitleOrders">TOTAL COST</span>
                             <div className="ordersDivider"></div>
 
                             <span className="headerTitleOrders">NOTES</span>
