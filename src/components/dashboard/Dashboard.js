@@ -29,8 +29,8 @@ export default class Dashboard extends Component {
             .then(res => {
                 console.log(res)
                 if (res.data.authority !== "admin") {
-                    window.location = "/#/static"
-                    console.log("no user")
+                    //window.location = "/#/static"
+                    console.log("no admin user")
                 }
                 console.log(res.data)
                 this.setState({
@@ -65,9 +65,10 @@ export default class Dashboard extends Component {
         console.log(this.state.hideModal)
     }
     render() {
-        if (this.state.userInfo.authority !== "admin"){
-            return null;
-        }
+        // Won't render if Admin isn't logged in.
+        // if (this.state.userInfo.authority !== "admin"){
+        //     return null;
+        // }
         return (
             <div>
                 <NavBar/>

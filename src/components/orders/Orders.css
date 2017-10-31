@@ -119,7 +119,7 @@
   border: none;
   font-size: 1.5em; }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 425px) {
   .ordersDivider, .headerTitleOrders, .detailsOrders {
     display: none; }
   .sideBySide {

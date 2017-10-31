@@ -246,8 +246,8 @@
   color: red;
   font-size: 1.5em; }
 
-@media only screen and (max-width: 375px) {
-  .headerTitleDeliveries, .deliveriesDivider, .detailsDeliveries, .flexRow {
+@media only screen and (max-width: 425px) {
+  .headerTitleDeliveries, .deliveriesDivider, .detailsDeliveries, .flexRow, .TechD {
     display: none; }
   .deliveriesWord {
     top: 10vh;

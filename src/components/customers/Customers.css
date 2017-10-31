@@ -131,7 +131,7 @@
   background-color: #e87925;
   position: absolute; }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 425px) {
   .fixedHeader {
     top: 0;
     position: sticky;

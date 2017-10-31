@@ -164,7 +164,7 @@
   color: limegreen;
   font-size: 1.5em; }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 425px) {
   .headerTitleRepairs, .repairsDivider, .detailsRepairs {
     display: none; }
   .repairsWord {

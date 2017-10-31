@@ -81,7 +81,7 @@ export default class Customers extends Component {
 
                         </div>
                         <div className="customerHeader">
-                            <span className="headerTitleCustomers Custname" onClick={this.alphabetize}>NAME</span>
+                            <span className="headerTitleCustomers" onClick={this.alphabetize}>NAME</span>
                             <div className="customersDivider"></div>
 
                             <span className="headerTitleCustomers">PHONE</span>

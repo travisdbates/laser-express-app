@@ -308,7 +308,7 @@
   bottom: 5px;
   right: 5px; }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 425px) {
   .headerTitle {
     color: black;
     font-size: 1em;
