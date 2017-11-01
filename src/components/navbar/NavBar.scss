@@ -73,6 +73,7 @@ body {
 
 .tabbedLinks:hover {
     font-size: 1.3vw;
+    letter-spacing: .2em;
 }
 
 
@@ -80,8 +81,9 @@ body {
 .tabbedLinksActive{
     background-color: $colorOne;
     color: $accentColor;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 1.3vw;
+    letter-spacing: .2em;
 }
 @media only screen and (min-width: 426px) {
     .headerMobile, .logoForNavMobile, .footer {

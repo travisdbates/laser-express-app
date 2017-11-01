@@ -62,7 +62,7 @@ class CustomerModal extends Component {
         console.log(this.state[formField])
     }
 
-    submitCustomer(){
+    submitCustomer() {
         var data = {
             name: this.state.name,
             phone: this.state.phone,
@@ -71,9 +71,10 @@ class CustomerModal extends Component {
             state: this.state.state,
         }
         axios.post('/api/customers/insert', data)
-        .then(response => {
-            console.log(response.data)
-        })
+            .then(response => {
+                console.log(response.data)
+            })
+        window.location.reload();
     }
 
 
@@ -90,35 +91,13 @@ class CustomerModal extends Component {
                     </div>
 
                     <div className="customerInfo">
-                        <div>
-                            <div className="rowOne">
-                                <div className="aboveBelow">
-                                    <span className="inputNames Name">Name:  </span>
-                                    <input className="inputBox Name" onChange={(e) => { this.handleChange(e.target.value, "name") }}></input>
-                                </div>
-                                <div className="aboveBelow">
-                                    <span className="inputNames Phone">Phone:  </span>
-                                    <input className="inputBox Phone" onChange={(e) => { this.handleChange(e.target.value, "phone") }}></input>
-                                </div>
-
-
-                            </div>
-                            <div className="rowTwo">
-
-                                <div className="aboveBelow">
-                                    <span className="inputNames street">Street Address:  </span>
-                                    <input className="inputBox street" onChange={(e) => { this.handleChange(e.target.value, "streetAddress") }}></input>
-                                </div>
-                                <div className="aboveBelow">
-                                    <span className="inputNames city">City:  </span>
-                                    <input className="inputBox city" onChange={(e) => { this.handleChange(e.target.value, "city") }}></input>
-                                </div>
-                                <div className="aboveBelow">
-                                    <span className="inputNames state">State:  </span>
-                                    <input className="inputBox state" onChange={(e) => { this.handleChange(e.target.value, "state") }}></input>
-                                </div>
-                            </div>
-                            <button onClick={this.submitCustomer}>Submit</button>
+                            <div className="custFlex">
+                                <input className="inputBox" onChange={(e) => { this.handleChange(e.target.value, "name") }} placeholder="NAME"></input>
+                                <input className="inputBox" onChange={(e) => { this.handleChange(e.target.value, "phone") }} placeholder="PHONE"></input>
+                                <input className="inputBox" onChange={(e) => { this.handleChange(e.target.value, "streetAddress") }} placeholder="STREET ADDRESS"></input>
+                                <input className="inputBox" onChange={(e) => { this.handleChange(e.target.value, "city") }} placeholder="CITY"></input>
+                                <input className="inputBox" onChange={(e) => { this.handleChange(e.target.value, "state") }} placeholder="STATE"></input>
+                            <button className="submitButton" onClick={this.submitCustomer}>SUBMIT</button>
 
                         </div>
                     </div>

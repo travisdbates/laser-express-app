@@ -90,6 +90,7 @@
     display: flex;
     justify-content: space-around;
     width: 50%;
+    margin-top: 10vh;
 }
 
 
@@ -97,28 +98,28 @@
 
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: 200;
-    font-size: 2vw;
+    // font-size: 2vw;
     color: $colorTwo;
-
+height: auto;
     border: none;
     padding: 25px 5vw;
     margin-top: 10px;
     margin-bottom: 50px;
     background-color: $colorOne;
-    border: $accentColor 5px solid;
+    border: $accentColor 3px solid;
     border-radius: 6px;
-    font-size: 3em;
+    font-size: 2vw;
     font-weight: 900;
     color: whitesmoke;
     transition: .84s;
     outline: none;
     cursor: pointer;
+}
 
-    .button:hover {
-        background-color: $colorTwo;
-        color: $colorOne;
-        cursor: pointer;
-    }
+.button:hover {
+    background-color: $colorTwo;
+    color: $colorOne;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 568px) {
@@ -202,13 +203,14 @@
             color: whitesmoke;
             transition: .84s;
             outline: none;
+            
         
-            .button:hover {
-                background-color: $colorTwo;
-                color: $colorOne;
-                cursor: pointer;
-            }
         }
+    .button:hover {
+        background-color: $colorTwo;
+        color: $colorOne;
+        cursor: pointer;
+    }
     .greeting {
         margin-top: 5px;
         font-size: 1.5em;

@@ -59,13 +59,15 @@ body {
   font-size: 1vw; }
 
 .tabbedLinks:hover {
-  font-size: 1.3vw; }
+  font-size: 1.3vw;
+  letter-spacing: .2em; }
 
 .tabbedLinksActive {
   background-color: #142836;
   color: #e87925;
-  font-weight: 700;
-  font-size: 1.3vw; }
+  font-weight: 500;
+  font-size: 1.3vw;
+  letter-spacing: .2em; }
 
 @media only screen and (min-width: 426px) {
   .headerMobile, .logoForNavMobile, .footer {

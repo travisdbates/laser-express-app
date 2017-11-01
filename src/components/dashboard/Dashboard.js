@@ -91,7 +91,7 @@ export default class Dashboard extends Component {
                         </div>
                     </div>
                     <div className="buttonOrg">
-                        <button onClick={this.showModal} onClose={this.showModal} className="button">NEW CALL</button>
+                        <a><button onClick={this.showModal} onClose={this.showModal} className="button">NEW CALL</button></a>
 
                         <a href={process.env.REACT_APP_LOGOUT}><button className="button">LOG OUT</button></a>
                     </div>

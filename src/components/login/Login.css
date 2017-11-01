@@ -11,7 +11,7 @@
   z-index: 1;
   top: 0; }
 
-.login-button {
+.loginbutton {
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 700;
   font-size: 2em;
@@ -25,17 +25,18 @@
   background-color: transparent;
   text-decoration: none;
   border-radius: 50px;
-  transition: .84s;
+  transition: .54s;
   border: 2px solid #e87925;
   cursor: pointer; }
 
-.login-button::first-letter {
+.loginbutton::first-letter {
   letter-spacing: .5; }
 
-.login-button:hover {
+.loginbutton:hover {
   background-color: white;
   color: #e87925;
-  outline: none; }
+  outline: none;
+  box-shadow: 0 12px 16px 0 rgba(255, 255, 255, 0.24), 0 17px 50px 0 rgba(255, 255, 255, 0.19); }
 
 .logo {
   height: 20vh; }

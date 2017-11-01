@@ -86,8 +86,8 @@ app.get('/auth/me', (req,res) => {
 })
 
 app.get('/auth/logout', (req,res)=> {
-    req.logOut();
-    res.redirect(302,"/")
+    req.logOut("https://tbates.auth0.com/v2/logout");
+    res.redirect(302,process.env.LOGOUT_REDIRECT)
 })
 
 passport.serializeUser(function (id, done) {
