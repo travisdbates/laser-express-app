@@ -282,6 +282,7 @@
 .complete:hover {
     color: limegreen;
     font-size: 1.5em;
+    color: #eded4d;
 }
 
 .completed {
@@ -293,6 +294,14 @@
     color: red;
     font-size: 1.5em;
     
+}
+
+.centerCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 80vh;
 }
 
 

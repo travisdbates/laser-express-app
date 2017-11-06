@@ -278,7 +278,7 @@ export default class Deliveries extends Component {
 
                         </div>
                     </div>
-                    {this.state.deliveries.length === 0 ? <Spinner name='double-bounce' /> : this.state.hideComplete ?
+                    {this.state.deliveries.length === 0 ? <div className="centerCenter"><span className="forApproval">No deliveries here...</span><Spinner name='pacman' color="#eded4d" fadeIn="quarter"/></div> : this.state.hideComplete ?
                         this.state.completeDeliveries.map((deliveries, index) => {
 
 
