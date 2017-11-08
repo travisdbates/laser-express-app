@@ -78,15 +78,15 @@ export default class Dashboard extends Component {
 
                     <div className="rdCircles">
                         <div className="aboveBelow">
-                            <Link className="circle" to="/deliveries">{this.state.totalDeliveries === 0 ? <Spinner name='double-bounce' /> : <CountUp duration={1.84} start={0} end={this.state.totalDeliveries} />}&nbsp;</Link>
+                            <Link className="circle" to="/deliveries">{this.state.totalDeliveries === 0 ? <Spinner color="#142836" name="ball-scale-ripple-multiple" /> : <CountUp duration={1.84} start={0} end={this.state.totalDeliveries} />}&nbsp;</Link>
                             <span className="descriptions">DELIVERIES</span>
                         </div>
                         <div className="aboveBelow">
-                            <Link className="circle" to="/orders">{this.state.totalOrders === 0 ? <Spinner name='double-bounce' /> : <CountUp duration={1.84} start={0} end={this.state.totalOrders} />}&nbsp;</Link>
+                            <Link className="circle" to="/orders">{this.state.totalOrders === 0 ? <Spinner color="#142836" name="ball-scale-ripple-multiple" /> : <CountUp duration={1.84} start={0} end={this.state.totalOrders} />}&nbsp;</Link>
                             <span className="descriptions">ORDERS</span>
                         </div>
                         <div className="aboveBelow">
-                            <Link className="circle" to="/repairs">{this.state.totalRepairs === 0 ? <Spinner name='double-bounce' /> : <CountUp duration={1.84} start={0} end={this.state.totalRepairs} />}&nbsp;</Link>
+                            <Link className="circle" to="/repairs">{this.state.totalRepairs === 0 ? <Spinner color="#142836" name="ball-scale-ripple-multiple" /> : <CountUp duration={1.84} start={0} end={this.state.totalRepairs} />}&nbsp;</Link>
                             <span className="descriptions">REPAIRS</span>
                         </div>
                     </div>

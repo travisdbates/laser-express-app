@@ -148,7 +148,7 @@ export default class Customers extends Component {
                             <span className="headerTitleRepairs">STATUS</span>
                             <div className="repairsDivider"></div>
 
-                            <span className="headerTitleRepairsM">CONTACT</span>
+                            <span className="headerTitleRepairsM">CUSTOMER/CONTACT</span>
                             <div className="repairsDividerM"></div>
 
                             <span className="headerTitleRepairsM">ADDRESS</span>
@@ -179,7 +179,7 @@ export default class Customers extends Component {
 
                         </div>
                     </div>
-                    {this.state.repairs.length === 0 ? <Spinner name='double-bounce' /> : this.state.hideComplete ?
+                    {this.state.repairs.length === 0 ? <div className="centerCenter"><span className="forApproval">No repairs here...</span><Spinner name='pacman' color="#eded4d" fadeIn="quarter"/></div> : this.state.hideComplete ?
 
                         this.state.completeRepairs.map((repairs, index) => {
                             let d = repairs.date.substring(0, repairs.date.indexOf('T'))
@@ -190,7 +190,7 @@ export default class Customers extends Component {
                                     <span className="detailsRepairs">{d}</span>
                                     <span className="detailsRepairs">{repairs.time}</span>
                                     <span className="detailsRepairs">{repairs.status}</span>
-                                    <span className="detailsRepairsM">{repairs.contactname}</span>
+                                    <span className="detailsRepairsM">{repairs.name}<br/>{repairs.contactname}</span>
                                     <span className="detailsRepairsM">{repairs.streetaddress}</span>
                                     <span className="detailsRepairs">{repairs.phone}</span>
                                     <span className="detailsRepairsM">{repairs.printer}</span>
@@ -216,7 +216,7 @@ export default class Customers extends Component {
                                     <span className="detailsRepairs">{d}</span>
                                     <span className="detailsRepairs">{repairs.time}</span>
                                     <span className="detailsRepairs">{repairs.status}</span>
-                                    <span className="detailsRepairsM">{repairs.contactname}</span>
+                                    <span className="detailsRepairsM">{repairs.name}<br/>{repairs.contactname}</span>
                                     <span className="detailsRepairsM">{repairs.streetaddress}</span>
                                     <span className="detailsRepairs">{repairs.phone}</span>
                                     <span className="detailsRepairsM">{repairs.printer}</span>

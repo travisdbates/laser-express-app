@@ -134,7 +134,7 @@ export default class Orders extends Component {
 
                         </div>
                     </div>
-                    {this.state.orders.length === 0 ? <Spinner name='double-bounce' /> : this.state.hideComplete ?
+                    {this.state.orders.length === 0 ? <div className="centerCenter"><span className="forApproval">No orders here...</span><Spinner name='pacman' color="#eded4d" fadeIn="quarter"/></div> : this.state.hideComplete ?
 
                         this.state.ordersComplete.map((order, index) => {
 
@@ -156,7 +156,7 @@ export default class Orders extends Component {
                                     <span className="detailsOrders">{order.time}</span>
                                     <span className="detailsOrdersM">{order.quantity}</span>
                                     <span className="detailsOrdersM">{order.item}</span>
-                                    <span className="detailsOrdersM">{order.customer}</span>
+                                    <span className="detailsOrdersM">{order.name}</span>
                                     <span className="detailsOrders">{order.cost}</span>
                                     <span className="detailsOrders">{order.ordernumber}</span>
                                     <span className="detailsOrders">{order.vendor}</span>
@@ -194,7 +194,7 @@ export default class Orders extends Component {
                                     <span className="detailsOrders">{order.time}</span>
                                     <span className="detailsOrdersM">{order.quantity}</span>
                                     <span className="detailsOrdersM">{order.item}</span>
-                                    <span className="detailsOrdersM">{order.customer}</span>
+                                    <span className="detailsOrdersM">{order.name}</span>
                                     <span className="detailsOrders">{order.cost}</span>
                                     <span className="detailsOrders">{order.ordernumber}</span>
                                     <span className="detailsOrders">{order.vendor}</span>

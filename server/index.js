@@ -343,7 +343,8 @@ app.post('/api/orders/insert',(req,res) => {
         req.body.time,
         req.body.quantity,
         req.body.item,
-        req.body.customer
+        req.body.customer,
+        req.body.customerid
     ]
     
     app.get('db').orders_insert(order)

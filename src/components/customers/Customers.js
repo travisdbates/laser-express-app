@@ -97,7 +97,7 @@ export default class Customers extends Component {
 
                         </div>
                     </div>
-                    {this.state.customersaZ.length === 0 ? <Spinner name='double-bounce' /> : this.state.alpha ?
+                    {this.state.customersaZ.length === 0 ? <div className="centerCenter"><span className="forApproval">Loading Customers...</span><Spinner name='pacman' color="#eded4d" fadeIn="quarter"/></div> : this.state.alpha ?
                         this.state.customersaZ.map((customer, index) => {
                             return (
                                 <div className="customerContainerC" key={customer.customerid}>
