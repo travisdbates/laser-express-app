@@ -99,7 +99,7 @@ class RepairModal extends Component {
             [formField]: e
         })
         // console.log(this.state[formField])
-        // console.log(this.state)
+        console.log(this.state)
     }
 
     submitRepair() {
@@ -234,17 +234,17 @@ class RepairModal extends Component {
             }
 
         console.log(delivery)
-        axios.post('/api/deliveries/insert', delivery)
-            .then(response => {
-                console.log(response)
-            })
-        axios.get('/api/customers/getselect')
-            .then(response => {
-                console.log(response.data)
-                this.setState({ customers: response.data })
-            })
-        this.props.OnClose;
-        window.location.reload(true)
+        // axios.post('/api/deliveries/insert', delivery)
+        //     .then(response => {
+        //         console.log(response)
+        //     })
+        // axios.get('/api/customers/getselect')
+        //     .then(response => {
+        //         console.log(response.data)
+        //         this.setState({ customers: response.data })
+        //     })
+        // this.props.OnClose;
+        // window.location.reload(true)
     }
 
     addCartridge() {

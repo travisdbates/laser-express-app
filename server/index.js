@@ -321,6 +321,22 @@ app.put('/api/deliveries/deletedelivery/:id', (req,res) => {
     })
 })
 
+app.put('/api/deliveries/updatedelivery/:id', (req,res) => {
+    const deliveryId = req.params.id;
+    let updatedDeliv = [
+        req.body.contactName,
+        req.body.cartridge,
+        req.body.quantity,
+        req.body.notes,
+        req.body.tech,
+        deliveryId
+    ]
+    app.get('db').update_delivery(updatedDeliv)
+    .then(response => {
+        res.status(200).send(response)
+    })
+})
+
 //ORDERS ************************************************
 
 app.get('/api/orders/getall', (req,res) => {

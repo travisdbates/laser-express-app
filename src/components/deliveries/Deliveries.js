@@ -35,6 +35,13 @@ export default class Deliveries extends Component {
             delivTech: true,
             delivToEdit: null,
 
+            contactName: '',
+            tech: '',
+            notes: '',
+
+            quantEdits: [],
+            cartEdits: []
+
         }
         this.showModal = this.showModal.bind(this)
         this.showModalApprove = this.showModalApprove.bind(this)
@@ -134,6 +141,7 @@ export default class Deliveries extends Component {
         for (var i = 0; i < q.length; i++) {
             arr.push(q[i] + " - " + c[i])
         }
+        //console.log(arr)
         return arr;
 
     }
@@ -232,10 +240,101 @@ export default class Deliveries extends Component {
 
         this.setState({ delivToEdit: delToEdit })
 
+        this.setState({ quantEdits: this.state.deliveries[index].quantity })
+        this.setState({ cartEdits: this.state.deliveries[index].cartridge })
+        this.setState({ tech: this.state.deliveries[index].tech})
         console.log(this.state.delivToEdit)
+        console.log(this.state.quantEdits)
+        console.log(this.state.cartEdits)
 
     }
 
+
+    handleChange(e, formField) {
+
+        this.setState({
+            [formField]: e
+        })
+        //console.log(this.state[formField])
+        console.log(this.state)
+    }
+
+    handleQuantEdit(e, index) {
+        let temp = this.state.quantEdits
+        temp[index] = parseInt(e, 10)
+        this.setState({ quantEdits: temp })
+        console.log(this.state.quantEdits)
+        console.log(this.state)
+    }
+
+    handleCartEdit(e, index) {
+        let temp = this.state.cartEdits
+        temp[index] = e
+
+        this.setState({ cartEdits: temp })
+        console.log(this.state)
+
+    }
+
+    updateDelivery(index){
+        let updatedDel = 
+        {
+            deliveriesid: this.state.delivToEdit.deliveriesid,
+            customerId: this.state.delivToEdit.customerid,
+            date: this.state.delivToEdit.date,
+            time: this.state.delivToEdit.time,
+            status: this.state.delivToEdit.status,
+            contactName: this.state.contactName,
+            streetAddress: this.state.delivToEdit.streetaddress,
+            city: this.state.delivToEdit.city,
+            state: this.state.delivToEdit.state,
+            phone: this.state.delivToEdit.phone,
+            cartridge: '{' + this.state.cartEdits + '}',
+            tech: this.state.tech,
+            orderStatus: this.state.delivToEdit.orderstatus,
+            invoiceStatus: this.state.delivToEdit.invoicestatus,
+            notes: this.state.notes,
+            quantity: '{' + this.state.quantEdits + '}',
+        }
+
+        let updatedDelForState = 
+        {
+            name: this.state.delivToEdit.name,
+            deliveriesid: this.state.delivToEdit.deliveriesid,
+            customerId: this.state.delivToEdit.customerid,
+            date: this.state.delivToEdit.date,
+            time: this.state.delivToEdit.time,
+            status: this.state.delivToEdit.status,
+            contactname: this.state.contactName,
+            streetaddress: this.state.delivToEdit.streetaddress,
+            city: this.state.delivToEdit.city,
+            state: this.state.delivToEdit.state,
+            phone: this.state.delivToEdit.phone,
+            cartridge: this.state.cartEdits,
+            tech: this.state.tech,
+            orderStatus: this.state.delivToEdit.orderstatus,
+            invoiceStatus: this.state.delivToEdit.invoicestatus,
+            notes: this.state.notes,
+            quantity: this.state.quantEdits,
+        }
+
+        // console.log(this.state.delivToEdit)
+        // console.log(updatedDel)
+
+        axios.put('/api/deliveries/updatedelivery/' + this.state.delivToEdit.deliveriesid, updatedDel)
+        .then(response => console.log(response.data))
+        var temp = this.state.deliveries
+        temp[index] = updatedDelForState
+        this.setState({deliveries: temp, 
+            delivToEdit: null, 
+            cartEdits: [], 
+            quantEdits: [],
+            contactName: '',
+            tech: '',
+            notes: '',})
+        
+       
+    }
 
     render() {
         return (
@@ -323,7 +422,7 @@ export default class Deliveries extends Component {
                         this.state.deliveries.map((deliveries, index) => {
 
                             return (
-                                <div>
+                                <div key={deliveries.deliveriesid}>
                                     {this.state.delivToEdit ?
 
                                         this.state.delivToEdit.deliveriesid === deliveries.deliveriesid ?
@@ -335,28 +434,68 @@ export default class Deliveries extends Component {
                                                 <span className="detailsDeliveries">{deliveries.time}</span>
                                                 <div className="ccEdit">
                                                     <span className="detailsDeliveriesM" >{deliveries.name}</span>
-                                                    <input className="detailsDeliveriesM" defaultValue={deliveries.contactname}></input>
+                                                    <input className="detailsDeliveriesM" defaultValue={deliveries.contactname} onChange={(e) => { this.handleChange(e.target.value, "contactName") }}></input>
                                                 </div>
-                                                <input className="detailsDeliveriesM" defaultValue={deliveries.streetaddress}></input>
-                                                <input className="detailsDeliveries" defaultValue={deliveries.phone}></input>
-                                                <span className="detailsDeliveriesM">{this.orderFormat(deliveries.deliveriesid, deliveries.quantity, deliveries.cartridge).map((order, indexOrder) => {
+                                                <span className="detailsDeliveriesM">{deliveries.streetaddress}</span>
+                                                <span className="detailsDeliveries">{deliveries.phone}</span>
+
+                                                {/* CARTRIDGE ORDER FORMATTING */}
+                                                <div className="ccEdit">
+                                                    {deliveries.quantity.map((quant, index) => {
+
+                                                        return (
+                                                            <select value={quant} key={index} onChange={(e) => { this.handleQuantEdit(e.target.value, index) }}>
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                                <option value="5">5</option>
+                                                                <option value="6">6</option>
+                                                                <option value="7">7</option>
+                                                                <option value="8">8</option>
+                                                                <option value="9">9</option>
+                                                                <option value="10">10</option>
+                                                                <option value="11">11</option>
+                                                                <option value="12">12</option>
+
+                                                            </select>
+                                                        )
+                                                    })}
+                                                </div>
+                                                <div className="ccEdit">
+                                                    {deliveries.cartridge.map((cart, index) => {
+                                                        return (
+                                                            <div key={index} >
+                                                                <input defaultValue={cart} onChange={(e) => this.handleCartEdit(e.target.value, index)}></input>
+                                                            </div>
+                                                        )
+                                                    })}
+                                                </div>
+
+
+
+                                                {/* <span className="detailsDeliveriesM">{this.orderFormat(deliveries.deliveriesid, deliveries.quantity, deliveries.cartridge).map((order, indexOrder) => {
                                                     return (
                                                         <div>
                                                             <span className="detailsDeliveriesO">{order}</span>
                                                         </div>)
-                                                })}</span>
-                                                <select value={deliveries.tech} className="detailsDeliveries">'
-                                                    <option selected={deliveries.tech}>{deliveries.tech} (Current)</option>
-                                                    <option value="TEST 1">TEST 1</option>
-                                                    <option value="TEST 2s">TEST 2</option>
+                                                })}</span> */}
+                                                {/* *********************************** */}
 
-                                                </select>
+                                                <div className="ccEdit">
+                                                    <select onChange={(e) => { this.handleChange(e.target.value, "tech") }} value={this.state.tech}>
+                                                        <option value="BB">BB</option>
+                                                        <option value="LE">LE</option>
+                                                        <option value="RD">RD</option>
+
+                                                    </select>
+                                                </div>
                                                 <span className="detailsDeliveries">{deliveries.orderstatus === false ? <button onClick={() => this.updateOrder(deliveries.deliveriesid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :
                                                     <button onClick={() => this.updateOrder(deliveries.deliveriesid, index)} className="Ordered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button>}</span>
                                                 <span className="detailsDeliveries">{deliveries.invoicestatus === false ? <button onClick={() => this.updateInvoice(deliveries.deliveriesid, index)} className="notOrdered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button> :
                                                     <button onClick={() => this.updateInvoice(deliveries.deliveriesid, index)} className="Ordered"><div><span className="yes">YES</span><span className="slash">/</span><span className="no">NO</span></div></button>}</span>
-                                                <input className="detailsDeliveries" id="smallFont" value={deliveries.notes}></input>
-                                                <span className="detailsDeliveriesM"><button className="complete" onClick={() => this.completeDelivery(deliveries.deliveriesid, index)}>&#10003;</button><button onClick={() => this.setState({ delivToEdit: null })} className="cancel">&#x2715;</button></span>
+                                                <input className="detailsDeliveries" onChange={(e) => { this.handleChange(e.target.value, "notes") }} id="smallFont" defaultValue={this.state.delivToEdit.notes}></input>
+                                                <span className="detailsDeliveriesM"><button className="complete" onClick={() => this.updateDelivery(index)}>&#10003;</button><button onClick={() => this.setState({ delivToEdit: null })} className="cancel">&#x2715;</button></span>
                                             </div>
 
                                             :
@@ -371,7 +510,7 @@ export default class Deliveries extends Component {
                                                 <span className="detailsDeliveries">{deliveries.phone}</span>
                                                 <span className="detailsDeliveriesM">{this.orderFormat(deliveries.deliveriesid, deliveries.quantity, deliveries.cartridge).map((order, indexOrder) => {
                                                     return (
-                                                        <div>
+                                                        <div key={indexOrder}>
                                                             <span className="detailsDeliveriesO">{order}</span>
                                                             <button className="sendToOrder" onClick={() => this.sendToOrder(index, indexOrder, order, deliveries.cartridge, deliveries.quantity)}>&rarr;</button>
                                                         </div>)
@@ -399,7 +538,7 @@ export default class Deliveries extends Component {
                                             <span className="detailsDeliveries">{deliveries.phone}</span>
                                             <span className="detailsDeliveriesM">{this.orderFormat(deliveries.deliveriesid, deliveries.quantity, deliveries.cartridge).map((order, indexOrder) => {
                                                 return (
-                                                    <div>
+                                                    <div key={indexOrder}>
                                                         <span className="detailsDeliveriesO">{order}</span>
                                                         <button className="sendToOrder" onClick={() => this.sendToOrder(index, indexOrder, order, deliveries.cartridge, deliveries.quantity)}>&rarr;</button>
                                                     </div>)
