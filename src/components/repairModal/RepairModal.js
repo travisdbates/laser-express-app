@@ -137,7 +137,7 @@ class RepairModal extends Component {
         }
             :
             {
-                customerId: this.state.customerid,
+                customerid: this.state.customerid,
                 date: today,
                 time: time,
                 status: "In Process",
