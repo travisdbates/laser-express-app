@@ -159,8 +159,8 @@ class RepairModal extends Component {
                 console.log(response)
             })
         this.props.onClose;
-        window.location.replace('http://localhost:3000/#/repairs')
-
+        window.location.reload(true)
+        
     }
 
     submitDelivery() {
@@ -234,17 +234,17 @@ class RepairModal extends Component {
             }
 
         console.log(delivery)
-        // axios.post('/api/deliveries/insert', delivery)
-        //     .then(response => {
-        //         console.log(response)
-        //     })
-        // axios.get('/api/customers/getselect')
-        //     .then(response => {
-        //         console.log(response.data)
-        //         this.setState({ customers: response.data })
-        //     })
-        // this.props.OnClose;
-        // window.location.reload(true)
+        axios.post('/api/deliveries/insert', delivery)
+            .then(response => {
+                console.log(response)
+            })
+        axios.get('/api/customers/getselect')
+            .then(response => {
+                console.log(response.data)
+                this.setState({ customers: response.data })
+            })
+        this.props.OnClose;
+        window.location.reload(true)
     }
 
     addCartridge() {
