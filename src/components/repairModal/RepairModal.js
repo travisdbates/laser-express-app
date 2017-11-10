@@ -153,13 +153,13 @@ class RepairModal extends Component {
                 invoiceStatus: false,
                 notes: this.state.notes
             }
-            console.log(repair)
-        // axios.post('/api/repairs/insert', repair)
-        //     .then(response => {
-        //         console.log(response)
-        //     })
-        // this.props.onClose;
-        // window.location.reload(true)
+            // console.log(repair)
+        axios.post('/api/repairs/insert', repair)
+            .then(response => {
+                console.log(response)
+            })
+        this.props.onClose;
+        window.location.reload(true)
 
     }
 
