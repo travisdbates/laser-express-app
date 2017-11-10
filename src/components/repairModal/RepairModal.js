@@ -153,14 +153,14 @@ class RepairModal extends Component {
                 invoiceStatus: false,
                 notes: this.state.notes
             }
+            console.log(repair)
+        // axios.post('/api/repairs/insert', repair)
+        //     .then(response => {
+        //         console.log(response)
+        //     })
+        // this.props.onClose;
+        // window.location.reload(true)
 
-        axios.post('/api/repairs/insert', repair)
-            .then(response => {
-                console.log(response)
-            })
-        this.props.onClose;
-        window.location.reload(true)
-        
     }
 
     submitDelivery() {
@@ -326,7 +326,7 @@ class RepairModal extends Component {
         }
         axios.post('/api/customers/insert', data)
             .then(response => {
-                this.setState({ customerId: response.data[0].customerid })
+                this.setState({ customerid: response.data[0].customerid })
                 console.log(response.data)
             })
         this.setState({ customerAdded: !this.state.customerAdded })
@@ -343,7 +343,7 @@ class RepairModal extends Component {
             <div className="screendarken">
                 {this.props.children}
                 <div className="modalWindow">
-                    
+
                     <div className="topContentRMD">
 
                         <Select
@@ -420,62 +420,62 @@ class RepairModal extends Component {
                         <div>
                             <div className="rowForDeliveriesD">
                                 <div className="colOneD">
-                                        <input className="inputBoxD Name" onChange={(e) => { this.handleChange(e.target.value, "contactName") }} placeholder="CONTACT NAME"></input>
-                                        <input className="inputBoxD Notes" onChange={(e) => { this.handleChange(e.target.value, "notes") }} placeholder="NOTES"></input>
-                                        <span className="inputNames Tech">Tech:  </span>
-                                        {/* <input className="inputBoxR Tech" onChange={(e) => { this.handleChange(e.target.value, "tech") }}></input> */}
-                                        <div className="selectFormat">
-                                            <select onChange={(e) => { this.handleChange(e.target.value, "tech") }} value={this.state.tech}>
-                                                <option value="BB">BB</option>
-                                                <option value="LE">LE</option>
-                                                <option value="RD">RD</option>
+                                    <input className="inputBoxD Name" onChange={(e) => { this.handleChange(e.target.value, "contactName") }} placeholder="CONTACT NAME"></input>
+                                    <input className="inputBoxD Notes" onChange={(e) => { this.handleChange(e.target.value, "notes") }} placeholder="NOTES"></input>
+                                    <span className="inputNames Tech">Tech:  </span>
+                                    {/* <input className="inputBoxR Tech" onChange={(e) => { this.handleChange(e.target.value, "tech") }}></input> */}
+                                    <div className="selectFormat">
+                                        <select onChange={(e) => { this.handleChange(e.target.value, "tech") }} value={this.state.tech}>
+                                            <option value="BB">BB</option>
+                                            <option value="LE">LE</option>
+                                            <option value="RD">RD</option>
 
-                                            </select>
-                                        </div>
+                                        </select>
+                                    </div>
 
                                 </div>
                                 <div className="colOneDC">
                                     <span className="cartridgesNameD">CARTRIDGES</span>
                                     <div>
-                                    {this.state.cartridgeForOrder.map((cartridge, idx) => (
-                                                <div className="cartQuantD">
-                                                    <input
-                                                        type="text"
-                                                        placeholder={`CARTRIDGE #${idx + 1}`}
-                                                        value={cartridge.quant}
-                                                        onChange={this.handleCartridgeOrderChangeQuantity(idx)}
-                                                        className="cartNameD"
-                                                    />
+                                        {this.state.cartridgeForOrder.map((cartridge, idx) => (
+                                            <div className="cartQuantD">
+                                                <input
+                                                    type="text"
+                                                    placeholder={`CARTRIDGE #${idx + 1}`}
+                                                    value={cartridge.quant}
+                                                    onChange={this.handleCartridgeOrderChangeQuantity(idx)}
+                                                    className="cartNameD"
+                                                />
 
-                                                    <select onChange={this.handleCartridgeOrderChangeName(idx)} className="quantD">
-                                                        <option selected disabled>QUANTITY</option>
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="6">6</option>
-                                                        <option value="7">7</option>
-                                                        <option value="8">8</option>
-                                                        <option value="9">9</option>
-                                                        <option value="10">10</option>
-                                                        <option value="11">11</option>
-                                                        <option value="12">12</option>
+                                                <select onChange={this.handleCartridgeOrderChangeName(idx)} className="quantD">
+                                                    <option selected disabled>QUANTITY</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
 
-                                                    </select>
-                                                    <button type="button" className="removeButtonD" onClick={this.handleRemoveCartridgeOrder(idx)}>-</button>
+                                                </select>
+                                                <button type="button" className="removeButtonD" onClick={this.handleRemoveCartridgeOrder(idx)}>-</button>
                                             </div>
                                         ))}
 
 
                                     </div>
                                     <div className="centerButtonD"><button type="button" onClick={this.handleAddCartridgeOrder} className="smallSAddD">+</button></div>
-                                    
+
                                 </div>
 
                             </div>
                             <div className="centerButtonD"><button onClick={this.submitDelivery} className="submit">Submit</button></div>
-                            
+
                         </div>
 
                         :

@@ -167,7 +167,7 @@ app.get('/api/repairs/count', (req, res) => {
 
 app.post('/api/repairs/insert',(req,res) => {
     var repair = [
-        req.body.customerID,
+        req.body.customerid,
         req.body.date,
         req.body.time,
         req.body.status,
