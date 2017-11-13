@@ -20,6 +20,12 @@ export default class Orders extends Component {
             orders: [],
             ordersComplete: [],
 
+            orderToEdit: null,
+            cost: '',
+            ordernumber: '',
+            vendor: '',
+            notes: '',
+
         }
         this.showModal = this.showModal.bind(this)
         this.completeOrder = this.completeOrder.bind(this)
@@ -83,10 +89,54 @@ export default class Orders extends Component {
         console.log(this.state.hideComplete)
     }
 
+    editOrder(id, index) {
+        let orderToEdit = this.state.orders[index]
+        console.log(orderToEdit.name)
+
+        this.setState({ orderToEdit: orderToEdit })
+        console.log(this.state.orders[index].cost)
+        let type = typeof(this.state.orders[index].cost)
+        console.log(type)
+        let costForEdit = parseFloat(this.state.orders[index].cost.replace( /[^0-9]/, '' ), 10).toFixed(2)
+        this.setState({cost: costForEdit})
+
+
+    }
+
+    handleChange(e, formField) {
+
+        this.setState({
+            [formField]: e
+        })
+        //console.log(this.state[formField])
+        console.log(this.state)
+    }
+
+    updateOrder(index){
+        let cost = parseFloat(this.state.cost).toFixed(2)
+        let updatedOrderForState = {
+            ordersid: this.state.orders[index].ordersid,
+            date: this.state.orders[index].date,
+            time: this.state.orders[index].time,
+            quantity: this.state.quantity,
+            item: this.state.orders.item,
+            customer: this.state.orders[index].name,
+            cost: cost,
+            ordernumber: this.state.orders[index].ordernumber,
+            vendor: this.state.vendor,
+            notes: this.state.notes,
+            customerid: this.state.orders[index].customerid,
+        }
+        let temp = this.state.orders;
+        temp[index] = updatedOrderForState
+        this.setState({orders: temp, orderToEdit: null})
+        console.log(typeof(cost))
+    }
+
     render() {
         return (
             <div>
-                <NavBar/>
+                <NavBar />
                 <div className="outermostDiv">
                     <div className="fixedHeader">
                         <div className="sideBySide">
@@ -134,7 +184,7 @@ export default class Orders extends Component {
 
                         </div>
                     </div>
-                    {this.state.orders.length === 0 ? <div className="centerCenter"><span className="forApproval">No orders here...</span><Spinner name='pacman' color="#eded4d" fadeIn="quarter"/></div> : this.state.hideComplete ?
+                    {this.state.orders.length === 0 ? <div className="centerCenter"><span className="forApproval">No orders here...</span><Spinner name='pacman' color="#eded4d" fadeIn="quarter" /></div> : this.state.hideComplete ?
 
                         this.state.ordersComplete.map((order, index) => {
 
@@ -188,21 +238,55 @@ export default class Orders extends Component {
 
                             let costOfProduct = parseFloat(order.cost.replace('$', ''))
                             return (
+                                <div>
+                                    {this.state.orderToEdit ?
+                                        this.state.orderToEdit.ordersid === order.ordersid ?
+                                        <div className="ordersContainer" key={index}>
+                                        <span className="detailsOrders">{order.date}</span>
+                                        <span className="detailsOrders">{order.time}</span>
+                                        <span className="detailsOrdersM">{order.quantity}</span>
+                                        <span className="detailsOrdersM">{order.item}</span>
+                                        <span className="detailsOrdersM">{order.name}</span>
+                                        <input className="detailsOrders" type="number" min="0.01" step="0.01" max="2500" value={this.state.cost} onChange={(e) => this.handleChange(e.target.value, 'cost')}></input>
+                                        <input className="detailsOrders" value={order.ordernumber} onChange={(e) => this.handleChange(e.target.value, 'ordernumber')}></input>
+                                        <input className="detailsOrders" value={order.vendor} onChange={(e) => this.handleChange(e.target.value, 'vendor')}></input>
+                                        <span className="detailsOrders">{formatter.format(order.quantity * this.state.cost)}</span>
+                                        <input className="detailsOrders" value={order.notes} onChange={(e) => this.handleChange(e.target.value, 'notes')}></input>
+                                        <span className="detailsOrdersM"><button className="completedOrder" onClick={() => this.updateOrder(index)}>&#10003;</button><button onClick={() => this.setState({ orderToEdit: null })} className="cancel">&#x2715;</button></span>
 
-                                <div className="ordersContainer" key={index}>
-                                    <span className="detailsOrders">{order.date}</span>
-                                    <span className="detailsOrders">{order.time}</span>
-                                    <span className="detailsOrdersM">{order.quantity}</span>
-                                    <span className="detailsOrdersM">{order.item}</span>
-                                    <span className="detailsOrdersM">{order.name}</span>
-                                    <span className="detailsOrders">{order.cost}</span>
-                                    <span className="detailsOrders">{order.ordernumber}</span>
-                                    <span className="detailsOrders">{order.vendor}</span>
-                                    <span className="detailsOrders">{formatter.format(order.quantity * costOfProduct)}</span>
-                                    <span className="detailsOrders">{order.notes}</span>
-                                    <span className="detailsOrdersM"><button className="completedOrder" onClick={() => this.completeOrder(order.ordersid, index)}>&#10003;</button></span>
+                                    </div>
 
+                                            :
+                                            <div className="ordersContainer" key={index}>
+                                                <span className="detailsOrders">{order.date}</span>
+                                                <span className="detailsOrders">{order.time}</span>
+                                                <span className="detailsOrdersM">{order.quantity}</span>
+                                                <span className="detailsOrdersM">{order.item}</span>
+                                                <span className="detailsOrdersM">{order.name}</span>
+                                                <span className="detailsOrders">{order.cost}</span>
+                                                <span className="detailsOrders">{order.ordernumber}</span>
+                                                <span className="detailsOrders">{order.vendor}</span>
+                                                <span className="detailsOrders">{formatter.format(order.quantity * costOfProduct)}</span>
+                                                <span className="detailsOrders">{order.notes}</span>
+                                                <span className="detailsOrdersM"><button className="completedOrder" onClick={() => this.completeOrder(order.ordersid, index)}>&#10003;</button><button onClick={() => this.editOrder(order.orderid, index)} className="complete">&#x270E;</button></span>
 
+                                            </div>
+                                        :
+                                        <div className="ordersContainer" key={index}>
+                                            <span className="detailsOrders">{order.date}</span>
+                                            <span className="detailsOrders">{order.time}</span>
+                                            <span className="detailsOrdersM">{order.quantity}</span>
+                                            <span className="detailsOrdersM">{order.item}</span>
+                                            <span className="detailsOrdersM">{order.name}</span>
+                                            <span className="detailsOrders">{order.cost}</span>
+                                            <span className="detailsOrders">{order.ordernumber}</span>
+                                            <span className="detailsOrders">{order.vendor}</span>
+                                            <span className="detailsOrders">{formatter.format(order.quantity * costOfProduct)}</span>
+                                            <span className="detailsOrders">{order.notes}</span>
+                                            <span className="detailsOrdersM"><button className="completedOrder" onClick={() => this.completeOrder(order.ordersid, index)}>&#10003;</button><button onClick={() => this.editOrder(order.orderid, index)} className="complete">&#x270E;</button></span>
+
+                                        </div>
+                                    }
                                 </div>
                             )
                         })}
@@ -216,16 +300,16 @@ export default class Orders extends Component {
                         pauseOnHover
                     />
                 </div>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
 
             </div>
 
