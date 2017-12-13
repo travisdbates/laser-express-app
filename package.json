@@ -12,6 +12,7 @@
     "express-session": "^1.15.6",
     "halogen": "^0.2.0",
     "massive": "^4.3.0",
+    "material-ui": "^0.19.4",
     "node-sass-chokidar": "0.0.3",
     "npm-run-all": "^4.1.1",
     "passport": "^0.4.0",

@@ -484,5 +484,6 @@ app.put('/api/deliveriesapproval/update/:id', (req, res) => {
 })
 
 
-const PORT = 3005
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
+const PORT = 3005;
+
+app.listen(PORT, () => console.log(`Server listening on port ${PORT}`))

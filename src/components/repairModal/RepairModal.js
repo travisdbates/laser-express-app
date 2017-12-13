@@ -8,6 +8,17 @@ import { ToastContainer, toast } from 'react-toastify';
 import "../../../node_modules/react-toastify/dist/ReactToastify.min.css"
 
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+import {
+    Step,
+    Stepper,
+    StepLabel,
+} from 'material-ui/Stepper';
+import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
+
+
 //import './Select.css'
 
 import "./RepairModal.css"
@@ -44,7 +55,8 @@ class RepairModal extends Component {
 
             cartridgeForOrder: [{ name: '', quant: '' }],
 
-
+            finished: false,
+            stepIndex: 0,
 
         }
         this.logChange = this.logChange.bind(this)
@@ -153,7 +165,7 @@ class RepairModal extends Component {
                 invoiceStatus: false,
                 notes: this.state.notes
             }
-            // console.log(repair)
+        // console.log(repair)
         axios.post('/api/repairs/insert', repair)
             .then(response => {
                 console.log(response)
@@ -335,6 +347,94 @@ class RepairModal extends Component {
     }
 
 
+    handleNext = () => {
+        const { stepIndex } = this.state;
+        this.setState({
+            stepIndex: stepIndex + 1,
+            finished: stepIndex >= 2,
+        });
+    };
+
+    handlePrev = () => {
+        const { stepIndex } = this.state;
+        if (stepIndex > 0) {
+            this.setState({ stepIndex: stepIndex - 1 });
+        }
+    };
+
+    getStepContent(stepIndex) {
+        switch (stepIndex) {
+            case 0:
+                return (
+                    <div>
+                        <Select
+                            className="Select-inputTEST"
+                            name="form-field-one"
+                            placeholder="Existing company select"
+                            value={this.state.value}
+                            options={this.state.customers}
+                            onChange={this.logChange} />
+
+                        {this.state.currentCustomer.length !== 0 ?
+                            <div className="customerInfoRM">
+                                <div className="rowOne">
+                                    <div className="aboveBelow">
+                                        <input className="inputBoxR Name" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].name}></input>
+                                    </div>
+                                    <div className="aboveBelow">
+                                        <input className="inputBoxR Phone" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].phone}></input>
+                                    </div>
+                                </div>
+                                <div className="rowTwo">
+
+                                    <div className="aboveBelow">
+                                        <input className="inputBoxR Address" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].streetaddress}></input>
+                                    </div>
+                                    <div className="aboveBelow">
+                                        <input className="inputBoxR City" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].city}></input>
+                                    </div>
+                                    <div className="aboveBelow">
+                                        <input className="inputBoxR State" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].state}></input>
+                                    </div>
+                                </div>
+
+                            </div>
+                            :
+                            <div className="customerInfoRM">
+                                <div className="rowOne">
+                                    <div className="aboveBelow">
+                                        <input className="inputBoxR Name" placeholder="NAME" onChange={(e) => { this.handleChange(e.target.value, "name") }}></input>
+                                    </div>
+                                    <div className="aboveBelow">
+                                        <input className="inputBoxR Phone" placeholder="PHONE" onChange={(e) => { this.handleChange(e.target.value, "phone") }}></input>
+                                    </div>
+
+                                </div>
+                                <div className="rowTwo">
+
+                                    <div className="aboveBelow">
+                                        <input className="inputBoxR Address" placeholder="STREET ADDRESS" onChange={(e) => { this.handleChange(e.target.value, "streetaddress") }}></input>
+                                    </div>
+                                    <div className="aboveBelow">
+                                        <input className="inputBoxR City" placeholder="CITY" onChange={(e) => { this.handleChange(e.target.value, "city") }}></input>
+                                    </div>
+                                    <div className="aboveBelow">
+                                        <input className="inputBoxR State" placeholder="ST" onChange={(e) => { this.handleChange(e.target.value, "state") }}></input>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                )
+            case 1:
+                return 'Repair or Delivery';
+            case 2:
+                return 'Submit';
+            default:
+                return 'You\'re a long way from home sonny jim!';
+        }
+    }
+
     render() {
         if (!this.props.show) {
             return null;
@@ -343,6 +443,56 @@ class RepairModal extends Component {
             <div className="screendarken">
                 {this.props.children}
                 <div className="modalWindow">
+
+                    <MuiThemeProvider>
+
+                        <div style={{ width: '100%', height: '100%', margin: '50px' }}>
+                            <Stepper activeStep={this.state.stepIndex}>
+                                <Step>
+                                    <StepLabel>Select customer</StepLabel>
+                                </Step>
+                                <Step>
+                                    <StepLabel>Select Repair/Delivery</StepLabel>
+                                </Step>
+                                <Step>
+                                    <StepLabel>Submit</StepLabel>
+                                </Step>
+                            </Stepper>
+                            <div >
+                                {this.state.finished ? (
+                                    <span>
+                                        <a
+                                            href="#"
+                                            onClick={(event) => {
+                                                event.spanreventDefault();
+                                                this.setState({ stepIndex: 0, finished: false });
+                                            }}
+                                        >
+                                            Click here
+              </a> to reset the example.
+            </span>
+                                ) : (
+                                        <div>
+                                            <span>{this.getStepContent(this.state.stepIndex)}</span>
+                                            <div style={{ marginTop: 12 }}>
+                                                <FlatButton
+                                                    label="Back"
+                                                    disabled={this.state.stepIndex === 0}
+                                                    onClick={this.handlePrev}
+                                                    style={{ marginRight: 12 }}
+                                                />
+                                                <RaisedButton
+                                                    label={this.state.stepIndex === 2 ? 'Finish' : this.state.stepIndex === 0 && this.state.currentCustomer.length === 0 ? 'Add' : 'Next'}
+                                                    primary={true}
+                                                    onClick={this.handleNext}
+                                                />
+                                            </div>
+                                        </div>
+                                    )}
+                            </div>
+                        </div>
+                    </MuiThemeProvider>
+
 
                     <div className="topContentRMD">
 

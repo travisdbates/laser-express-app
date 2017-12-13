@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import "./LaserExpress.css"
 import LELogoWhite from "../login/LE White.svg"
 import Headroom from "react-headroom"
-import ScrollableAnchor from 'react-scrollable-anchor'
+//import ScrollableAnchor from 'react-scrollable-anchor'
 import scrollIntoViewIfNeeded from 'scroll-into-view-if-needed'
 import "../../../node_modules/animate.css/animate.min.css"
 import ScrollAnimation from 'react-animate-on-scroll';
