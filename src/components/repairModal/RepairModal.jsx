@@ -362,6 +362,8 @@ class RepairModal extends Component {
         }
     };
 
+    
+
     getStepContent(stepIndex) {
         switch (stepIndex) {
             case 0:
@@ -424,148 +426,22 @@ class RepairModal extends Component {
                                 </div>
                             </div>
                         }
+                        
                     </div>
+                    
                 )
             case 1:
-                return 'Repair or Delivery';
+                return (
+                <div className="buttons">
+                <button className="repairButtond" onClick={this.setRepair}>REPAIR</button>
+                <button className="deliveryButtond" onClick={this.setDelivery}>DELIVERY</button>
+
+                </div>);
             case 2:
-                return 'Submit';
-            default:
-                return 'You\'re a long way from home sonny jim!';
-        }
-    }
+                return (
+                                    <div>
 
-    render() {
-        if (!this.props.show) {
-            return null;
-        }
-        return (
-            <div className="screendarken">
-                {this.props.children}
-                <div className="modalWindow">
-
-                    <MuiThemeProvider>
-
-                        <div style={{ width: '100%', height: '100%', margin: '50px' }}>
-                            <Stepper activeStep={this.state.stepIndex}>
-                                <Step>
-                                    <StepLabel>Select customer</StepLabel>
-                                </Step>
-                                <Step>
-                                    <StepLabel>Select Repair/Delivery</StepLabel>
-                                </Step>
-                                <Step>
-                                    <StepLabel>Submit</StepLabel>
-                                </Step>
-                            </Stepper>
-                            <div >
-                                {this.state.finished ? (
-                                    <span>
-                                        <a
-                                            href="#"
-                                            onClick={(event) => {
-                                                event.spanreventDefault();
-                                                this.setState({ stepIndex: 0, finished: false });
-                                            }}
-                                        >
-                                            Click here
-              </a> to reset the example.
-            </span>
-                                ) : (
-                                        <div>
-                                            <span>{this.getStepContent(this.state.stepIndex)}</span>
-                                            <div style={{ marginTop: 12 }}>
-                                                <FlatButton
-                                                    label="Back"
-                                                    disabled={this.state.stepIndex === 0}
-                                                    onClick={this.handlePrev}
-                                                    style={{ marginRight: 12 }}
-                                                />
-                                                <RaisedButton
-                                                    label={this.state.stepIndex === 2 ? 'Finish' : this.state.stepIndex === 0 && this.state.currentCustomer.length === 0 ? 'Add' : 'Next'}
-                                                    primary={true}
-                                                    onClick={this.handleNext}
-                                                />
-                                            </div>
-                                        </div>
-                                    )}
-                            </div>
-                        </div>
-                    </MuiThemeProvider>
-
-
-                    <div className="topContentRMD">
-
-                        <Select
-                            className="Select-inputTEST"
-                            name="form-field-one"
-                            placeholder="Existing company select"
-                            value={this.state.value}
-                            options={this.state.customers}
-                            onChange={this.logChange} />
-                        <button className="closeButton" onClick={this.props.onClose}>&#10006;</button>
-
-
-
-                    </div>
-                    {this.state.currentCustomer.length !== 0 ?
-                        <div className="customerInfoRM">
-                            <div className="rowOne">
-                                <div className="aboveBelow">
-                                    <input className="inputBoxR Name" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].name}></input>
-                                </div>
-                                <div className="aboveBelow">
-                                    <input className="inputBoxR Phone" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].phone}></input>
-                                </div>
-                            </div>
-                            <div className="rowTwo">
-
-                                <div className="aboveBelow">
-                                    <input className="inputBoxR Address" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].streetaddress}></input>
-                                </div>
-                                <div className="aboveBelow">
-                                    <input className="inputBoxR City" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].city}></input>
-                                </div>
-                                <div className="aboveBelow">
-                                    <input className="inputBoxR State" value={this.state.currentCustomer.length === 0 ? ' ' : this.state.currentCustomer[0].state}></input>
-                                </div>
-                            </div>
-
-                        </div>
-                        :
-                        <div className="customerInfoRM">
-                            <div className="rowOne">
-                                <div className="aboveBelow">
-                                    <input className="inputBoxR Name" placeholder="NAME" onChange={(e) => { this.handleChange(e.target.value, "name") }}></input>
-                                </div>
-                                <div className="aboveBelow">
-                                    <input className="inputBoxR Phone" placeholder="PHONE" onChange={(e) => { this.handleChange(e.target.value, "phone") }}></input>
-                                </div>
-
-                            </div>
-                            <div className="rowTwo">
-
-                                <div className="aboveBelow">
-                                    <input className="inputBoxR Address" placeholder="STREET ADDRESS" onChange={(e) => { this.handleChange(e.target.value, "streetaddress") }}></input>
-                                </div>
-                                <div className="aboveBelow">
-                                    <input className="inputBoxR City" placeholder="CITY" onChange={(e) => { this.handleChange(e.target.value, "city") }}></input>
-                                </div>
-                                <div className="aboveBelow">
-                                    <input className="inputBoxR State" placeholder="ST" onChange={(e) => { this.handleChange(e.target.value, "state") }}></input>
-                                </div>
-                            </div>
-                            {this.state.customerAdded ? null : <button onClick={this.submitCustomer} className="repairButtond">Submit New Customer</button>}
-                        </div>
-                    }
-
-                    <div className="buttons">
-                        <button className="repairButtond" onClick={this.setRepair}>REPAIR</button>
-                        <button className="deliveryButtond" onClick={this.setDelivery}>DELIVERY</button>
-
-                    </div>
-
-                    {this.state.rdSetting === null ? null : this.state.rdSetting === "d" ?
+{this.state.rdSetting === null ? null : this.state.rdSetting === "d" ?
                         //DELIVERY ***********************************************************************************************
                         <div>
                             <div className="rowForDeliveriesD">
@@ -613,7 +489,7 @@ class RepairModal extends Component {
                                                     <option value="12">12</option>
 
                                                 </select>
-                                                <button type="button" className="removeButtonD" onClick={this.handleRemoveCartridgeOrder(idx)}>-</button>
+                                                <button type="button" className="removeButtonDE" onClick={this.handleRemoveCartridgeOrder(idx)}>-</button>
                                             </div>
                                         ))}
 
@@ -665,6 +541,73 @@ class RepairModal extends Component {
                             <div className="centerButtonD"><button onClick={this.submitRepair} className="submit">Submit</button></div>
 
                         </div>}
+                </div>
+
+                                    );
+            default:
+                return 'You\'re a long way from home sonny jim!';
+        }
+    }
+
+    render() {
+        
+        return (
+            <div>
+                {this.props.children}
+                <div>
+
+                    <MuiThemeProvider>
+
+                        <div style={{ width: '90%', height: '100%', margin: '50px' }}>
+                            <Stepper activeStep={this.state.stepIndex}>
+                                <Step>
+                                    <StepLabel>Select customer</StepLabel>
+                                </Step>
+                                <Step>
+                                    <StepLabel>Select Repair/Delivery</StepLabel>
+                                </Step>
+                                <Step>
+                                    <StepLabel >Submit</StepLabel>
+                                </Step>
+                            </Stepper>
+                            <div >
+                                {this.state.finished ? (
+                                    <span>
+                                        <a
+                                            href="#"
+                                            onClick={(event) => {
+                                                event.spanreventDefault();
+                                                this.setState({ stepIndex: 0, finished: false });
+                                            }}
+                                        >
+                                            Click here
+              </a> to reset the example.
+            </span>
+                                ) : (
+                                        <div>
+                                            <span>{this.getStepContent(this.state.stepIndex)}</span>
+                                            <div style={{ marginTop: 12 }}>
+                                                <FlatButton
+                                                    label="Back"
+                                                    disabled={this.state.stepIndex === 0}
+                                                    onClick={this.handlePrev}
+                                                    style={{ marginRight: 12 }}
+                                                />
+                                                <RaisedButton
+                                                    label={this.state.stepIndex === 2 ? 'Submit' : this.state.stepIndex === 0 && this.state.currentCustomer.length === 0 ? 'Add' : 'Next'}
+                                                    disabled={this.state.stepIndex === 1 && this.state.rdSetting === null ? true : false }
+                                                    primary={true}
+                                                    onClick={this.state.stepIndex === 2 && this.state.rdSetting === 'd' ? () => this.submitDelivery() : this.state.stepIndex === 2 && this.state.rdSetting === 'r' ? () => this.submitRepair() : this.handleNext}
+                                                />
+                                            </div>
+                                        </div>
+                                    )}
+                            </div>
+                        </div>
+                    </MuiThemeProvider>
+
+
+                    
                 </div>
                 <ToastContainer
                     position="top-right"

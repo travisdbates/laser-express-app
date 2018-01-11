@@ -13,6 +13,7 @@ import Orders from "./components/orders/Orders"
 import Insight from "./components/insight/Insight"
 import Toners from "./components/toners/Toners"
 import LaserExpress from "./components/staticsite/LaserExpress"
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 
 class App extends Component {
@@ -21,7 +22,7 @@ class App extends Component {
       <div>
 
         <HashRouter>
-          <div>
+          <MuiThemeProvider>
           {/* window.location.href.search('static') === -1 ? <NavBar/> : null */}
             <Route component={Login} exact path='/' />
             <Route component={Dashboard} path='/dashboard' />
@@ -32,7 +33,7 @@ class App extends Component {
             <Route component={Insight} path="/insight" />
             <Route component={Toners} path="/toners" />
             <Route component={LaserExpress} path="/static"/>
-          </div>
+          </MuiThemeProvider>
         </HashRouter>
       </div>
 

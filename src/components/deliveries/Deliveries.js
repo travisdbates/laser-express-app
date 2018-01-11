@@ -561,12 +561,14 @@ export default class Deliveries extends Component {
 
 
                     }
-                    <button className="addDeliveryButton" onClick={this.showModal} onClose={this.showModal}>
+                    {/* Disable the modal below */}
+
+                    {/* <button className="addDeliveryButton" onClick={this.showModal} onClose={this.showModal}>
                         <div className="vert"></div>
                         <div className="horiz"></div>
-                    </button>
+                    </button> */}
 
-                    <RepairModal show={this.state.hideModal} onClose={this.showModal} />
+                    {/* <RepairModal show={this.state.hideModal} onClose={this.showModal} /> */}
                     <ApprovalModal show={this.state.hideApproval} onClose={this.showModalApprove} />
                     <ToastContainer
                         position="top-right"
